@@ -1,0 +1,23 @@
+1. As a player I want to slay an enemy so that I get exp and gold.
+2. As a player I want to be able to travel so that I can move in the world.
+3. As a player I want to be able to talk to NPCs so that I can gain information.
+4. As a player I want to be able to get quests from NPCs so that I can gain rewards.
+5. As a player I want to be able to shop from NPCs so that I can get new equipment.
+6. As a player I want to make choices on what I can do so that I can make my own path.
+7. As a player I want to be able to check my inventory so that I can see what I have in my bag.
+8. As a player I want to equip items so that I can defend myself from monsters.
+9. As a player I want to level up my skills so that I get stronger.
+10. As a player I want to gain gold so that I can spend my money on items.
+11. As a player I want to be able to pick my items so that I can add it to my inventory.
+12. As a player I want to start the game so that I can play the game.
+13. As a player I want to know my surroundings so that I can know what area I am in.
+14. As a player I want to look at my quests so that I can know what I am doing in the world.
+15. As a player I want to see my health so that I can know if I am going to die or not.
+16. As a player I want to sell my items so that I can get some extra gold.
+17. As a player I want to use a potion so that I can live in battle more.
+18. As a player I want to be able to drop my items so that I can leave behind unwanted things.
+19. As a player I want to be able to block an enemies hit so that I dont lose health in battle.
+20. As a player I want to be able to run from battle so that I can live when I can't win.
+21. As a player I want to be able to choose my difficulty so that I can enjoy my expierence.
+22. As a player I want to be able to name my character so that I get a immersive expierence.
+23. As a player I want to know my main quest so that I can finish the game.
