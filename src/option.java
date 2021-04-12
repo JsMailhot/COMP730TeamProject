@@ -34,4 +34,9 @@ public abstract class option {
 	 * 	<code>optionFocus = "attack the bandit";</code>	// 'the bandit' is the focus
 	 * </pre> */
 	public String optionFocus = "Default Focus";
+	@Override
+	public String toString()
+	{
+		return optionText;
+	}
 }
