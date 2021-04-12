@@ -1,21 +1,26 @@
-/**
- * Option prompting the player to start a conversation with another actor
- * Ex:	#	create a default talkOption and print its optionText
- * 		room example_room = new room();	<-	create new room (or use existing)
- * 		example_room.roomOptions.choicePick.add(new talkOption());	<- add talkOption to room
- * 		print(example_room.roomOptions.choicePick.get[0]); <- print talkOption (index may vary)
- * 		^	prints "talk with nothing"
- * Ex:	#	create a complex talkOption and print its optionText
- * 		talkOption talk_example = new talkOption("shop keep", "retail".toCharArray()); <- create new talkOption (or use existing)
- * 		print(talk_example); <- print talkOption
- * 		^	prints "trade with shop keep"
- * */
+/** <pre>
+ * The option type for prompting the player to make decisions in a conversation with another actor such as a shop keep.
+ * Example of creating a default talkOption to print its optionText:
+ * <code>	import static java.lang.System.out;</code>	// import print method
+ * 	<code>room example_room = new room();</code>	// create new room (or use existing)
+ * 	<code>example_room.roomOptions.choicePick.add(new talkOption());</code>	// add talkOption to room
+ * 	<code>out.println(example_room.roomOptions.choicePick.get(0).toString());</code> // print talkOption (index may vary)
+ * Returns:	"talk with nothing"
+ * Example of creating a complex talkOption to print its optionText:
+ * <code>	import static java.lang.System.out;</code>	// import print method
+ * <code>	talkOption talk_example = new talkOption("shop keep", "retail".toCharArray());</code> // create new talkOption (or use existing)
+ * 	<code>out.println(talk_example.toString());</code> // print talkOption
+ * Returns:	"trade with shop keep"
+ * </pre> */
 public class talkOption extends option {
-	/**
+	/** <pre>
 	 * Default option evaluates to talking to nothing about nothing specific
-	 * Ex:
-	 * 		
-	 * */
+	 * Example of generating a default talkOption variable to print its optionText:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>talkOption talk = new talkOption();</code>	// simply generate a new object as a talkOption variable
+	 * 	<code>out.println(talk.toString());</code>	// print talk
+	 * Returns:	"talk to nothing"
+	 * </pre> */
 	public talkOption()
 	{
 		super();
@@ -26,11 +31,14 @@ public class talkOption extends option {
 		isQuest = false;
 		isDialog = true;
 	}
-	/**
+	/** <pre>
 	 * Complex option evaluates to talking to a focus with specified parameters
-	 * Ex:
-	 * 		
-	 * */
+	 * Example of generating a complex talkOption variable to print its optionText:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>talkOption talk = new talkOption("shop keep", "retail".toCharArray());</code>	// generate a new talkOption variable with the respective parameters
+	 * 	<code>out.println(talk.toString());</code>	// print talk
+	 * Returns:	"trade with shop keep"
+	 * </pre> */
 	public talkOption(String optionFocus, char... is)
 	{
 		super();
@@ -65,23 +73,31 @@ public class talkOption extends option {
 		this.optionFocus = optionFocus;
 		optionText = optionType + " " + optionFocus;
 	}
-	/**
-	 * 
-	 * Ex:
-	 * 		
-	 * */
+	/** <pre>
+	 * Boolean for determening if this option involves buying or selling items
+	 * Example of an option involving buying items being printed:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>talkOption talk = new talkOption("shop keep", "retail".toCharArray());</code>	// generate a new talkOption variable with the respective parameters
+	 * 	<code>out.println(talk.toString());</code>	// print talk
+	 * Returns:	"trade with shop keep"
+	 * </pre> */
 	Boolean isRetail = false;
-	/**
-	 * 
-	 * Ex:
-	 * 		
-	 * */
+	/** <pre>
+	 * Boolean for determening of this option involves a quest
+	 * Example of an option involving a quest being printed:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>talkOption talk = new talkOption("the quest giver", "quest".toCharArray());</code>	// generate a new talkOption variable with the respective parameters
+	 * 	<code>out.println(talk.toString());</code>	// print talk
+	 * Returns:	"help the quest giver"
+	 * </pre> */
 	Boolean isQuest = false;
-	/**
-	 * 
-	 * Ex:
-	 * 		
-	 * */
+	/** <pre>
+	 * Boolean for determening of this option involves only dialogue
+	 * Example of an option involving only dialogue being printed:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>talkOption talk = new talkOption("adventurer", "dialog".toCharArray());</code>	// generate a new talkOption variable with the respective parameters
+	 * 	<code>out.println(talk.toString());</code>	// print talk
+	 * Returns:	"talk with the adventurer"
+	 * </pre> */
 	Boolean isDialog = false;
-
 }
