@@ -27,8 +27,6 @@ public class talkOption extends option {
 		optionType = "talk to";
 		optionFocus = "nothing";
 		optionText = optionType + " " + optionFocus;
-		isRetail = false;
-		isQuest = false;
 		isDialog = true;
 	}
 	/** <pre>
