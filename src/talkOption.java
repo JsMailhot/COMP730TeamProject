@@ -8,7 +8,7 @@
  * Returns:	"talk with nothing"
  * Example of creating a complex talkOption to print its optionText:
  * <code>	import static java.lang.System.out;</code>	// import print method
- * <code>	talkOption talk_example = new talkOption("shop keep", "retail".toCharArray());</code> // create new talkOption (or use existing)
+ * 	<code>talkOption talk_example = new talkOption("shop keep", "retail".toCharArray());</code> // create new talkOption (or use existing)
  * 	<code>out.println(talk_example.toString());</code> // print talkOption
  * Returns:	"trade with shop keep"
  * </pre> */

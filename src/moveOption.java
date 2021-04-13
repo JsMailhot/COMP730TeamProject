@@ -8,7 +8,7 @@
  * Returns:	"move north"
  * Example of creating a complex moveOption to print its optionText:
  * <code>	import static java.lang.System.out;</code>	// import print method
- * <code>	moveOption talk_example = new moveOption("south", true);</code> // create new moveOption (or use existing)
+ * 	<code>moveOption talk_example = new moveOption("south", true);</code> // create new moveOption (or use existing)
  * 	<code>out.println(talk_example.toString());</code> // print moveOption
  * Returns:	"south blocked"
  * </pre> */

@@ -8,8 +8,9 @@
  * Returns:	"attack nothing"
  * Example of creating a complex attackOption to print its optionText:
  * <code>	import static java.lang.System.out;</code>	// import print method
- * <code>	attackOption talk_example = new attackOption("south", true);</code> // create new attackOption (or use existing)
- * 	<code>out.println(talk_example.toString());</code> // print moveOption
+ * 	<code>enemy enemy_imp = new enemy("imp");</code>	// generate a new enemy imp
+ * 	<code>attackOption attack = new attackOption(enemy_imp);</code>	// generate a new attackOption variable with the respective parameters
+ * 	<code>out.println(attack.toString());</code> // print attack
  * Returns:	"attack goblin"
  * </pre> */
 public class attackOption extends option {
@@ -18,7 +19,7 @@ public class attackOption extends option {
 	 * Example of generating a default attackOption variable to print its optionText:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>attackOption attack = new attackOption();</code>	// simply generate a new object as a attackOption variable
-	 * 	<code>out.println(attack.toString());</code>	// print talk
+	 * 	<code>out.println(attack.toString());</code>	// print attack
 	 * Returns:	"attack nothing"
 	 * </pre> */
 	public attackOption()
@@ -34,7 +35,7 @@ public class attackOption extends option {
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>enemy enemy_imp = new enemy("imp");</code>	// generate a new enemy imp
 	 * 	<code>attackOption attack = new attackOption(enemy_imp);</code>	// generate a new attackOption variable with the respective parameters
-	 * 	<code>out.println(move.toString());</code>	// print talk
+	 * 	<code>out.println(attack.toString());</code>	// print attack
 	 * Returns:	"attack imp"
 	 * </pre> */
 	public attackOption(actor attackFocus)
@@ -58,7 +59,7 @@ public class attackOption extends option {
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>enemy enemy_imp = new enemy("imp");</code>	// generate a new enemy imp
 	 * 	<code>attackOption attack = new attackOption(enemy_imp);</code>	// generate a new attackOption variable with the respective parameters
-	 * 	<code>out.println(move.toString());</code>	// print talk
+	 * 	<code>out.println(attack.toString());</code>	// print attack
 	 * Returns:	"attack imp"
 	 * </pre> */
 	actor attackFocus = null;
