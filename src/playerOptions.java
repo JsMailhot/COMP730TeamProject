@@ -1,7 +1,18 @@
 import java.util.ArrayList;
 
 public class playerOptions {
-	ArrayList<option> choicePick = new ArrayList<option>();
+	
+	public playerOptions()
+	{
+		choicePick = new ArrayList<option>();
+	}
+	
+	public playerOptions(ArrayList<option> choicePick)
+	{
+		this.choicePick = choicePick;
+	}
+	
+	ArrayList<option> choicePick;
 	
 	public int pickOption() {
 		return 0;
