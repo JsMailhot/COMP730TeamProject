@@ -1,4 +1,4 @@
-public interface actor {
+public abstract class actor extends inventory {
 	int health = 1;
 	String type = "Defualt Type";
 	stats Stats = new stats();
@@ -6,9 +6,16 @@ public interface actor {
 	String desc = "Default Desc";
 	item droppedItem = null;
 	int droppedGold = 0;
-	public int attack();
-	public int block();
-	public String taunt();
-	
-
+	public int attack()
+	{
+		return Stats.attack;
+	}
+	public int block()
+	{
+		return Stats.defense;
+	}
+	public String taunt()
+	{
+		return "taunt";
+	}
 }
