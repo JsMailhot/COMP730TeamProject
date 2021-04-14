@@ -47,6 +47,26 @@ public abstract class item {
 	 * 	<code>category = "Misc";</code>	// misc category
 	 * </pre> */
 	String category = "All";
+	/** <pre>
+	 * Boolean that determines if the item is equipped
+	 * Example of a item that is equipped:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>player item_player = new player();</code>	// create a player
+	 * 	<code>item_player.items.add(new item("sword", "equip".toCharArray()));</code>	// add item to player
+	 * 	<code>out.println(item_player.items[0].toString());</code>	// print item (index may vary)
+	 * Returns:	"equipt sword"
+	 * </pre> */
+	Boolean isEquip = false;
+	/** <pre>
+	 * Boolean that determines if the item is broken
+	 * Example of a item that is broken:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>player item_player = new player();</code>	// create a player
+	 * 	<code>item_player.items.add(new item("sword", "broken".toCharArray()));</code>	// add item to player
+	 * 	<code>out.println(item_player.items[0].toString());</code>	// print item (index may vary)
+	 * Returns:	"broken sword"
+	 * </pre> */
+	Boolean isBroken = false;
 	@Override
 	public String toString()
 	{
