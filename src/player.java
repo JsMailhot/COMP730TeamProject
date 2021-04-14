@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class player implements actor {
+public class player extends actor {
 	String playerName = "Default Player Name";
 	Boolean ifDie;
 	ArrayList<quest> questList = new ArrayList<quest>();
