@@ -20,7 +20,7 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playerhplabelNumber, weaponLabel, weaponlabelName;
 	JButton startButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8;
 	JTextArea mainTextArea;
-	int playerHP;
+	int playerHP, frostTrollHP, silverRing;
 	String weapon, position;
 	Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
 	Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
@@ -166,6 +166,7 @@ public class startGame {
 	}
 	public void playerSetup() {
 		playerHP = 15;
+		frostTrollHP = 20;
 		weapon = "Stick";
 		weaponlabelName.setText(weapon);
 		playerhplabelNumber.setText("" + playerHP);
@@ -226,11 +227,105 @@ public class startGame {
 	}
 	public void east() {
 		position = "east";
-		mainTextArea.setText("You find yourself at a large oak tree.\n You find a Long Sword under the tree!\n(You obtain a Long Sword)");
+		mainTextArea.setText("You find yourself at a large oak tree.\n You find a Long Sword under the tree!\n(You obtain a Long Sword)\n");
+		weapon = "Long Sword";
+		weaponlabelName.setText(weapon);
+		optionButtons.get(0).setText("Go South");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
 		
 	}
 	public void west() {
+		position = "west";
+		mainTextArea.setText("You encounter a Frost Troll!\n");
+		optionButtons.get(0).setText("Fight");
+		optionButtons.get(1).setText("Run");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
 		
+	}
+	public void fight() {
+		position = "fight";
+		mainTextArea.setText("Monster HP: " + frostTrollHP + "\n\nWhat do you do?");
+		optionButtons.get(0).setText("Attack");
+		optionButtons.get(1).setText("Run");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void attack() {
+		position = "attack";
+		int playerDamage = 0;
+		if(weapon.equals("Stick"))
+		{
+		playerDamage = new java.util.Random().nextInt(5);
+		}
+		else if(weapon.equals("Long Sword"))
+		{
+		playerDamage = new java.util.Random().nextInt(10);
+		}
+		mainTextArea.setText("You attacked the monster and gave " + playerDamage + " damage!");
+		frostTrollHP = frostTrollHP - playerDamage;
+		optionButtons.get(0).setText(">");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void monsterAttack() {
+		position = "monsterAttack";
+		int monsterDamage = 0;
+		monsterDamage = new java.util.Random().nextInt(3);
+		mainTextArea.setText("The monster attacked you and gave " + monsterDamage + " damage!");
+		playerHP = playerHP - monsterDamage;
+		playerhplabelNumber.setText(""+playerHP);
+		optionButtons.get(0).setText(">");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void win() {
+		position ="win";
+		mainTextArea.setText("You defeated the monster!\n The troll dropped a ring\n\n(You obtained a Silver Ring)");
+		silverRing =1;
+		optionButtons.get(0).setText("Go east");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void lose() {
+		position ="lose";
+		mainTextArea.setText("You have died.\n\n<GAME OVER>");
+		optionButtons.get(0).setText(">");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(0).setVisible(false);
+		optionButtons.get(1).setVisible(false);
+		optionButtons.get(2).setVisible(false);
+		optionButtons.get(3).setVisible(false);
+	}
+	public void ending() {
+		position ="ending";
+		 mainTextArea.setText("Guard: Oh you killed that frost troll!\n Thank you so much! You are a hero!\n Welcome to the town of EverWinter\n\n<THE END>");
+			optionButtons.get(0).setText(">");
+			optionButtons.get(1).setText("");
+			optionButtons.get(2).setText("");
+			optionButtons.get(3).setText("");
+			optionButtons.get(0).setVisible(false);
+			optionButtons.get(1).setVisible(false);
+			optionButtons.get(2).setVisible(false);
+			optionButtons.get(3).setVisible(false);
+			optionButtons.get(4).setVisible(false);
 	}
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
@@ -247,7 +342,15 @@ public class startGame {
 			switch(position) {
 			case "castleGate":
 				switch(yourChoice) {
-				case "c3": talkGuard(); break;
+				case "c3": 
+					if(silverRing ==1)
+					{
+						ending();
+					}
+					else {
+						talkGuard(); 
+					}
+					break;
 				case "c1": break;
 				case "c2": attackGuard(); break;
 				case "c4": break;
@@ -268,8 +371,8 @@ public class startGame {
 				switch(yourChoice) {
 				case "c1": north(); break;
 				case "c2": castleGate(); break;
-				case "c3": break;
-				case "c4": break;
+				case "c3": east(); break;
+				case "c4": west(); break;
 				case "c5": break;
 				}
 				break;
@@ -277,6 +380,53 @@ public class startGame {
 				switch(yourChoice) {
 				case "c1": crossRoad(); break;
 				}
+				break;
+			case "east":
+				switch(yourChoice) {
+				case "c1": crossRoad(); break;
+				}
+				break;
+			case "west":
+				switch(yourChoice) {
+				case "c1": fight(); break;
+				case "c2": crossRoad(); break;
+				}
+				break;
+			case "fight":
+				switch(yourChoice) {
+				case "c1": attack(); break;
+				case "c2": crossRoad(); break;
+				}
+				break;
+			case "attack":
+				switch(yourChoice) {
+				case "c1":
+					if(frostTrollHP<1) {
+						win();
+					}
+					else {
+						monsterAttack();
+					}
+					 break;
+				}
+				break;
+			case "monsterAttack":
+				switch(yourChoice) {
+				case "c1": 
+					if(playerHP<1) {
+						lose();
+					}
+					else {
+						fight();
+					}
+					 break;
+				}
+				break;
+			case "win":
+				switch(yourChoice) {
+				case "c1": crossRoad(); break;
+				}
+				break;
 				
 			}
 			
