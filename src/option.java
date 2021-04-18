@@ -17,7 +17,7 @@ public abstract class option {
 	 * 	<code>optionText = "[verb] [noun]";</code>	// string in structure format
 	 * 	<code>optionText = "(interact with) (key)";</code>	// string in sentence format
 	 * </pre> */
-	public String optionText = "Default Text";
+	public String optionText = "Do Nothing";
 	/** <pre>
 	 * What type this option is
 	 * Example of defining optionType:
@@ -25,7 +25,7 @@ public abstract class option {
 	 * 	<code>optionType = "talk to shop keep";</code>	// 'talk to' is the type
 	 * 	<code>optionType = "attack the bandit";</code>	// 'attack' is the type
 	 * </pre> */
-	public String optionType = "Default Type";
+	public String optionType = "Do";
 	/** <pre>
 	 * What the option is directed at
 	 * Example of defining optionFocus:
@@ -33,7 +33,7 @@ public abstract class option {
 	 * 	<code>optionFocus = "talk to shop keep";</code>	// 'shop keep' is the focus
 	 * 	<code>optionFocus = "attack the bandit";</code>	// 'the bandit' is the focus
 	 * </pre> */
-	public String optionFocus = "Default Focus";
+	public String optionFocus = "Nothing";
 	@Override
 	public String toString()
 	{
