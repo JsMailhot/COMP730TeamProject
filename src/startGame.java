@@ -25,7 +25,7 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel;
 	JButton startButton, musicButton, enterButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8;
 	JTextArea mainTextArea;
-	int playerHP, frostTrollHP, silverRing;
+	int playerHP, frostTrollHP, playerHPCap, silverRing;
 	String weapon, position, text;
 	String clickSound, gameMusic, musicOnOff;
 	ImageIcon image;
@@ -36,7 +36,7 @@ public class startGame {
 	player player = new player();
 	JFrame window;
 	ArrayList<JButton> optionButtons = new ArrayList<JButton>();
-	
+
 	InputHandler iHandler = new InputHandler();
 	Music mu = new Music();
 	SoundEffect se = new SoundEffect();
@@ -53,18 +53,18 @@ public class startGame {
 		window.getContentPane().setBackground(Color.black);
 		window.setLayout(null);
 		con = window.getContentPane();
-		
+
 		titleScreenPanel = new JPanel();
 		titleScreenPanel.setBounds(100, 100, 600, 150);
 		titleScreenPanel.setBackground(Color.black);
 		titleScreenLabel = new JLabel("EVERWINTER");
 		titleScreenLabel.setForeground(Color.white);
 		titleScreenLabel.setFont(titleFont);
-		
+
 		startButtonPanel = new JPanel();
 		startButtonPanel.setBounds(300, 400, 200, 100);
 		startButtonPanel.setBackground(Color.black);
-		
+
 		startButton = new JButton("START");
 		startButton.setFocusPainted(false);
 		startButton.setBackground(Color.black);
@@ -72,30 +72,30 @@ public class startGame {
 		startButton.setFont(normalFont);
 		startButton.addActionListener(tsHandler);
 		startButton.setFocusPainted(false);
-		
-		
-		
-		
+
+
+
+
 		clickSound = ".//sound//button.wav";
 		gameMusic = ".//sound//gamemusic.wav";
-		
+
 		musicOnOff = "off";
-		
-		
-		
-		
+
+
+
+
 		titleScreenPanel.add(titleScreenLabel);
 		startButtonPanel.add(startButton);
-		
+
 		con.add(titleScreenPanel);
 		con.add(startButtonPanel);
 		window.setVisible(true);
-		
+
 	}
 	public void enterName() {
 		titleScreenPanel.setVisible(false);
 		startButtonPanel.setVisible(false);
-		
+
 		namePanel = new JPanel();
 		namePanel.setBounds(150, 250, 500, 100);
 		namePanel.setBackground(Color.black);
@@ -104,75 +104,76 @@ public class startGame {
 		nameLabel.setFont(normalFont);
 		namePanel.add(nameLabel);
 		con.add(namePanel);
-		
+
 		inputPanel = new JPanel();
 		inputPanel.setBounds(150, 450, 500, 50);
 		inputPanel.setBackground(Color.black);
 		inputPanel.setLayout(new GridLayout(1,2));
-		
+
 		jtf = new JTextField();
 		inputPanel.add(jtf);
-		
+
 		enterButton = new JButton("ENTER");
 		enterButton.setForeground(Color.black);
 		enterButton.addActionListener(iHandler);
 		inputPanel.add(enterButton);
 		con.add(inputPanel);
-		
+
 	}
 	public String enterDesc() {
 		return "Desc";
 	}
 	public void generateRoom() {
-		
+
 	}
 	public void playerInterface() {
 		inputPanel.setVisible(false);
 		namePanel.setVisible(false);
 		titleScreenPanel.setVisible(false);
 		startButtonPanel.setVisible(false);
-		
+
 		mainTextPanel = new JPanel();
 		mainTextPanel.setBounds(50, 500, 430, 250);
 		mainTextPanel.setBackground(Color.black);
 		con.add(mainTextPanel);
-		
-		mainTextArea = new JTextArea("Testing text visablity");
+
+		mainTextArea = new JTextArea();
 		mainTextArea.setBounds(50, 500, 430, 250);
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
 		mainTextArea.setFont(normalFont);
 		mainTextArea.setLineWrap(true);
 		mainTextPanel.add(mainTextArea);
-		
+		mainTextArea.setEditable(false);
+
 		choiceButtonPanel = new JPanel();
 		choiceButtonPanel.setBounds(500, 500, 300, 250);
 		choiceButtonPanel.setBackground(Color.black);
 		con.add(choiceButtonPanel);
-		
+
 		room testroom = new room();
-		
-		
+
+
 		ArrayList<room> roomList = new ArrayList<room>();
 		player testPlayer = new player();
 		testroom.actorList.add((actor)testPlayer);
-		
+
 		moveOption moveoption = new moveOption();
 		attackOption attackoption = new attackOption();
 		talkOption talkoption = new talkOption();
 		interactOption interactoption = new interactOption();
-		
-		
+
+
 		testroom.roomOptions.choicePick.add(moveoption);
 		testroom.roomOptions.choicePick.add(attackoption);
 		testroom.roomOptions.choicePick.add(talkoption);
 		testroom.roomOptions.choicePick.add(interactoption);
-		
-		
+
+
 		roomList.add(testroom);
-		
-		
-		
+
+
+
 		for (int i = 1; i <= 5; i++) {
 		choice = new JButton("Here is the choice");
 		choice.setBackground(Color.black);
@@ -189,18 +190,18 @@ public class startGame {
 		musicButton.addActionListener(choiceHandler);
 		musicButton.setActionCommand("musicb");
 		choiceButtonPanel.add(musicButton);
-		
+
 		healthBarPanel = new JPanel();
 		healthBarPanel.setBounds(100, 15, 200, 30);
 		healthBarPanel.setBackground(Color.blue);
 		con.add(healthBarPanel);
-		
+
 		playerinfoPanel = new JPanel();
 		playerinfoPanel.setBounds(540, 35, 270, 50);
 		playerinfoPanel.setBackground(Color.black);
 		playerinfoPanel.setLayout(new GridLayout(2, 2));
 		con.add(playerinfoPanel);
-		
+
 		playernameLabel = new JLabel(text);
 		playernameLabel.setFont(normalFont);
 		playernameLabel.setForeground(Color.white);
@@ -221,36 +222,37 @@ public class startGame {
 		weaponlabelName.setFont(normalFont);
 		weaponlabelName.setForeground(Color.white);
 		playerinfoPanel.add(weaponlabelName);
-		
+
 		imagePanel = new JPanel();
 		imagePanel.setBounds(50, 50, 400, 250);
 		imagePanel.setBackground(Color.black);
-		
+
 		imageLabel = new JLabel();
-		
+
 		image = new ImageIcon(".//img//towngate.jpg");
-		
+
 		imageLabel.setIcon(image);
 		imagePanel.add(imageLabel);
-		
+
 		con.add(imagePanel);
-		
-		
+
+
 		playerSetup();
-		
+
 	}
 	public void playerSetup() {
 		playerHP = 15;
+		playerHPCap = 25;
 		frostTrollHP = 20;
 		weapon = "Stick";
 		weaponlabelName.setText(weapon);
 		playerhplabelNumber.setText("" + playerHP);
-		
-		
+
+
 		castleGate();
-		
+
 	}
-	
+
 	public void castleGate() {
 		image = new ImageIcon(".//img//towngate.jpg");
 		imageLabel.setIcon(image);
@@ -276,17 +278,21 @@ public class startGame {
 		mainTextArea.setText("Guard: Your being dumb thinking you can win.\nGuard hits you hard. \n(Take 2 DMG)");
 		playerHP = playerHP - 2;
 		playerhplabelNumber.setText(""+playerHP);
+		if(playerHP < 0)
+		{
+			lose();
+		}
 		optionButtons.get(0).setText("Back");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
-		
+
 	}
 	public void crossRoad() {
 		image = new ImageIcon(".//img//crossroads.jpg");
 		imageLabel.setIcon(image);
-		
+
 		position = "crossRoad";
 		mainTextArea.setText("Walking away from the castle you find yourself at branching paths.\nGoing south leads back to the castle.");
 		optionButtons.get(0).setText("Go North");
@@ -298,7 +304,13 @@ public class startGame {
 	public void north() {
 		position = "north";
 		mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(HP healed by 1)");
+		if (playerHP == playerHPCap) {
+			playerHP = playerHP + 0;
+			mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(HP healed by 0)");
+		}
+		else if (playerHP != playerHPCap) {
 		playerHP = playerHP + 1;
+		}
 		playerhplabelNumber.setText(""+playerHP);
 		optionButtons.get(0).setText("Go South");
 		optionButtons.get(1).setText("");
@@ -316,11 +328,12 @@ public class startGame {
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
-		
+
 	}
 	public void west() {
 		image = new ImageIcon(".//img//frosttroll.jpg");
 		imageLabel.setIcon(image);
+
 		position = "west";
 		mainTextArea.setText("You encounter a Frost Troll!\n");
 		optionButtons.get(0).setText("Fight");
@@ -328,7 +341,7 @@ public class startGame {
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
-		
+
 	}
 	public void fight() {
 		position = "fight";
@@ -338,6 +351,7 @@ public class startGame {
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
+
 	}
 	public void attack() {
 		position = "attack";
@@ -357,7 +371,7 @@ public class startGame {
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
-		
+
 	}
 	public void monsterAttack() {
 		position = "monsterAttack";
@@ -371,18 +385,19 @@ public class startGame {
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
-		
+
 	}
 	public void win() {
 		position ="win";
 		mainTextArea.setText("You defeated the monster!\n The troll dropped a ring\n\n(You obtained a Silver Ring)");
 		silverRing =1;
+		frostTrollHP = 20;
 		optionButtons.get(0).setText("Go east");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
-		
+
 	}
 	public void lose() {
 		position ="lose";
@@ -409,29 +424,33 @@ public class startGame {
 			optionButtons.get(3).setVisible(false);
 			optionButtons.get(4).setVisible(false);
 	}
+
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
 			enterName();
-			
+
 		}
-		
+
 	}
 	public class InputHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
 			text = jtf.getText();
+			if (text.length() < 1) {
+				text = "NoName";
+			}
 			playerInterface();
-			
+
 		}
-		
+
 	}
 	public class ChoiceHandler implements ActionListener {
-		
+
 		public void actionPerformed(ActionEvent event) {
-			
-			
+
+
 			se.setFile(clickSound);
 			se.play();
-			
+
 			String yourChoice = event.getActionCommand();
 			switch(yourChoice) {
 			case "musicb":
@@ -451,13 +470,13 @@ public class startGame {
 			switch(position) {
 			case "castleGate":
 				switch(yourChoice) {
-				case "c3": 
+				case "c3":
 					if(silverRing ==1)
 					{
 						ending();
 					}
 					else {
-						talkGuard(); 
+						talkGuard();
 					}
 					break;
 				case "c1": break;
@@ -521,7 +540,7 @@ public class startGame {
 				break;
 			case "monsterAttack":
 				switch(yourChoice) {
-				case "c1": 
+				case "c1":
 					if(playerHP<1) {
 						lose();
 					}
@@ -536,9 +555,9 @@ public class startGame {
 				case "c1": crossRoad(); break;
 				}
 				break;
-				
+
 			}
-			
+
 		}
 	}
 }
