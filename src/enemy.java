@@ -1,4 +1,4 @@
-public class enemy implements actor {
+public class enemy extends actor {
 
 	@Override
 	public int attack() {
