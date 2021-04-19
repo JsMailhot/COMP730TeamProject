@@ -196,7 +196,7 @@ public class startGame {
 		con.add(healthBarPanel);
 		
 		playerinfoPanel = new JPanel();
-		playerinfoPanel.setBounds(520, 35, 270, 50);
+		playerinfoPanel.setBounds(540, 35, 270, 50);
 		playerinfoPanel.setBackground(Color.black);
 		playerinfoPanel.setLayout(new GridLayout(2, 2));
 		con.add(playerinfoPanel);
