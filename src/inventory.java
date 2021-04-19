@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 public abstract class inventory {
 	ArrayList<item> items = new ArrayList<item>();
 	int gold = 0;

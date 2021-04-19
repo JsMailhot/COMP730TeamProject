@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 public class player extends actor {
 	String playerName = "Default Player Name";
 	Boolean ifDie;
@@ -20,5 +19,4 @@ public class player extends actor {
 		return null;
 	}
 	
-
 }

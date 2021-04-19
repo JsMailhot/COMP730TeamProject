@@ -4,31 +4,42 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
-
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class startGame {
 	Boolean enterGame;
 	Container con;
-	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel;
-	JLabel titleScreenLabel, playerhpLabel, playerhplabelNumber, weaponLabel, weaponlabelName;
-	JButton startButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8;
+	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel;
+	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel;
+	JButton startButton, musicButton, enterButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8;
 	JTextArea mainTextArea;
 	int playerHP, frostTrollHP, silverRing;
-	String weapon, position;
+	String weapon, position, text;
+	String clickSound, gameMusic, musicOnOff;
+	ImageIcon image;
 	Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
-	Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+	Font normalFont = new Font("Times New Roman", Font.PLAIN, 24);
+	JTextField jtf;
 	List difficulty;
 	player player = new player();
 	JFrame window;
 	ArrayList<JButton> optionButtons = new ArrayList<JButton>();
 	
+	InputHandler iHandler = new InputHandler();
+	Music mu = new Music();
+	SoundEffect se = new SoundEffect();
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 	public static void main(String[] args) {
@@ -37,7 +48,7 @@ public class startGame {
 	}
 	public startGame() {
 		window = new JFrame();
-		window.setSize(800, 800);
+		window.setSize(820, 850);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setBackground(Color.black);
 		window.setLayout(null);
@@ -55,11 +66,20 @@ public class startGame {
 		startButtonPanel.setBackground(Color.black);
 		
 		startButton = new JButton("START");
+		startButton.setFocusPainted(false);
 		startButton.setBackground(Color.black);
 		startButton.setForeground(Color.white);
 		startButton.setFont(normalFont);
 		startButton.addActionListener(tsHandler);
 		startButton.setFocusPainted(false);
+		
+		
+		
+		
+		clickSound = ".//sound//button.wav";
+		gameMusic = ".//sound//gamemusic.wav";
+		
+		musicOnOff = "off";
 		
 		
 		
@@ -72,8 +92,33 @@ public class startGame {
 		window.setVisible(true);
 		
 	}
-	public String enterName() {
-		return "name";
+	public void enterName() {
+		titleScreenPanel.setVisible(false);
+		startButtonPanel.setVisible(false);
+		
+		namePanel = new JPanel();
+		namePanel.setBounds(150, 250, 500, 100);
+		namePanel.setBackground(Color.black);
+		nameLabel = new JLabel("Please enter your name:");
+		nameLabel.setForeground(Color.white);
+		nameLabel.setFont(normalFont);
+		namePanel.add(nameLabel);
+		con.add(namePanel);
+		
+		inputPanel = new JPanel();
+		inputPanel.setBounds(150, 450, 500, 50);
+		inputPanel.setBackground(Color.black);
+		inputPanel.setLayout(new GridLayout(1,2));
+		
+		jtf = new JTextField();
+		inputPanel.add(jtf);
+		
+		enterButton = new JButton("ENTER");
+		enterButton.setForeground(Color.black);
+		enterButton.addActionListener(iHandler);
+		inputPanel.add(enterButton);
+		con.add(inputPanel);
+		
 	}
 	public String enterDesc() {
 		return "Desc";
@@ -82,17 +127,18 @@ public class startGame {
 		
 	}
 	public void playerInterface() {
-		
+		inputPanel.setVisible(false);
+		namePanel.setVisible(false);
 		titleScreenPanel.setVisible(false);
 		startButtonPanel.setVisible(false);
 		
 		mainTextPanel = new JPanel();
-		mainTextPanel.setBounds(100, 100, 600, 250);
+		mainTextPanel.setBounds(50, 500, 430, 250);
 		mainTextPanel.setBackground(Color.black);
 		con.add(mainTextPanel);
 		
 		mainTextArea = new JTextArea("Testing text visablity");
-		mainTextArea.setBounds(100, 100, 600, 250);
+		mainTextArea.setBounds(50, 500, 430, 250);
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
 		mainTextArea.setFont(normalFont);
@@ -100,7 +146,7 @@ public class startGame {
 		mainTextPanel.add(mainTextArea);
 		
 		choiceButtonPanel = new JPanel();
-		choiceButtonPanel.setBounds(250, 350, 300, 350);
+		choiceButtonPanel.setBounds(500, 500, 300, 250);
 		choiceButtonPanel.setBackground(Color.black);
 		con.add(choiceButtonPanel);
 		
@@ -109,7 +155,7 @@ public class startGame {
 		
 		ArrayList<room> roomList = new ArrayList<room>();
 		player testPlayer = new player();
-		testroom.actorList.add(testPlayer);
+		testroom.actorList.add((actor)testPlayer);
 		
 		moveOption moveoption = new moveOption();
 		attackOption attackoption = new attackOption();
@@ -138,12 +184,27 @@ public class startGame {
 		choiceButtonPanel.add(choice);
 		optionButtons.add(choice);
 		}
+		musicButton = new JButton("Music");
+		musicButton.setFocusPainted(false);
+		musicButton.addActionListener(choiceHandler);
+		musicButton.setActionCommand("musicb");
+		choiceButtonPanel.add(musicButton);
+		
+		healthBarPanel = new JPanel();
+		healthBarPanel.setBounds(100, 15, 200, 30);
+		healthBarPanel.setBackground(Color.blue);
+		con.add(healthBarPanel);
+		
 		playerinfoPanel = new JPanel();
-		playerinfoPanel.setBounds(100, 15, 600, 50);
+		playerinfoPanel.setBounds(540, 35, 270, 50);
 		playerinfoPanel.setBackground(Color.black);
-		playerinfoPanel.setLayout(new GridLayout(1, 4));
+		playerinfoPanel.setLayout(new GridLayout(2, 2));
 		con.add(playerinfoPanel);
 		
+		playernameLabel = new JLabel(text);
+		playernameLabel.setFont(normalFont);
+		playernameLabel.setForeground(Color.white);
+		playerinfoPanel.add(playernameLabel);
 		playerhpLabel = new JLabel("HP:");
 		playerhpLabel.setFont(normalFont);
 		playerhpLabel.setForeground(Color.white);
@@ -161,6 +222,20 @@ public class startGame {
 		weaponlabelName.setForeground(Color.white);
 		playerinfoPanel.add(weaponlabelName);
 		
+		imagePanel = new JPanel();
+		imagePanel.setBounds(50, 50, 400, 250);
+		imagePanel.setBackground(Color.black);
+		
+		imageLabel = new JLabel();
+		
+		image = new ImageIcon(".//img//towngate.jpg");
+		
+		imageLabel.setIcon(image);
+		imagePanel.add(imageLabel);
+		
+		con.add(imagePanel);
+		
+		
 		playerSetup();
 		
 	}
@@ -171,11 +246,14 @@ public class startGame {
 		weaponlabelName.setText(weapon);
 		playerhplabelNumber.setText("" + playerHP);
 		
+		
 		castleGate();
 		
 	}
 	
 	public void castleGate() {
+		image = new ImageIcon(".//img//towngate.jpg");
+		imageLabel.setIcon(image);
 		position = "castleGate";
 		mainTextArea.setText("You are at the gate of the castle. \nA guard leans on a wall near you. \n\nWhat do you do?");
 		optionButtons.get(0).setText("Move to the castle");
@@ -186,7 +264,7 @@ public class startGame {
 	}
 	public void talkGuard() {
 		position = "talkGuard";
-		mainTextArea.setText("Guard: Stay safe Traveler.");
+		mainTextArea.setText("Guard: Hail Traveler,\nA Frost Troll has taken our city's priceless\nSilver Ring.\nIf you happen to see the troll\ntry to get the ring back for us would ya?\n(QUEST: Find Silver Ring!)");
 		optionButtons.get(0).setText("Back");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -206,6 +284,9 @@ public class startGame {
 		
 	}
 	public void crossRoad() {
+		image = new ImageIcon(".//img//crossroads.jpg");
+		imageLabel.setIcon(image);
+		
 		position = "crossRoad";
 		mainTextArea.setText("Walking away from the castle you find yourself at branching paths.\nGoing south leads back to the castle.");
 		optionButtons.get(0).setText("Go North");
@@ -238,6 +319,8 @@ public class startGame {
 		
 	}
 	public void west() {
+		image = new ImageIcon(".//img//frosttroll.jpg");
+		imageLabel.setIcon(image);
 		position = "west";
 		mainTextArea.setText("You encounter a Frost Troll!\n");
 		optionButtons.get(0).setText("Fight");
@@ -255,7 +338,6 @@ public class startGame {
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
-		
 	}
 	public void attack() {
 		position = "attack";
@@ -268,7 +350,7 @@ public class startGame {
 		{
 		playerDamage = new java.util.Random().nextInt(10);
 		}
-		mainTextArea.setText("You attacked the monster and gave " + playerDamage + " damage!");
+		mainTextArea.setText("You attacked the monster and gave\n" + playerDamage + " damage!");
 		frostTrollHP = frostTrollHP - playerDamage;
 		optionButtons.get(0).setText(">");
 		optionButtons.get(1).setText("");
@@ -329,7 +411,15 @@ public class startGame {
 	}
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
-			playerInterface ();
+			enterName();
+			
+		}
+		
+	}
+	public class InputHandler implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			text = jtf.getText();
+			playerInterface();
 			
 		}
 		
@@ -338,7 +428,26 @@ public class startGame {
 		
 		public void actionPerformed(ActionEvent event) {
 			
+			
+			se.setFile(clickSound);
+			se.play();
+			
 			String yourChoice = event.getActionCommand();
+			switch(yourChoice) {
+			case "musicb":
+				if(musicOnOff.equals("off")) {
+				mu.setFile(gameMusic);
+				mu.play();
+				mu.loop();
+				musicOnOff = "on";
+				musicButton.setText("Music On");
+				}
+				else if (musicOnOff.equals("on")) {
+					mu.stop();
+					musicOnOff = "off";
+					musicButton.setText("Music Off");
+				}
+			}
 			switch(position) {
 			case "castleGate":
 				switch(yourChoice) {
@@ -432,5 +541,4 @@ public class startGame {
 			
 		}
 	}
-
 }
