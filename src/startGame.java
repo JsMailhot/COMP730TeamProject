@@ -25,7 +25,7 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel;
 	JButton startButton, musicButton, enterButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8;
 	JTextArea mainTextArea;
-	int playerHP, frostTrollHP, silverRing;
+	int playerHP, frostTrollHP, playerHPCap, silverRing;
 	String weapon, position, text;
 	String clickSound, gameMusic, musicOnOff;
 	ImageIcon image;
@@ -137,13 +137,14 @@ public class startGame {
 		mainTextPanel.setBackground(Color.black);
 		con.add(mainTextPanel);
 		
-		mainTextArea = new JTextArea("Testing text visablity");
+		mainTextArea = new JTextArea();
 		mainTextArea.setBounds(50, 500, 430, 250);
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
 		mainTextArea.setFont(normalFont);
 		mainTextArea.setLineWrap(true);
 		mainTextPanel.add(mainTextArea);
+		mainTextArea.setEditable(false);
 		
 		choiceButtonPanel = new JPanel();
 		choiceButtonPanel.setBounds(500, 500, 300, 250);
@@ -241,6 +242,7 @@ public class startGame {
 	}
 	public void playerSetup() {
 		playerHP = 15;
+		playerHPCap = 25;
 		frostTrollHP = 20;
 		weapon = "Stick";
 		weaponlabelName.setText(weapon);
@@ -276,6 +278,10 @@ public class startGame {
 		mainTextArea.setText("Guard: Your being dumb thinking you can win.\nGuard hits you hard. \n(Take 2 DMG)");
 		playerHP = playerHP - 2;
 		playerhplabelNumber.setText(""+playerHP);
+		if(playerHP < 0)
+		{
+			lose();
+		}
 		optionButtons.get(0).setText("Back");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -298,7 +304,13 @@ public class startGame {
 	public void north() {
 		position = "north";
 		mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(HP healed by 1)");
+		if (playerHP == playerHPCap) {
+			playerHP = playerHP + 0;
+			mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(HP healed by 0)");
+		}
+		else if (playerHP != playerHPCap) {
 		playerHP = playerHP + 1;
+		}
 		playerhplabelNumber.setText(""+playerHP);
 		optionButtons.get(0).setText("Go South");
 		optionButtons.get(1).setText("");
@@ -379,6 +391,7 @@ public class startGame {
 		position ="win";
 		mainTextArea.setText("You defeated the monster!\n The troll dropped a ring\n\n(You obtained a Silver Ring)");
 		silverRing =1;
+		frostTrollHP = 20;
 		optionButtons.get(0).setText("Go east");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -422,6 +435,9 @@ public class startGame {
 	public class InputHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
 			text = jtf.getText();
+			if (text.length() < 1) {
+				text = "NoName";
+			}
 			playerInterface();
 			
 		}
