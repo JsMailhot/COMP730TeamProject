@@ -23,9 +23,9 @@ import javax.swing.JTextField;
 public class startGame {
 	Boolean enterGame;
 	Container con;
-	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel;
+	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel, inventoryPanel;
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel;
-	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8;
+	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
 	JTextArea mainTextArea;
 	int playerHP, frostTrollHP, playerHPCap, silverRing;
 	String weapon, position, text;
@@ -196,11 +196,14 @@ public class startGame {
 		choiceButtonPanel.add(musicButton);
 		
 		inventoryButton = new JButton("[ Inventory ]");
-		inventoryButton.setBackground(Color.black);
-		inventoryButton.setForeground(Color.white);
+		inventoryButton.setBackground(Color.white);
+		inventoryButton.setForeground(Color.black);
 		inventoryButton.setFont(normalFont);
 		inventoryButton.setFocusPainted(false);
 		choiceButtonPanel.add(inventoryButton);
+		
+		
+		
 		
 
 		healthBarPanel = new JPanel();
@@ -213,7 +216,47 @@ public class startGame {
 		healthBar.setForeground(Color.green);
 		healthBarPanel.add(healthBar);
 		
+		inventoryPanel = new JPanel();
+		inventoryPanel.setBounds(600, 600, 200, 200);
+		inventoryPanel.setBackground(Color.black);
+		inventoryPanel.setLayout(new GridLayout(5,1));
+		con.add(inventoryPanel);
 		
+		itemButton1 = new JButton();
+		itemButton1.setBackground(Color.black);
+		itemButton1.setForeground(Color.white);
+		itemButton1.setFont(normalFont);
+		itemButton1.setFocusPainted(false);
+		
+		itemButton2 = new JButton();
+		itemButton2.setBackground(Color.black);
+		itemButton2.setForeground(Color.white);
+		itemButton2.setFont(normalFont);
+		itemButton2.setFocusPainted(false);
+		
+		itemButton3 = new JButton();
+		itemButton3.setBackground(Color.black);
+		itemButton3.setForeground(Color.white);
+		itemButton3.setFont(normalFont);
+		itemButton3.setFocusPainted(false);
+		
+		itemButton4 = new JButton();
+		itemButton4.setBackground(Color.black);
+		itemButton4.setForeground(Color.white);
+		itemButton4.setFont(normalFont);
+		itemButton4.setFocusPainted(false);
+		
+		itemButton5 = new JButton();
+		itemButton5.setBackground(Color.black);
+		itemButton5.setForeground(Color.white);
+		itemButton5.setFont(normalFont);
+		itemButton5.setFocusPainted(false);
+		
+		inventoryPanel.add(itemButton1);
+		inventoryPanel.add(itemButton2);
+		inventoryPanel.add(itemButton3);
+		inventoryPanel.add(itemButton4);
+		inventoryPanel.add(itemButton5);
 		
 
 		playerinfoPanel = new JPanel();
