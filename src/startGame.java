@@ -377,7 +377,7 @@ public class startGame {
 		position = "monsterAttack";
 		int monsterDamage = 0;
 		monsterDamage = new java.util.Random().nextInt(3);
-		mainTextArea.setText("The monster attacked you and gave " + monsterDamage + " damage!");
+		mainTextArea.setText("The monster attacked you and gave\n" + monsterDamage + " damage!");
 		playerHP = playerHP - monsterDamage;
 		playerhplabelNumber.setText(""+playerHP);
 		optionButtons.get(0).setText(">");
