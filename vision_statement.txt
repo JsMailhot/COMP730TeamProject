@@ -1,0 +1,58 @@
+For the text adventure group we have come up with a design for a text aventure game. Our game is set in a medevil fantasy setting, where a player character has to slay a dragon threatening the land. Our player character will have starting gear, be able to choose where they want to go, they will be able to interact with items, fight eneimes, level up skills, gain gold and shop for new equipment, interact with NPCS, a inventory system that holds equipment, gain new quests besides the main quest, find loot and gear in the world, and much more! Our game coding design will feature a system that will display images to the player representing where they are, will inform the player of there surrondings, will give the player choices of where to go, will display the player characters health, equipment and quests in the world, will have a dedicated battle interface where a battle system with options such as attack, block and run will take place, will feature a potion system to heal the player, will handle enemy loot generation and chests in the world, will have a event generator that will make each playthrough different each time, a main menu and difficulty slider for the player to start the game on the difficulty of there choosing, and a special new game plus for when the player finishes the game. Our games story will feature a young elf who is tasked with slaying a dragon named King KONG that has reigned hellfire over everwinter a region stuck in perpetual winter due to king KONG. Take your brave hero through waves of enemies such as undead inhabitents of everwinter, cult members of king KONG, rogue enemy factions of goblins or wolves, yetis, wraiths, wryvern. Make friends and foes alike through NPCS and in game events.  
+
+
+
+- Start in a room
+: In a castle
+- Text on screen describing room/where you can go
+: Image on screen describing place
+- Options for the user to pick where they want to go
+: Directions/ Places in the world to move to
+- Player is able to interact with items/objects in the world
+- Fantasy theme (Midevil dragons yay)
+- Quest 
+: Overall Quest: Kill dragon
+- Player UI displays health/weapon/armour
+: Quest list/ Quest tracker
+- Battle interface / its own text screen
+: Attack, Block, Run sometimes?
+: Potion heal player limited amount
+- Starting gear, shirt -1 dmg resist, pants, shoes
+- Inventory/ --> Replace system
+- NPC
+: NPCs can be used mainly for text boxes but we can also use them as quest givers and recivers
+
+-Shopkeeper named moneybags
+-Gold / quests for money
+-Sell
+
+- Traveling shopkeeps
+: less stuff than moneybags
+
+- Chests
+- Enemies drop potion after battle
+
+- Die/ Respawn system
+: nearest big location that is safe
+
+-Miss
+-Crit
+-EXP
+
+-Event generator
+: Screen is in the game that chooses a random other scene to play when the player gets to it
+
+-Main Menu
+: play and exit button
+
+-Skills Interface
+: Thivery, Speech, Sneak, Swordsmanship, Archery, Magic, Blocking
+
+-Difficulty slider
+: easy, normal, hard
+
+-NG+
+:EVERY ENEMY IS BUFFED
+
+-Side boss
+: Evil snowman
