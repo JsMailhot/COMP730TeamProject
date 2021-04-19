@@ -1,7 +1,6 @@
-public class npc implements actor {
+public class npc extends actor {
 	
 	String greeting = "HEY YALL";
-	inventory npcInventory = new inventory();
 	playerOptions npcOptions = new playerOptions();
 	
 
