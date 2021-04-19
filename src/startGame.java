@@ -321,7 +321,6 @@ public class startGame {
 	public void west() {
 		image = new ImageIcon(".//img//frosttroll.jpg");
 		imageLabel.setIcon(image);
-		
 		position = "west";
 		mainTextArea.setText("You encounter a Frost Troll!\n");
 		optionButtons.get(0).setText("Fight");
@@ -339,7 +338,6 @@ public class startGame {
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
-		
 	}
 	public void attack() {
 		position = "attack";
@@ -411,7 +409,6 @@ public class startGame {
 			optionButtons.get(3).setVisible(false);
 			optionButtons.get(4).setVisible(false);
 	}
-		
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
 			enterName();
