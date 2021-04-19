@@ -352,7 +352,7 @@ public class startGame {
 		{
 		playerDamage = new java.util.Random().nextInt(10);
 		}
-		mainTextArea.setText("You attacked the monster and gave " + playerDamage + " damage!");
+		mainTextArea.setText("You attacked the monster and gave\n" + playerDamage + " damage!");
 		frostTrollHP = frostTrollHP - playerDamage;
 		optionButtons.get(0).setText(">");
 		optionButtons.get(1).setText("");
