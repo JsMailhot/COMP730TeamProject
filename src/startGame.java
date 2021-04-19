@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -36,6 +38,7 @@ public class startGame {
 	player player = new player();
 	JFrame window;
 	ArrayList<JButton> optionButtons = new ArrayList<JButton>();
+	JProgressBar healthBar;
 
 	InputHandler iHandler = new InputHandler();
 	Music mu = new Music();
@@ -193,8 +196,16 @@ public class startGame {
 
 		healthBarPanel = new JPanel();
 		healthBarPanel.setBounds(100, 15, 200, 30);
-		healthBarPanel.setBackground(Color.blue);
+		healthBarPanel.setBackground(Color.black);
 		con.add(healthBarPanel);
+		healthBar = new JProgressBar(0, 15);
+		healthBar.setPreferredSize(new Dimension(200, 30));
+		healthBar.setBackground(Color.red);
+		healthBar.setForeground(Color.green);
+		healthBarPanel.add(healthBar);
+		
+		
+		
 
 		playerinfoPanel = new JPanel();
 		playerinfoPanel.setBounds(540, 35, 270, 50);
@@ -248,7 +259,8 @@ public class startGame {
 		weaponlabelName.setText(weapon);
 		playerhplabelNumber.setText("" + playerHP);
 
-
+		healthBar.setValue(playerHP);
+		
 		castleGate();
 
 	}
@@ -277,6 +289,7 @@ public class startGame {
 		position = "attackGuard";
 		mainTextArea.setText("Guard: Your being dumb thinking you can win.\nGuard hits you hard. \n(Take 2 DMG)");
 		playerHP = playerHP - 2;
+		healthBar.setValue(playerHP);
 		playerhplabelNumber.setText(""+playerHP);
 		if(playerHP < 0)
 		{
@@ -310,6 +323,7 @@ public class startGame {
 		}
 		else if (playerHP != playerHPCap) {
 		playerHP = playerHP + 1;
+		healthBar.setValue(playerHP);
 		}
 		playerhplabelNumber.setText(""+playerHP);
 		optionButtons.get(0).setText("Go South");
@@ -380,6 +394,7 @@ public class startGame {
 		mainTextArea.setText("The monster attacked you and gave\n" + monsterDamage + " damage!");
 		playerHP = playerHP - monsterDamage;
 		playerhplabelNumber.setText(""+playerHP);
+		healthBar.setValue(playerHP);
 		optionButtons.get(0).setText(">");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
