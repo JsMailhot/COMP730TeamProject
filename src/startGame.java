@@ -25,7 +25,7 @@ public class startGame {
 	Container con;
 	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel;
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel;
-	JButton startButton, musicButton, enterButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8;
+	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8;
 	JTextArea mainTextArea;
 	int playerHP, frostTrollHP, playerHPCap, silverRing;
 	String weapon, position, text;
@@ -150,8 +150,9 @@ public class startGame {
 		mainTextArea.setEditable(false);
 
 		choiceButtonPanel = new JPanel();
-		choiceButtonPanel.setBounds(500, 500, 300, 250);
+		choiceButtonPanel.setBounds(50, 300, 600, 200);
 		choiceButtonPanel.setBackground(Color.black);
+		choiceButtonPanel.setLayout(new GridLayout(4,2));
 		con.add(choiceButtonPanel);
 
 		room testroom = new room();
@@ -193,6 +194,14 @@ public class startGame {
 		musicButton.addActionListener(choiceHandler);
 		musicButton.setActionCommand("musicb");
 		choiceButtonPanel.add(musicButton);
+		
+		inventoryButton = new JButton("[ Inventory ]");
+		inventoryButton.setBackground(Color.black);
+		inventoryButton.setForeground(Color.white);
+		inventoryButton.setFont(normalFont);
+		inventoryButton.setFocusPainted(false);
+		choiceButtonPanel.add(inventoryButton);
+		
 
 		healthBarPanel = new JPanel();
 		healthBarPanel.setBounds(100, 15, 200, 30);
