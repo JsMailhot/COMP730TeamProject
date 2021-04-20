@@ -21,7 +21,7 @@ public abstract class inventory {
 		this.gold = 0;
 	}
 	/** <pre>
-	 * Default inventory only requires an integer variable
+	 * Complex inventory only requires an integer variable
 	 * Example of generating a complex inventory inside extended class:
 	 * <code>	super(100);</code>	// call super with the variable
 	 * </pre> */
@@ -30,7 +30,7 @@ public abstract class inventory {
 		this.gold = gold;
 	}
 	/** <pre>
-	 * Default inventory only requires an ArrayList<item> variable
+	 * Complex inventory only requires an ArrayList<item> variable
 	 * Example of generating a complex inventory inside extended class:
 	 * <code>	super(new ArrayList<item>());</code>	// call super with the variable
 	 * </pre> */
@@ -39,7 +39,7 @@ public abstract class inventory {
 		this.gold = 0;
 	}
 	/** <pre>
-	 * Default inventory requires an integer and an ArrayList<item> variable
+	 * Complex inventory requires an integer and an ArrayList<item> variable
 	 * Example of generating a complex inventory inside extended class:
 	 * <code>	super(100, new ArrayList<item>());</code>	// call super with the variables
 	 * </pre> */
