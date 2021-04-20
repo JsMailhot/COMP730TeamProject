@@ -67,6 +67,8 @@ public abstract class item {
 	 * Returns:	"broken sword"
 	 * </pre> */
 	Boolean isBroken = false;
+	Boolean isUsable;
+	Boolean isQuest;
 	@Override
 	public String toString()
 	{

@@ -82,4 +82,5 @@ public class misc extends item {
 	 * Returns:	"projectile rock"
 	 * </pre> */
 	Boolean isThrowable;
-}
+
+}	

@@ -31,8 +31,8 @@ public class startGame {
 	String weapon, position, text;
 	String clickSound, gameMusic, musicOnOff;
 	ImageIcon image;
-	Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
-	Font normalFont = new Font("Times New Roman", Font.PLAIN, 24);
+	Font titleFont = new Font("Times New Roman", Font.BOLD, 85);
+	Font normalFont = new Font("Times New Roman", Font.ITALIC, 24);
 	JTextField jtf;
 	List difficulty;
 	player player = new player();
@@ -136,12 +136,12 @@ public class startGame {
 		startButtonPanel.setVisible(false);
 
 		mainTextPanel = new JPanel();
-		mainTextPanel.setBounds(50, 500, 430, 250);
+		mainTextPanel.setBounds(50, 500, 550, 250);
 		mainTextPanel.setBackground(Color.black);
 		con.add(mainTextPanel);
 
 		mainTextArea = new JTextArea();
-		mainTextArea.setBounds(50, 500, 430, 250);
+		mainTextArea.setBounds(50, 500, 550, 250);
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
 		mainTextArea.setFont(normalFont);
@@ -203,19 +203,37 @@ public class startGame {
 		choiceButtonPanel.add(inventoryButton);
 		
 		
-		
-		
 
 		healthBarPanel = new JPanel();
-		healthBarPanel.setBounds(100, 15, 200, 30);
+		healthBarPanel.setBounds(0, 15, 700, 30);
 		healthBarPanel.setBackground(Color.black);
 		con.add(healthBarPanel);
+		playernameLabel = new JLabel(text);
+		playernameLabel.setFont(normalFont);
+		playernameLabel.setForeground(Color.white);
+		healthBarPanel.add(playernameLabel);
+		playerhpLabel = new JLabel("  HP:");
+		playerhpLabel.setFont(normalFont);
+		playerhpLabel.setForeground(Color.white);
+		healthBarPanel.add(playerhpLabel);
+		playerhplabelNumber = new JLabel();
+		playerhplabelNumber.setFont(normalFont);
+		playerhplabelNumber.setForeground(Color.white);
+		healthBarPanel.add(playerhplabelNumber);
 		healthBar = new JProgressBar(0, 15);
 		healthBar.setPreferredSize(new Dimension(200, 30));
 		healthBar.setBackground(Color.red);
 		healthBar.setForeground(Color.green);
 		healthBarPanel.add(healthBar);
-		
+		weaponLabel =  new JLabel("  Weapon:");
+		weaponLabel.setFont(normalFont);
+		weaponLabel.setForeground(Color.white);
+		healthBarPanel.add(weaponLabel);
+		weaponlabelName = new JLabel();
+		weaponlabelName.setFont(normalFont);
+		weaponlabelName.setForeground(Color.white);
+		healthBarPanel.add(weaponlabelName);
+
 		inventoryPanel = new JPanel();
 		inventoryPanel.setBounds(600, 600, 200, 200);
 		inventoryPanel.setBackground(Color.black);
@@ -257,37 +275,9 @@ public class startGame {
 		inventoryPanel.add(itemButton3);
 		inventoryPanel.add(itemButton4);
 		inventoryPanel.add(itemButton5);
-		
-
-		playerinfoPanel = new JPanel();
-		playerinfoPanel.setBounds(540, 35, 270, 50);
-		playerinfoPanel.setBackground(Color.black);
-		playerinfoPanel.setLayout(new GridLayout(2, 2));
-		con.add(playerinfoPanel);
-
-		playernameLabel = new JLabel(text);
-		playernameLabel.setFont(normalFont);
-		playernameLabel.setForeground(Color.white);
-		playerinfoPanel.add(playernameLabel);
-		playerhpLabel = new JLabel("HP:");
-		playerhpLabel.setFont(normalFont);
-		playerhpLabel.setForeground(Color.white);
-		playerinfoPanel.add(playerhpLabel);
-		playerhplabelNumber = new JLabel();
-		playerhplabelNumber.setFont(normalFont);
-		playerhplabelNumber.setForeground(Color.white);
-		playerinfoPanel.add(playerhplabelNumber);
-		weaponLabel =  new JLabel("Weapon:");
-		weaponLabel.setFont(normalFont);
-		weaponLabel.setForeground(Color.white);
-		playerinfoPanel.add(weaponLabel);
-		weaponlabelName = new JLabel();
-		weaponlabelName.setFont(normalFont);
-		weaponlabelName.setForeground(Color.white);
-		playerinfoPanel.add(weaponlabelName);
-
+	
 		imagePanel = new JPanel();
-		imagePanel.setBounds(50, 50, 400, 250);
+		imagePanel.setBounds(50, 50, 600, 250);
 		imagePanel.setBackground(Color.black);
 
 		imageLabel = new JLabel();
