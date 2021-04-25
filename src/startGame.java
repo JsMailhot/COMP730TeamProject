@@ -20,18 +20,19 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+
 public class startGame {
 	Boolean enterGame;
 	Container con;
 	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel, inventoryPanel;
-	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel;
+	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
 	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
 	JTextArea mainTextArea;
-	int playerHP, frostTrollHP, playerHPCap, silverRing;
+	int playerHP, frostTrollHP, playerHPCap, silverRing, gold;
 	String weapon, position, text;
 	String clickSound, gameMusic, musicOnOff;
 	ImageIcon image;
-	Font titleFont = new Font("Times New Roman", Font.BOLD, 85);
+	Font titleFont = new Font("Times New Roman", Font.BOLD, 82);
 	Font normalFont = new Font("Times New Roman", Font.ITALIC, 24);
 	JTextField jtf;
 	List difficulty;
@@ -45,6 +46,10 @@ public class startGame {
 	SoundEffect se = new SoundEffect();
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
+	
+	int i, soundCue;
+	
+	
 	public static void main(String[] args) {
 		new startGame();
 
@@ -205,7 +210,7 @@ public class startGame {
 		
 
 		healthBarPanel = new JPanel();
-		healthBarPanel.setBounds(0, 15, 700, 30);
+		healthBarPanel.setBounds(0, 15, 800, 30);
 		healthBarPanel.setBackground(Color.black);
 		con.add(healthBarPanel);
 		playernameLabel = new JLabel(text);
@@ -233,6 +238,15 @@ public class startGame {
 		weaponlabelName.setFont(normalFont);
 		weaponlabelName.setForeground(Color.white);
 		healthBarPanel.add(weaponlabelName);
+		
+		playergoldLabel = new JLabel("  Gold:");
+		playergoldLabel.setFont(normalFont);
+		playergoldLabel.setForeground(Color.white);
+		healthBarPanel.add(playergoldLabel);
+		playergoldlabelNumber = new JLabel();
+		playergoldlabelNumber.setFont(normalFont);
+		playergoldlabelNumber.setForeground(Color.white);
+		healthBarPanel.add(playergoldlabelNumber);
 
 		inventoryPanel = new JPanel();
 		inventoryPanel.setBounds(600, 600, 200, 200);
@@ -298,14 +312,17 @@ public class startGame {
 		playerHPCap = 25;
 		frostTrollHP = 20;
 		weapon = "Stick";
+		gold = 10;
 		weaponlabelName.setText(weapon);
 		playerhplabelNumber.setText("" + playerHP);
+		playergoldlabelNumber.setText("" + gold);
 
 		healthBar.setValue(playerHP);
 		
 		castleGate();
 
 	}
+	
 
 	public void castleGate() {
 		image = new ImageIcon(".//img//towngate.jpg");
@@ -329,7 +346,7 @@ public class startGame {
 	}
 	public void attackGuard() {
 		position = "attackGuard";
-		mainTextArea.setText("Guard: Your being dumb thinking you can win.\nGuard hits you hard. \n(Take 2 DMG)");
+		mainTextArea.setText("Guard: Your being dumb thinking\n you can win.\nGuard hits you hard. \n(Take 2 DMG)");
 		playerHP = playerHP - 2;
 		healthBar.setValue(playerHP);
 		playerhplabelNumber.setText(""+playerHP);
@@ -349,7 +366,7 @@ public class startGame {
 		imageLabel.setIcon(image);
 
 		position = "crossRoad";
-		mainTextArea.setText("Walking away from the castle you find yourself at branching paths.\nGoing south leads back to the castle.");
+		mainTextArea.setText("Walking away from the castle you find\n yourself at branching paths.\nGoing south leads back to the castle.");
 		optionButtons.get(0).setText("Go North");
 		optionButtons.get(1).setText("Go South");
 		optionButtons.get(2).setText("Go East");
@@ -358,7 +375,7 @@ public class startGame {
 	}
 	public void north() {
 		position = "north";
-		mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(HP healed by 1)");
+		mainTextArea.setText("You find yourself at an overlook.\nYou take a moment to enjoy the view.\n(HP healed by 1)");
 		if (playerHP == playerHPCap) {
 			playerHP = playerHP + 0;
 			mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(HP healed by 0)");
@@ -376,9 +393,16 @@ public class startGame {
 	}
 	public void east() {
 		position = "east";
-		mainTextArea.setText("You find yourself at a large oak tree.\n You find a Long Sword under the tree!\n(You obtain a Long Sword)\n");
-		weapon = "Long Sword";
-		weaponlabelName.setText(weapon);
+		if (weapon == "Long Sword")
+		{
+			mainTextArea.setText("You find yourself at a large oak tree.");
+		}
+		else {
+			mainTextArea.setText("You find yourself at a large oak tree.\n You find a Long Sword under the tree!\n(You obtain a Long Sword)\n");
+			weapon = "Long Sword";
+			weaponlabelName.setText(weapon);
+		}
+
 		optionButtons.get(0).setText("Go South");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -446,8 +470,20 @@ public class startGame {
 	}
 	public void win() {
 		position ="win";
-		mainTextArea.setText("You defeated the monster!\n The troll dropped a ring\n\n(You obtained a Silver Ring)");
-		silverRing =1;
+		if (silverRing == 1) 
+		{
+			int droppedGold = 0;
+			droppedGold = new java.util.Random().nextInt(5);
+			mainTextArea.setText("You defeated the monster!\n The troll dropped " + droppedGold + " gold!\n\n");
+			gold = gold + droppedGold;
+			playergoldlabelNumber.setText(""+gold);
+			
+		}
+		else 
+		{
+			mainTextArea.setText("You defeated the monster!\n The troll dropped a ring\n\n(You obtained a Silver Ring)");
+			silverRing =1;
+		}
 		frostTrollHP = 20;
 		optionButtons.get(0).setText("Go east");
 		optionButtons.get(1).setText("");
@@ -480,6 +516,8 @@ public class startGame {
 			optionButtons.get(2).setVisible(false);
 			optionButtons.get(3).setVisible(false);
 			optionButtons.get(4).setVisible(false);
+			inventoryButton.setVisible(false);
+			musicButton.setVisible(false);
 	}
 
 	public class TitleScreenHandler implements ActionListener {
