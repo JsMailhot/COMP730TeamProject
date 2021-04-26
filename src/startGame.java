@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
+import static java.lang.System.out;
 
 public class startGame {
 	Boolean enterGame;
@@ -29,7 +29,7 @@ public class startGame {
 	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
 	JTextArea mainTextArea;
 	int playerHP, frostTrollHP, playerHPCap, silverRing, gold;
-	String weapon, position, text;
+	String weapon, position, text, inventoryStatus;
 	String clickSound, gameMusic, musicOnOff;
 	ImageIcon image;
 	Font titleFont = new Font("Times New Roman", Font.BOLD, 82);
@@ -46,6 +46,9 @@ public class startGame {
 	SoundEffect se = new SoundEffect();
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
+	InventoryHandler invHandler = new InventoryHandler();
+	armor complex_armor = new armor("pants", "required to shop", new stats(), "enchanted".toCharArray());	// create a complex armor
+
 	
 	int i, soundCue;
 	
@@ -205,6 +208,8 @@ public class startGame {
 		inventoryButton.setForeground(Color.black);
 		inventoryButton.setFont(normalFont);
 		inventoryButton.setFocusPainted(false);
+		inventoryButton.addActionListener(invHandler);
+		inventoryButton.setActionCommand("inventoryButton");
 		choiceButtonPanel.add(inventoryButton);
 		
 		
@@ -259,36 +264,48 @@ public class startGame {
 		itemButton1.setForeground(Color.white);
 		itemButton1.setFont(normalFont);
 		itemButton1.setFocusPainted(false);
+		itemButton1.addActionListener(invHandler);
+		itemButton1.setActionCommand("item1");
 		
 		itemButton2 = new JButton();
 		itemButton2.setBackground(Color.black);
 		itemButton2.setForeground(Color.white);
 		itemButton2.setFont(normalFont);
 		itemButton2.setFocusPainted(false);
+		itemButton2.addActionListener(invHandler);
+		itemButton2.setActionCommand("item2");
 		
-		itemButton3 = new JButton();
+		
 		itemButton3.setBackground(Color.black);
 		itemButton3.setForeground(Color.white);
 		itemButton3.setFont(normalFont);
 		itemButton3.setFocusPainted(false);
+		itemButton3.addActionListener(invHandler);
+		itemButton3.setActionCommand("item3");
 		
 		itemButton4 = new JButton();
 		itemButton4.setBackground(Color.black);
 		itemButton4.setForeground(Color.white);
 		itemButton4.setFont(normalFont);
 		itemButton4.setFocusPainted(false);
+		itemButton4.addActionListener(invHandler);
+		itemButton4.setActionCommand("item4");
 		
 		itemButton5 = new JButton();
 		itemButton5.setBackground(Color.black);
 		itemButton5.setForeground(Color.white);
 		itemButton5.setFont(normalFont);
 		itemButton5.setFocusPainted(false);
+		itemButton5.addActionListener(invHandler);
+		itemButton5.setActionCommand("item5");
 		
 		inventoryPanel.add(itemButton1);
 		inventoryPanel.add(itemButton2);
 		inventoryPanel.add(itemButton3);
 		inventoryPanel.add(itemButton4);
 		inventoryPanel.add(itemButton5);
+		
+		inventoryPanel.setVisible(false);
 	
 		imagePanel = new JPanel();
 		imagePanel.setBounds(50, 50, 600, 250);
@@ -316,6 +333,7 @@ public class startGame {
 		weaponlabelName.setText(weapon);
 		playerhplabelNumber.setText("" + playerHP);
 		playergoldlabelNumber.setText("" + gold);
+		inventoryStatus = "close";
 
 		healthBar.setValue(playerHP);
 		
@@ -332,7 +350,7 @@ public class startGame {
 		optionButtons.get(0).setText("Move to the castle");
 		optionButtons.get(1).setText("Attack guard");
 		optionButtons.get(2).setText("Talk to guard");
-		optionButtons.get(3).setText("Pick up shiny rock");
+		optionButtons.get(3).setText("Pick up pants");
 		optionButtons.get(4).setText("Walk away from gate");
 	}
 	public void talkGuard() {
@@ -534,6 +552,38 @@ public class startGame {
 				text = "NoName";
 			}
 			playerInterface();
+
+		}
+
+	}
+	public class InventoryHandler implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			
+			String yourChoice = event.getActionCommand();
+			
+			switch(yourChoice) {
+			case "inventoryButton":
+				if(inventoryStatus.equals("close")) {
+					optionButtons.get(0).setVisible(false);
+					optionButtons.get(1).setVisible(false);
+					optionButtons.get(2).setVisible(false);
+					optionButtons.get(3).setVisible(false);
+					optionButtons.get(4).setVisible(false);
+					musicButton.setVisible(false);
+					inventoryPanel.setVisible(true);
+					inventoryStatus = "open";
+				}
+				else if (inventoryStatus.equals("open")) {
+					optionButtons.get(0).setVisible(true);
+					optionButtons.get(1).setVisible(true);
+					optionButtons.get(2).setVisible(true);
+					optionButtons.get(3).setVisible(true);
+					optionButtons.get(4).setVisible(true);
+					musicButton.setVisible(true);
+					inventoryPanel.setVisible(false);
+					inventoryStatus = "close";
+				}
+			}
 
 		}
 
