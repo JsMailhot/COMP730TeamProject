@@ -8,58 +8,291 @@
  * </pre> */
 public class misc extends item {
 	/** <pre>
-	 * Default misc evaluates to stick
+	 * Default misc evaluates to nothing
 	 * Example of creating a default misc to print its itemName:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>misc default_misc = new misc();</code>	// create a default misc
 	 * 	<code>out.println(default_misc.toString());</code>	// print default_misc
-	 * Returns:	"stick"
+	 * Returns:	"nothing"
 	 * </pre> */
 	public misc()
 	{
 		super();
-		itemName = "stick";
 	}
 	/** <pre>
-	 * Complex misc evaluates to rock
-	 * Example of creating a default misc to print its itemName:
+	 * Complex misc evaluates to key
+	 * Example of creating a complex misc to print its itemName:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
-	 * 	<code>misc complex_misc = new misc("rock", "".toCharArray());</code>	// create a complex misc
+	 * 	<code>misc complex_misc = new misc("key");</code>	// create a complex misc
 	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
-	 * Returns:	"rock"
+	 * Returns:	"key"
+	 * </pre> */
+	public misc(String itemName)
+	{
+		super(itemName);
+	}
+	/** <pre>
+	 * Complex misc evaluates to key
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("key", "opens a door");</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"key"
+	 * </pre> */
+	public misc(String itemName, String itemDesc)
+	{
+		super(itemName, itemDesc);
+	}
+	/** <pre>
+	 * Complex misc evaluates to key
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("key", "opens a door", new stats());</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"key"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, stats qualities)
+	{
+		super(itemName, itemDesc, qualities);
+	}
+	/** <pre>
+	 * Complex misc evaluates to key
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("key", "opens a door", "misc");</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"key"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, String category)
+	{
+		super(itemName, itemDesc, category);
+	}
+	/** <pre>
+	 * Complex misc evaluates to key
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("key", "opens a door", new stats(), "misc");</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"key"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, stats qualities, String category)
+	{
+		super(itemName, itemDesc, qualities, category);
+	}
+	/** <pre>
+	 * Complex misc evaluates to key
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("key", "opens a door", new stats(), "misc", 0);</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"key"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, stats qualities, String category, int price)
+	{
+		super(itemName, itemDesc, qualities, category, price);
+	}
+	/** <pre>
+	 * Complex misc evaluates to edible rock
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("rock", "consumable".toCharArray());</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"edible rock"
 	 * </pre> */
 	public misc(String itemName, char... is)
 	{
-		super();
-		if(itemName == null)
+		super(itemName, is);
+		if(is == null)
 		{
 			//	what do we do when we are given nothing?
-			itemName = "stick";
-		}
-		else if(is.toString().toLowerCase() == "equip")
-		{
-			isEquip = true;
-			this.itemName = "equipt "+itemName;
-		}
-		else if(is.toString().toLowerCase() == "consumable")
-		{
-			isConsumable = true;
-			this.itemName = "edible "+itemName;
-		}
-		else if(is.toString().toLowerCase() == "throwable")
-		{
-			isThrowable = true;
-			this.itemName = "projectile "+itemName;
-		}
-		else if(is.toString().toLowerCase() == "broken")
-		{
-			isBroken = true;
-			this.itemName = "broken "+itemName;
 		}
 		else
 		{
-			//	what do we do when we are given garbage?
-			this.itemName = itemName;
+			if(is.toString().toLowerCase().contains("consumable"))
+			{
+				isConsumable = true;
+				this.itemName = "edible "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("throwable"))
+			{
+				isThrowable = true;
+				this.itemName = "projectile "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("broken"))
+			{
+				isBroken = true;
+				this.itemName = "broken "+itemName;
+			}
+		}
+	}
+	/** <pre>
+	 * Complex misc evaluates to edible rock
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("rock", "do not eat", "consumable".toCharArray());</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"edible rock"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, char... is)
+	{
+		super(itemName, itemDesc, is);
+		if(is == null)
+		{
+			//	what do we do when we are given nothing?
+		}
+		else
+		{
+			if(is.toString().toLowerCase().contains("consumable"))
+			{
+				isConsumable = true;
+				this.itemName = "edible "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("throwable"))
+			{
+				isThrowable = true;
+				this.itemName = "projectile "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("broken"))
+			{
+				isBroken = true;
+				this.itemName = "broken "+itemName;
+			}
+		}
+	}
+	/** <pre>
+	 * Complex misc evaluates to edible rock
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("rock", "do not eat", new stats(), "consumable".toCharArray());</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"edible rock"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, stats qualities, char... is)
+	{
+		super(itemName, itemDesc, qualities, is);
+		if(is == null)
+		{
+			//	what do we do when we are given nothing?
+		}
+		else
+		{
+			if(is.toString().toLowerCase().contains("consumable"))
+			{
+				isConsumable = true;
+				this.itemName = "edible "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("throwable"))
+			{
+				isThrowable = true;
+				this.itemName = "projectile "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("broken"))
+			{
+				isBroken = true;
+				this.itemName = "broken "+itemName;
+			}
+		}
+	}
+	/** <pre>
+	 * Complex misc evaluates to edible rock
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("rock", "do not eat", "misc", "consumable".toCharArray());</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"edible rock"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, String category, char... is)
+	{
+		super(itemName, itemDesc, category, is);
+		if(is == null)
+		{
+			//	what do we do when we are given nothing?
+		}
+		else
+		{
+			if(is.toString().toLowerCase().contains("consumable"))
+			{
+				isConsumable = true;
+				this.itemName = "edible "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("throwable"))
+			{
+				isThrowable = true;
+				this.itemName = "projectile "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("broken"))
+			{
+				isBroken = true;
+				this.itemName = "broken "+itemName;
+			}
+		}
+	}
+	/** <pre>
+	 * Complex misc evaluates to edible rock
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("rock", "do not eat", new stats(), "misc", "consumable".toCharArray());</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"edible rock"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, stats qualities, String category, char... is)
+	{
+		super(itemName, itemDesc, qualities, category, is);
+		if(is == null)
+		{
+			//	what do we do when we are given nothing?
+		}
+		else
+		{
+			if(is.toString().toLowerCase().contains("consumable"))
+			{
+				isConsumable = true;
+				this.itemName = "edible "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("throwable"))
+			{
+				isThrowable = true;
+				this.itemName = "projectile "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("broken"))
+			{
+				isBroken = true;
+				this.itemName = "broken "+itemName;
+			}
+		}
+	}
+	/** <pre>
+	 * Complex misc evaluates to edible rock
+	 * Example of creating a complex misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc complex_misc = new misc("rock", "do not eat", new stats(), "misc", 0, "consumable".toCharArray());</code>	// create a complex misc
+	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * Returns:	"edible rock"
+	 * </pre> */
+	public misc(String itemName, String itemDesc, stats qualities, String category, int price, char... is)
+	{
+		super(itemName, itemDesc, qualities, category, price, is);
+		if(is == null)
+		{
+			//	what do we do when we are given nothing?
+		}
+		else
+		{
+			if(is.toString().toLowerCase().contains("consumable"))
+			{
+				isConsumable = true;
+				this.itemName = "edible "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("throwable"))
+			{
+				isThrowable = true;
+				this.itemName = "projectile "+itemName;
+			}
+			if(is.toString().toLowerCase().contains("broken"))
+			{
+				isBroken = true;
+				this.itemName = "broken "+itemName;
+			}
 		}
 	}
 	/** <pre>
@@ -82,4 +315,5 @@ public class misc extends item {
 	 * Returns:	"projectile rock"
 	 * </pre> */
 	Boolean isThrowable;
-}
+
+}	
