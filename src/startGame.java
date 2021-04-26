@@ -425,6 +425,7 @@ public class startGame {
 		optionButtons.get(3).setText("Go West");
 		optionButtons.get(4).setText("Look at sky");
 	}
+	
 	public void north() {
 		position = "north";
 		mainTextArea.setText("You find yourself at an overlook.\nYou take a moment to enjoy the view.\n(HP healed by 1)");
@@ -462,6 +463,17 @@ public class startGame {
 		optionButtons.get(4).setText("");
 
 	}
+	public void sky() {
+		position = "sky";
+		mainTextArea.setText("As you look up at the sky you can see smoke in the air to the west up in the trees...");
+		optionButtons.get(0).setText("Back");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	
 	public void west() {
 		image = new ImageIcon(".//img//frosttroll.jpg");
 		imageLabel.setIcon(image);
@@ -525,7 +537,7 @@ public class startGame {
 		if (silverRing == 1) 
 		{
 			int droppedGold = 0;
-			droppedGold = new java.util.Random().nextInt(5);
+			droppedGold = new java.util.Random().nextInt(5) + 1;
 			mainTextArea.setText("You defeated the monster!\n The troll dropped " + droppedGold + " gold!\n\n");
 			gold = gold + droppedGold;
 			playergoldlabelNumber.setText(""+gold);
@@ -732,7 +744,7 @@ public class startGame {
 				case "c2": castleGate(); break;
 				case "c3": east(); break;
 				case "c4": west(); break;
-				case "c5": break;
+				case "c5": sky(); break;
 				}
 				break;
 			case "north":
@@ -749,6 +761,11 @@ public class startGame {
 				switch(yourChoice) {
 				case "c1": fight(); break;
 				case "c2": crossRoad(); break;
+				}
+				break;
+			case "sky":
+				switch(yourChoice) {
+				case "c1": crossRoad(); break;
 				}
 				break;
 			case "fight":
