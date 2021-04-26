@@ -1,3 +1,4 @@
+package game;
 import java.util.ArrayList;
 /** <pre>
  * A simple implementation for storing item objects and holding a gold value inside an actor.

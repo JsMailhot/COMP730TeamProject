@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * The option type for prompting the player to make a decision in a conversation with another actor such as a shop keep.
  * Example of creating a default talkOption to print its optionText:

@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * An armor item adds to the stats of the wearer.
  * Example of creating a default armor to print its itemName:

@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * Generic option abstract class which holds that basic requirements for an option
  * Example of extending using this abstract class:

@@ -1,3 +1,4 @@
+package game;
 public class quest {
 	String questName = "Default Quest Name";
 	String questDesc = "Default Quest Desc";

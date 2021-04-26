@@ -1,3 +1,4 @@
+package game;
 
 public class Item_Berry extends SuperItem {
 	

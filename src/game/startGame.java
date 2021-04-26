@@ -1,3 +1,4 @@
+package game;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -23,23 +24,23 @@ import static java.lang.System.out;
 
 public class startGame {
 	Boolean enterGame;
-	Container con;
-	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel, inventoryPanel;
-	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
-	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
 	JTextArea mainTextArea;
 	int playerHP, frostTrollHP, playerHPCap, silverRing, gold;
 	String weapon, position, text, inventoryStatus;
 	String clickSound, gameMusic, musicOnOff;
 	ImageIcon image;
-	Font titleFont = new Font("Times New Roman", Font.BOLD, 82);
-	Font normalFont = new Font("Times New Roman", Font.ITALIC, 24);
 	JTextField jtf;
 	List difficulty;
 	player player = new player();
-	JFrame window;
-	ArrayList<JButton> optionButtons = new ArrayList<JButton>();
+	public ArrayList<JButton> optionButtons = new ArrayList<JButton>();
 	JProgressBar healthBar;
+	JFrame window;
+	Container con;
+	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel, inventoryPanel;
+	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
+	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
+	Font titleFont = new Font("Times New Roman", Font.BOLD, 82);
+	Font normalFont = new Font("Times New Roman", Font.ITALIC, 24);
 
 	InputHandler iHandler = new InputHandler();
 	Music mu = new Music();
@@ -53,6 +54,7 @@ public class startGame {
 	Item_Potion potion = new Item_Potion();
 	Item_Berry berry = new Item_Berry();
 	Item_Empty empty = new Item_Empty();
+	UI ui = new UI();
 
 	
 	int i, soundCue;
@@ -63,77 +65,11 @@ public class startGame {
 
 	}
 	public startGame() {
-		window = new JFrame();
-		window.setSize(820, 850);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.getContentPane().setBackground(Color.black);
-		window.setLayout(null);
-		con = window.getContentPane();
-
-		titleScreenPanel = new JPanel();
-		titleScreenPanel.setBounds(100, 100, 600, 150);
-		titleScreenPanel.setBackground(Color.black);
-		titleScreenLabel = new JLabel("EVERWINTER");
-		titleScreenLabel.setForeground(Color.white);
-		titleScreenLabel.setFont(titleFont);
-
-		startButtonPanel = new JPanel();
-		startButtonPanel.setBounds(300, 400, 200, 100);
-		startButtonPanel.setBackground(Color.black);
-
-		startButton = new JButton("START");
-		startButton.setFocusPainted(false);
-		startButton.setBackground(Color.black);
-		startButton.setForeground(Color.white);
-		startButton.setFont(normalFont);
-		startButton.addActionListener(tsHandler);
-		startButton.setFocusPainted(false);
-
-
-
-
-		clickSound = ".//sound//button.wav";
-		gameMusic = ".//sound//gamemusic.wav";
-
-		musicOnOff = "off";
-
-
-
-
-		titleScreenPanel.add(titleScreenLabel);
-		startButtonPanel.add(startButton);
-
-		con.add(titleScreenPanel);
-		con.add(startButtonPanel);
-		window.setVisible(true);
+		ui.createmainMenuUI(tsHandler);
 
 	}
 	public void enterName() {
-		titleScreenPanel.setVisible(false);
-		startButtonPanel.setVisible(false);
-
-		namePanel = new JPanel();
-		namePanel.setBounds(150, 250, 500, 100);
-		namePanel.setBackground(Color.black);
-		nameLabel = new JLabel("Please enter your name:");
-		nameLabel.setForeground(Color.white);
-		nameLabel.setFont(normalFont);
-		namePanel.add(nameLabel);
-		con.add(namePanel);
-
-		inputPanel = new JPanel();
-		inputPanel.setBounds(150, 450, 500, 50);
-		inputPanel.setBackground(Color.black);
-		inputPanel.setLayout(new GridLayout(1,2));
-
-		jtf = new JTextField();
-		inputPanel.add(jtf);
-
-		enterButton = new JButton("ENTER");
-		enterButton.setForeground(Color.black);
-		enterButton.addActionListener(iHandler);
-		inputPanel.add(enterButton);
-		con.add(inputPanel);
+		ui.createnameUI(iHandler);
 
 	}
 	public String enterDesc() {
@@ -327,7 +263,7 @@ public class startGame {
 
 
 		playerSetup();
-
+		
 	}
 	public void playerSetup() {
 		playerHP = 15;
@@ -347,8 +283,8 @@ public class startGame {
 		playerItem[4] = empty;
 
 		healthBar.setValue(playerHP);
-		
 		castleGate();
+		
 
 	}
 	
@@ -607,11 +543,11 @@ public class startGame {
 	}
 	public class InputHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
-			text = jtf.getText();
+			text = ui.jtf.getText();
 			if (text.length() < 1) {
 				text = "NoName";
 			}
-			playerInterface();
+			ui.createplayerUI(choiceHandler, invHandler);
 
 		}
 

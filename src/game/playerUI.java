@@ -1,3 +1,4 @@
+package game;
 public interface playerUI {
 	String playerName = "Default";
 	String weaponName = "Hands";

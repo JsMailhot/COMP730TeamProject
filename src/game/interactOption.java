@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * The option type for prompting the player to make decisions to interact with something.
  * Example of creating a default interactOption to print its optionText:

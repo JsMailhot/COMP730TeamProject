@@ -1,3 +1,4 @@
+package game;
 public class npc extends actor {
 	
 	String greeting = "HEY YALL";

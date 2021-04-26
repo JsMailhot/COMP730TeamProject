@@ -1,3 +1,4 @@
+package game;
 public class stats {
 	int healthPool = 0;
 	int attack = 0;

@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * The option type for prompting the player to make decisions to attack.
  * Example of creating a default attackOption to print its optionText:

@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * Generic item abstract class which holds that basic requirements for an item
  * Example of extending using this abstract class:

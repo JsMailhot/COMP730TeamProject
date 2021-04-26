@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * A misc item can be pretty much anything.
  * Example of creating a default misc to print its itemName:

@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * The option type for prompting the player to make decisions on moving in the cardinal directions.
  * Example of creating a default moveOption to print its optionText:

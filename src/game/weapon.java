@@ -1,3 +1,4 @@
+package game;
 /** <pre>
  * A weapon item adds to the stats of the wielder.
  * Example of creating a default weapon to print its itemName:
