@@ -1,4 +1,9 @@
 import java.util.ArrayList;
+/** <pre>
+ * A player has many characteristics.
+ * Example of creating a default player:
+ * 	<code>player default_player = new player();</code>	// create a default player
+ * </pre> */
 public class player extends actor {
 	/** <pre>
 	 * Default player that takes no parameters

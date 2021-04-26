@@ -1,5 +1,9 @@
 import java.util.ArrayList;
-
+/** <pre>
+ * A enemy has many characteristics.
+ * Example of creating a default enemy:
+ * 	<code>enemy default_enemy = new enemy();</code>	// create a default enemy
+ * </pre> */
 public class enemy extends actor {
 	/** <pre>
 	 * Default enemy does not require any specified variables

@@ -1,5 +1,9 @@
 import java.util.ArrayList;
-
+/** <pre>
+ * A npc has many characteristics.
+ * Example of creating a default npc:
+ * 	<code>npc default_npc = new npc();</code>	// create a default npc
+ * </pre> */
 public class npc extends actor {
 	/** <pre>
 	 * Default npc does not require any specified variables
