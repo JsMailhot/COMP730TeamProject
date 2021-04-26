@@ -119,20 +119,4 @@ public class player extends actor {
 	 * 	<code>inventoryPlayer.questList = new ArrayList<quest>();</code>	// set the questList to a new ArrayList<quest> variable
 	 * </pre> */
 	ArrayList<quest> questList;
-	@Override
-	public int attack() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int block() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public String taunt() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

@@ -86,23 +86,4 @@ public class enemy extends actor {
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold);
 	}
-	@Override
-	public int attack() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int block() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String taunt() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-
 }

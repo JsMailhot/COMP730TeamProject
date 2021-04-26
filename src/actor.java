@@ -210,9 +210,26 @@ public abstract class actor extends inventory {
 	 * 	<code></code>
 	 * 	<code></code>
 	 * </pre> */
-	public int attack()
+	public int attack(actor target)
 	{
-		return Stats.attack;
+		int damage = (Stats.attack - target.block());
+		if(damage > 0)
+		{//	did damage
+			if(target.health > damage)
+			{//	didn't kill target
+				target.health = target.health - damage;
+			}
+			else
+			{
+				damage = target.health;
+				target.health = 0;
+			}
+			return damage;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 	/** <pre>
 	 * The function called when this actor blocks another actors attack

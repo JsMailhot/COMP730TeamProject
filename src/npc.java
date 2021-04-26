@@ -112,23 +112,6 @@ public class npc extends actor {
 	 * 	<code>greetingPlayer.greeting = "Hey there!";</code>	// set the greeting to a new string variable
 	 * </pre> */
 	String greeting;
-	@Override
-	public int attack() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int block() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String taunt() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	public int buy() {
 		// TODO Auto-generated method stub
 		return 0;
@@ -144,6 +127,4 @@ public class npc extends actor {
 	public void closeNPCDialog() {
 		
 	}
-	
-
 }
