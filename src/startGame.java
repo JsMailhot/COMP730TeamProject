@@ -608,7 +608,9 @@ public class startGame {
 		
 	}
 	public void TownEntrance() {
-		image = new ImageIcon(".//img//town.jpg");
+		image = new ImageIcon(".//img//town.jpeg");
+		imageLabel.setIcon(image);
+		position ="townEntrance";
 		mainTextArea.setText("You use the key you obtained from the guard to open the castle gate. As soon as you enter"
 				+ "\nyou see to the left a Shop Keep, to the right\n you see a crowd of villagers gathered around a stage...");
 		optionButtons.get(0).setText("Go Left");
