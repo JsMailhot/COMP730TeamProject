@@ -8,7 +8,7 @@ public class npc extends actor {
 	/** <pre>
 	 * Default npc does not require any specified variables
 	 * Example of creating a default npc:
-	 * <code>	npc example_npc = new npc(new ArrayList<item>());</code>	// create new npc object
+	 * <code>	npc example_npc = new npc();</code>	// create new npc object
 	 * </pre>*/
 	public npc()
 	{

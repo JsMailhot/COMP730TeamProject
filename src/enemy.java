@@ -8,7 +8,7 @@ public class enemy extends actor {
 	/** <pre>
 	 * Default enemy does not require any specified variables
 	 * Example of creating a default enemy:
-	 * <code>	enemy example_enemy = new enemy(new ArrayList<item>());</code>	// create new enemy object
+	 * <code>	enemy example_enemy = new enemy();</code>	// create new enemy object
 	 * </pre>*/
 	public enemy()
 	{

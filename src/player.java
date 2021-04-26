@@ -109,7 +109,7 @@ public class player extends actor {
 	 * Boolean determining if the player has died
 	 * Example of defining ifDie:
 	 * <code>	player inventoryPlayer = new player();</code>	// generate a player
-	 * 	<code>inventoryPlayer.ifDie = true</code>	// set the ifDie to a boolean value
+	 * 	<code>inventoryPlayer.ifDie = true;</code>	// set the ifDie to a boolean value
 	 * </pre> */
 	Boolean ifDie = false;
 	/** <pre>
