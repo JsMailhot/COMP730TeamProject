@@ -428,18 +428,20 @@ public class startGame {
 	
 	public void north() {
 		position = "north";
-		mainTextArea.setText("You find yourself at an overlook.\nYou take a moment to enjoy the view.\n(HP healed by 1)");
 		if (playerHP == playerHPCap) {
 			playerHP = playerHP + 0;
-			mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(HP healed by 0)");
+			mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(You have full health)\n "
+					+ "You see a hidden path to the right which \nheads into the forest..");
 		}
 		else if (playerHP != playerHPCap) {
 		playerHP = playerHP + 1;
 		healthBar.setValue(playerHP);
+		mainTextArea.setText("You find yourself at an overlook.\nYou take a moment to enjoy the view.\n(HP healed by 1)\n"
+		+ "You see a hidden path to the right which \nheads into the forest..");
 		}
 		playerhplabelNumber.setText(""+playerHP);
-		optionButtons.get(0).setText("Go South");
-		optionButtons.get(1).setText("");
+		optionButtons.get(0).setText("Go Back South");
+		optionButtons.get(1).setText("Go On The Path");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
@@ -465,7 +467,7 @@ public class startGame {
 	}
 	public void sky() {
 		position = "sky";
-		mainTextArea.setText("As you look up at the sky you can see smoke in the air to the west up in the trees...");
+		mainTextArea.setText("As you look up at the sky you can see smoke in the air to the North up in the trees...");
 		optionButtons.get(0).setText("Back");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -568,20 +570,51 @@ public class startGame {
 		optionButtons.get(2).setVisible(false);
 		optionButtons.get(3).setVisible(false);
 	}
-	public void ending() {
-		position ="ending";
-		 mainTextArea.setText("Guard: Oh you killed that frost troll!\n Thank you so much! You are a hero!\n Welcome to the town of EverWinter\n\n<THE END>");
-			optionButtons.get(0).setText(">");
-			optionButtons.get(1).setText("");
-			optionButtons.get(2).setText("");
-			optionButtons.get(3).setText("");
-			optionButtons.get(0).setVisible(false);
-			optionButtons.get(1).setVisible(false);
-			optionButtons.get(2).setVisible(false);
-			optionButtons.get(3).setVisible(false);
-			optionButtons.get(4).setVisible(false);
-			inventoryButton.setVisible(false);
-			musicButton.setVisible(false);
+
+	/*
+	 * public void ending() { position ="ending"; mainTextArea.
+	 * setText("Guard: Oh you killed that frost troll!\n Thank you so much! You are a hero!\n Welcome to the town of EverWinter\n\n Take this key to enter the city gates."
+	 * ); optionButtons.get(0).setText(">");
+	 * optionButtons.get(1).setText(""); optionButtons.get(2).setText("");
+	 * optionButtons.get(3).setText(""); optionButtons.get(0).setVisible(false);
+	 * optionButtons.get(1).setVisible(false);
+	 * optionButtons.get(2).setVisible(false);
+	 * optionButtons.get(3).setVisible(false);
+	 * optionButtons.get(4).setVisible(false); inventoryButton.setVisible(false);
+	 * musicButton.setVisible(false); }
+	 */
+	
+	public void enterCity() {
+		position = "enterCity";
+		mainTextArea.setText("Guard: Oh you killed that frost troll!\n Thank you so much! You are a hero!\n Welcome to the town of EverWinter\n\n Take this key to enter the city gates.");
+		int key = 1; 
+		silverRing = 0; 
+		optionButtons.get(0).setText("Enter Town");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+		
+	}
+	public void path() {
+		position ="path";
+		mainTextArea.setText("You find yourself on a beaten down path.\n Looks like its heading into the dense forest.");
+		optionButtons.get(0).setText("Go South");
+		optionButtons.get(1).setText("Continue Straight");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void TownEntrance() {
+		mainTextArea.setText("You use the key you obtained from the guard to open the castle gate. As soon as you enter"
+				+ "\nyou see to the left a Shop Keep, to the right\n you see a crowd of villagers gathered around a stage...");
+		optionButtons.get(0).setText("Go Left");
+		optionButtons.get(1).setText("Go Right");
+		optionButtons.get(2).setText("Continue Straight");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
 	}
 	
 	public void itemUsed(int slotNumber) {
@@ -711,7 +744,7 @@ public class startGame {
 				case "c3":
 					if(silverRing ==1)
 					{
-						ending();
+						enterCity();
 					}
 					else {
 						talkGuard();
@@ -750,6 +783,7 @@ public class startGame {
 			case "north":
 				switch(yourChoice) {
 				case "c1": crossRoad(); break;
+				case "c2" : path(); break;
 				}
 				break;
 			case "east":
@@ -766,6 +800,11 @@ public class startGame {
 			case "sky":
 				switch(yourChoice) {
 				case "c1": crossRoad(); break;
+				}
+				break;
+			case "path":
+				switch(yourChoice) {
+				case "c1": north(); break;
 				}
 				break;
 			case "fight":
@@ -801,6 +840,11 @@ public class startGame {
 			case "win":
 				switch(yourChoice) {
 				case "c1": crossRoad(); break;
+				}
+				break;
+			case "enterCity":
+				switch(yourChoice) {
+				case "c1": TownEntrance(); break;
 				}
 				break;
 
