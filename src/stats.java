@@ -11,10 +11,10 @@ public class stats {
 	 * </pre>*/
 	public stats()
 	{
-		healthPool = 0;
-		attack = 0;
-		defense = 0;
-		expCap = 0;
+		healthPool = 20;
+		attack = 10;
+		defense = 5;
+		expCap = 100;
 		expCurrent = 0;
 	}
 	/** <pre>
@@ -25,9 +25,9 @@ public class stats {
 	public stats(int healthPool)
 	{
 		this.healthPool = healthPool;
-		attack = 0;
-		defense = 0;
-		expCap = 0;
+		attack = 10;
+		defense = 5;
+		expCap = 100;
 		expCurrent = 0;
 	}
 	/** <pre>
@@ -39,8 +39,8 @@ public class stats {
 	{
 		this.healthPool = healthPool;
 		this.attack = attack;
-		defense = 0;
-		expCap = 0;
+		defense = 5;
+		expCap = 100;
 		expCurrent = 0;
 	}
 	/** <pre>
@@ -53,7 +53,7 @@ public class stats {
 		this.healthPool = healthPool;
 		this.attack = attack;
 		this.defense = defense;
-		expCap = 0;
+		expCap = 100;
 		expCurrent = 0;
 	}
 	/** <pre>
