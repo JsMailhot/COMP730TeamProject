@@ -48,6 +48,11 @@ public class startGame {
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 	InventoryHandler invHandler = new InventoryHandler();
 	armor complex_armor = new armor("pants", "required to shop", new stats(), "enchanted".toCharArray());	// create a complex armor
+	
+	SuperItem[] playerItem = new SuperItem[5];
+	Item_Potion potion = new Item_Potion();
+	Item_Berry berry = new Item_Berry();
+	Item_Empty empty = new Item_Empty();
 
 	
 	int i, soundCue;
@@ -275,7 +280,7 @@ public class startGame {
 		itemButton2.addActionListener(invHandler);
 		itemButton2.setActionCommand("item2");
 		
-		
+		itemButton3 = new JButton();
 		itemButton3.setBackground(Color.black);
 		itemButton3.setForeground(Color.white);
 		itemButton3.setFont(normalFont);
@@ -334,6 +339,12 @@ public class startGame {
 		playerhplabelNumber.setText("" + playerHP);
 		playergoldlabelNumber.setText("" + gold);
 		inventoryStatus = "close";
+		
+		playerItem[0] = potion;
+		playerItem[1] = berry;
+		playerItem[2] = empty;
+		playerItem[3] = empty;
+		playerItem[4] = empty;
 
 		healthBar.setValue(playerHP);
 		
@@ -350,7 +361,7 @@ public class startGame {
 		optionButtons.get(0).setText("Move to the castle");
 		optionButtons.get(1).setText("Attack guard");
 		optionButtons.get(2).setText("Talk to guard");
-		optionButtons.get(3).setText("Pick up pants");
+		optionButtons.get(3).setText("Pick Berry");
 		optionButtons.get(4).setText("Walk away from gate");
 	}
 	public void talkGuard() {
@@ -378,6 +389,29 @@ public class startGame {
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
 
+	}
+	public void pickBerry( ) {
+		image = new ImageIcon(".//img//berry.jpg");
+		imageLabel.setIcon(image);
+		
+		position = "pickBerry";
+		int slotNumber = 0;
+		while (playerItem[slotNumber] != empty && slotNumber <4) {
+			slotNumber++;
+		}
+		if(playerItem[slotNumber]==empty) {
+			mainTextArea.setText("You pick a Berry from a nearby bush.\n(You recieve a Berry!)");
+			playerItem[slotNumber] = berry;
+		}
+		else if (playerItem[slotNumber] != empty) {
+			mainTextArea.setText("You have too much stuff!");
+		}
+		
+		optionButtons.get(0).setText("Back");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
 	}
 	public void crossRoad() {
 		image = new ImageIcon(".//img//crossroads.jpg");
@@ -537,6 +571,32 @@ public class startGame {
 			inventoryButton.setVisible(false);
 			musicButton.setVisible(false);
 	}
+	
+	public void itemUsed(int slotNumber) {
+		
+		if (playerHP >= playerHPCap) {
+			playerHP = playerHP + 0;
+			playerItem[slotNumber] = empty;
+			itemButton1.setText(playerItem[0].name);
+			itemButton2.setText(playerItem[1].name);
+			itemButton3.setText(playerItem[2].name);
+			itemButton4.setText(playerItem[3].name);
+			itemButton5.setText(playerItem[4].name);
+		}
+		else {
+		
+		playerHP = playerHP + playerItem[slotNumber].healingValue;
+		playerhplabelNumber.setText(""+playerHP);
+		healthBar.setValue(playerHP);
+		playerItem[slotNumber] = empty;
+		itemButton1.setText(playerItem[0].name);
+		itemButton2.setText(playerItem[1].name);
+		itemButton3.setText(playerItem[2].name);
+		itemButton4.setText(playerItem[3].name);
+		itemButton5.setText(playerItem[4].name);
+		}
+		
+	}
 
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
@@ -571,6 +631,11 @@ public class startGame {
 					optionButtons.get(4).setVisible(false);
 					musicButton.setVisible(false);
 					inventoryPanel.setVisible(true);
+					itemButton1.setText(playerItem[0].name);
+					itemButton2.setText(playerItem[1].name);
+					itemButton3.setText(playerItem[2].name);
+					itemButton4.setText(playerItem[3].name);
+					itemButton5.setText(playerItem[4].name);
 					inventoryStatus = "open";
 				}
 				else if (inventoryStatus.equals("open")) {
@@ -583,6 +648,22 @@ public class startGame {
 					inventoryPanel.setVisible(false);
 					inventoryStatus = "close";
 				}
+				break;
+			case "item1":
+				itemUsed(0);
+				break;
+			case "item2":
+				itemUsed(1);
+				break;
+			case "item3":
+				itemUsed(2);
+				break;
+			case "item4":
+				itemUsed(3);
+				break;
+			case "item5":
+				itemUsed(4);
+				break;
 			}
 
 		}
@@ -626,7 +707,7 @@ public class startGame {
 					break;
 				case "c1": break;
 				case "c2": attackGuard(); break;
-				case "c4": break;
+				case "c4": pickBerry(); break;
 				case "c5": crossRoad(); break;
 				}
 				break;
@@ -636,6 +717,11 @@ public class startGame {
 				}
 				break;
 			case "attackGuard":
+				switch(yourChoice) {
+				case "c1": castleGate(); break;
+				}
+				break;
+			case "pickBerry":
 				switch(yourChoice) {
 				case "c1": castleGate(); break;
 				}
