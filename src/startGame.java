@@ -28,7 +28,7 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
 	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
 	JTextArea mainTextArea;
-	int playerHP, frostTrollHP, playerHPCap, silverRing, gold;
+	int playerHP, frostTrollHP, playerHPCap, silverRing, gold, key;
 	String weapon, position, text, inventoryStatus;
 	String clickSound, gameMusic, musicOnOff;
 	ImageIcon image;
@@ -366,7 +366,13 @@ public class startGame {
 	}
 	public void talkGuard() {
 		position = "talkGuard";
-		mainTextArea.setText("Guard: Hail Traveler,\nA Frost Troll has taken our city's priceless\nSilver Ring.\nIf you happen to see the troll\ntry to get the ring back for us would ya?\n(QUEST: Find Silver Ring!)");
+		if (key == 1)
+		{
+			mainTextArea.setText("Guard: Hail Traveler, Welcome to the town of EverWinter!");
+		}
+		else {
+			mainTextArea.setText("Guard: Hail Traveler,\nA Frost Troll has taken our city's priceless\nSilver Ring.\nIf you happen to see the troll\ntry to get the ring back for us would ya?\n(QUEST: Find Silver Ring!)");
+		}
 		optionButtons.get(0).setText("Back");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -587,7 +593,7 @@ public class startGame {
 	public void enterCity() {
 		position = "enterCity";
 		mainTextArea.setText("Guard: Oh you killed that frost troll!\n Thank you so much! You are a hero!\n Welcome to the town of EverWinter\n\n Take this key to enter the city gates.");
-		int key = 1; 
+		key = 1; 
 		silverRing = 0; 
 		optionButtons.get(0).setText("Enter Town");
 		optionButtons.get(1).setText("");
@@ -616,7 +622,7 @@ public class startGame {
 		optionButtons.get(0).setText("Go Left");
 		optionButtons.get(1).setText("Go Right");
 		optionButtons.get(2).setText("Continue Straight");
-		optionButtons.get(3).setText("");
+		optionButtons.get(3).setText("Back to Castle Gate");
 		optionButtons.get(4).setText("");
 	}
 	
@@ -753,7 +759,16 @@ public class startGame {
 						talkGuard();
 					}
 					break;
-				case "c1": break;
+				case "c1": 
+					if (key == 1)
+						{
+						TownEntrance(); 
+						}
+					else
+					{
+						talkGuard();
+					}
+					break;
 				case "c2": attackGuard(); break;
 				case "c4": pickBerry(); break;
 				case "c5": crossRoad(); break;
@@ -848,6 +863,14 @@ public class startGame {
 			case "enterCity":
 				switch(yourChoice) {
 				case "c1": TownEntrance(); break;
+				}
+				break;
+			case "townEntrance":
+				switch(yourChoice) {
+				case "c1": TownEntrance(); break;
+				case "c2": TownEntrance(); break;
+				case "c3": TownEntrance(); break;
+				case "c4": castleGate(); break;
 				}
 				break;
 
