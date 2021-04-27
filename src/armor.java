@@ -108,7 +108,7 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
 				this.itemName = "enchanted "+itemName;
@@ -132,7 +132,7 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
 				this.itemName = "enchanted "+itemName;
@@ -156,7 +156,7 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
 				this.itemName = "enchanted "+itemName;
@@ -180,7 +180,7 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
 				this.itemName = "enchanted "+itemName;
@@ -204,7 +204,7 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
 				this.itemName = "enchanted "+itemName;
@@ -228,7 +228,7 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
 				this.itemName = "enchanted "+itemName;

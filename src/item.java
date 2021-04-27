@@ -245,17 +245,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -294,17 +294,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -350,17 +350,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -406,17 +406,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -469,17 +469,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -532,17 +532,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;

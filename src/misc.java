@@ -108,12 +108,12 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
 				this.itemName = "edible "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
@@ -137,12 +137,12 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
 				this.itemName = "edible "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
@@ -166,12 +166,12 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
 				this.itemName = "edible "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
@@ -195,12 +195,12 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
 				this.itemName = "edible "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
@@ -224,12 +224,12 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
 				this.itemName = "edible "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
@@ -253,12 +253,12 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
 				this.itemName = "edible "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;

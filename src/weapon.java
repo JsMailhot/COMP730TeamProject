@@ -108,7 +108,7 @@
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("counters"))
+			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
 				this.itemName = "defensive "+itemName;
@@ -132,7 +132,7 @@
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("counters"))
+			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
 				this.itemName = "defensive "+itemName;
@@ -156,7 +156,7 @@
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("counters"))
+			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
 				this.itemName = "defensive "+itemName;
@@ -180,7 +180,7 @@
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("counters"))
+			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
 				this.itemName = "defensive "+itemName;
@@ -204,7 +204,7 @@
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("counters"))
+			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
 				this.itemName = "defensive "+itemName;
@@ -228,7 +228,7 @@
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("counters"))
+			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
 				this.itemName = "defensive "+itemName;
