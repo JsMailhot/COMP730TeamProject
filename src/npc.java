@@ -98,11 +98,51 @@ public class npc extends actor {
 	/** <pre>
 	 * Complex npc that takes several parameters
 	 * Example of creating a complex npc that takes several parameters:
-	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, "HEY THERE!");</code>	// create new npc object
+	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon());</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, String greeting)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary)
 	{
-		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold);
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary);
+		greeting = "Default Greeting";
+	}
+	/** <pre>
+	 * Complex npc that takes several parameters
+	 * Example of creating a complex npc that takes several parameters:
+	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null);</code>	// create new npc object
+	 * </pre> */
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary);
+		greeting = "Default Greeting";
+	}
+	/** <pre>
+	 * Complex npc that takes several parameters
+	 * Example of creating a complex npc that takes several parameters:
+	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null, new armor());</code>	// create new npc object
+	 * </pre> */
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor);
+		greeting = "Default Greeting";
+	}
+	/** <pre>
+	 * Complex npc that takes several parameters
+	 * Example of creating a complex npc that takes several parameters:
+	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null, new armor(), new misc());</code>	// create new npc object
+	 * </pre> */
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor, ring);
+		greeting = "Default Greeting";
+	}
+	/** <pre>
+	 * Complex npc that takes several parameters
+	 * Example of creating a complex npc that takes several parameters:
+	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null, new armor(), new misc(), "HEY THERE!");</code>	// create new npc object
+	 * </pre> */
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring, String greeting)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor, ring);
 		this.greeting = greeting;
 	}
 	/** <pre>

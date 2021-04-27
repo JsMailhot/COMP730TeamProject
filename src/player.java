@@ -98,11 +98,51 @@ public class player extends actor {
 	/** <pre>
 	 * Complex player that takes several parameters
 	 * Example of creating a complex player that takes several parameters:
-	 * <code>	player example_player = new player(0, new ArrayList<item>(), new stats(), "player", "player name", "player desc", null, 0, new ArrayList<quest>());</code>	// create new player object
+	 * <code>	player example_player = new player(0, new ArrayList<item>(), new stats(), "player", "player name", "player desc", null, 0, new weapon());</code>	// create new player object
 	 * </pre> */
-	public player(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, ArrayList<quest> questList)
+	public player(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary)
 	{
-		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold);
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary);
+		questList = new ArrayList<quest>();
+	}
+	/** <pre>
+	 * Complex player that takes several parameters
+	 * Example of creating a complex player that takes several parameters:
+	 * <code>	player example_player = new player(0, new ArrayList<item>(), new stats(), "player", "player name", "player desc", null, 0, new weapon(), null);</code>	// create new player object
+	 * </pre> */
+	public player(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary);
+		questList = new ArrayList<quest>();
+	}
+	/** <pre>
+	 * Complex player that takes several parameters
+	 * Example of creating a complex player that takes several parameters:
+	 * <code>	player example_player = new player(0, new ArrayList<item>(), new stats(), "player", "player name", "player desc", null, 0, new weapon(), null, new armor());</code>	// create new player object
+	 * </pre> */
+	public player(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor);
+		questList = new ArrayList<quest>();
+	}
+	/** <pre>
+	 * Complex player that takes several parameters
+	 * Example of creating a complex player that takes several parameters:
+	 * <code>	player example_player = new player(0, new ArrayList<item>(), new stats(), "player", "player name", "player desc", null, 0, new weapon(), null, new armor(), new misc());</code>	// create new player object
+	 * </pre> */
+	public player(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor, ring);
+		questList = new ArrayList<quest>();
+	}
+	/** <pre>
+	 * Complex player that takes several parameters
+	 * Example of creating a complex player that takes several parameters:
+	 * <code>	player example_player = new player(0, new ArrayList<item>(), new stats(), "player", "player name", "player desc", null, 0, new weapon(), null, new armor(), new misc(), new ArrayList<quest>());</code>	// create new player object
+	 * </pre> */
+	public player(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring, ArrayList<quest> questList)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor, ring);
 		this.questList = questList;
 	}
 	/** <pre>

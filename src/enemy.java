@@ -80,10 +80,37 @@ public class enemy extends actor {
 	/** <pre>
 	 * Complex enemy that takes several parameters
 	 * Example of creating a complex enemy that takes several parameters:
-	 * <code>	enemy example_enemy = new enemy(0, new ArrayList<item>(), new stats(), "enemy", "enemy name", "enemy desc", null, 0);</code>	// create new enemy object
+	 * <code>	enemy example_enemy = new enemy(0, new ArrayList<item>(), new stats(), "enemy", "enemy name", "enemy desc", null, 0, new weapon());</code>	// create new enemy object
 	 * </pre> */
-	public enemy(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold)
+	public enemy(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary)
 	{
-		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold);
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary);
+	}
+	/** <pre>
+	 * Complex enemy that takes several parameters
+	 * Example of creating a complex enemy that takes several parameters:
+	 * <code>	enemy example_enemy = new enemy(0, new ArrayList<item>(), new stats(), "enemy", "enemy name", "enemy desc", null, 0, new weapon(), null);</code>	// create new enemy object
+	 * </pre> */
+	public enemy(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary);
+	}
+	/** <pre>
+	 * Complex enemy that takes several parameters
+	 * Example of creating a complex enemy that takes several parameters:
+	 * <code>	enemy example_enemy = new enemy(0, new ArrayList<item>(), new stats(), "enemy", "enemy name", "enemy desc", null, 0, new weapon(), null, new armor());</code>	// create new enemy object
+	 * </pre> */
+	public enemy(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor);
+	}
+	/** <pre>
+	 * Complex enemy that takes several parameters
+	 * Example of creating a complex enemy that takes several parameters:
+	 * <code>	enemy example_enemy = new enemy(0, new ArrayList<item>(), new stats(), "enemy", "enemy name", "enemy desc", null, 0, new weapon(), null, new armor(), new misc());</code>	// create new enemy object
+	 * </pre> */
+	public enemy(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
+	{
+		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor, ring);
 	}
 }

@@ -20,12 +20,16 @@ public abstract class actor extends inventory {
 	{
 		super();
 		Stats = new stats();
-		health = Stats.healthPool;
 		type = "Defualt Type";
 		name = "Default Name";
 		desc = "Default Desc";
 		droppedItem = null;
 		droppedGold = 0;
+		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
 	 * Complex actor does not require any specified variables
@@ -42,6 +46,10 @@ public abstract class actor extends inventory {
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
 	 * Complex actor does not require any specified variables
@@ -58,6 +66,10 @@ public abstract class actor extends inventory {
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
 	 * Complex actor does not require any specified variables
@@ -74,6 +86,10 @@ public abstract class actor extends inventory {
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
 	 * Complex actor does not require any specified variables
@@ -90,6 +106,10 @@ public abstract class actor extends inventory {
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
 	 * Complex actor does not require any specified variables
@@ -106,6 +126,10 @@ public abstract class actor extends inventory {
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
 	 * Complex actor does not require any specified variables
@@ -122,6 +146,10 @@ public abstract class actor extends inventory {
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
 	 * Complex actor does not require any specified variables
@@ -138,6 +166,10 @@ public abstract class actor extends inventory {
 		this.droppedItem = droppedItem;
 		droppedGold = 0;
 		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
 	 * Complex actor does not require any specified variables
@@ -154,6 +186,90 @@ public abstract class actor extends inventory {
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
 		health = Stats.healthPool;
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
+	}
+	/** <pre>
+	 * Complex actor does not require any specified variables
+	 * Example of generating a complex actor inside extended class:
+	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon());</code>	// simply call super!
+	 * </pre>*/
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary)
+	{
+		super(gold, items);
+		this.Stats = Stats;
+		this.type = type;
+		this.name = name;
+		this.desc = desc;
+		this.droppedItem = droppedItem;
+		this.droppedGold = droppedGold;
+		health = Stats.healthPool;
+		this.primary = primary;
+		secondary = null;
+		Armor = null;
+		ring = null;
+	}
+	/** <pre>
+	 * Complex actor does not require any specified variables
+	 * Example of generating a complex actor inside extended class:
+	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null);</code>	// simply call super!
+	 * </pre>*/
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
+	{
+		super(gold, items);
+		this.Stats = Stats;
+		this.type = type;
+		this.name = name;
+		this.desc = desc;
+		this.droppedItem = droppedItem;
+		this.droppedGold = droppedGold;
+		health = Stats.healthPool;
+		this.primary = primary;
+		this.secondary = secondary;
+		Armor = null;
+		ring = null;
+	}
+	/** <pre>
+	 * Complex actor does not require any specified variables
+	 * Example of generating a complex actor inside extended class:
+	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null, new armor());</code>	// simply call super!
+	 * </pre>*/
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
+	{
+		super(gold, items);
+		this.Stats = Stats;
+		this.type = type;
+		this.name = name;
+		this.desc = desc;
+		this.droppedItem = droppedItem;
+		this.droppedGold = droppedGold;
+		health = Stats.healthPool;
+		this.primary = primary;
+		this.secondary = secondary;
+		this.Armor = Armor;
+		ring = null;
+	}
+	/** <pre>
+	 * Complex actor does not require any specified variables
+	 * Example of generating a complex actor inside extended class:
+	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null, new armor(), new misc());</code>	// simply call super!
+	 * </pre>*/
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
+	{
+		super(gold, items);
+		this.Stats = Stats;
+		this.type = type;
+		this.name = name;
+		this.desc = desc;
+		this.droppedItem = droppedItem;
+		this.droppedGold = droppedGold;
+		health = Stats.healthPool;
+		this.primary = primary;
+		this.secondary = secondary;
+		this.Armor = Armor;
+		this.ring = ring;
 	}
 	/** <pre>
 	 * The base statistics of the actor that will be used in determining rolls
@@ -204,43 +320,123 @@ public abstract class actor extends inventory {
 	 * </pre> */
 	int health;
 	/** <pre>
+	 * The primary weapon the actor is wielding
+	 * Example of defining primary:
+	 * <code>	primary = 0;</code>
+	 * </pre> */
+	weapon primary;
+	/** <pre>
+	 * The secondary weapon / armor / misc the actor is wielding
+	 * Example of defining secondary:
+	 * <code>	secondary = 0;</code>
+	 * </pre> */
+	item secondary;
+	/** <pre>
+	 * The armor the actor is wearing
+	 * Example of defining Armor:
+	 * <code>	Armor = 0;</code>
+	 * </pre> */
+	armor Armor;
+	/** <pre>
+	 * The ring the actor is wearing
+	 * Example of defining ring:
+	 * <code>	ring = 0;</code>
+	 * </pre> */
+	misc ring;
+	/** <pre>
+	 * The function that returns the actors attack damage
+	 * Example of using the attack function:
+	 * <code>	</code>
+	 * 	<code></code>
+	 * 	<code></code>
+	 * </pre> */
+	public int attack()
+	{
+		int damage = Stats.attack;
+		if(primary != null)
+		{
+			damage = damage + primary.qualities.attack;
+		}
+		if(secondary != null)
+		{
+			damage = damage + secondary.qualities.attack;
+		}
+		if(ring != null)
+		{
+			damage = damage + ring.qualities.attack;
+		}
+		return damage;
+	}
+	/** <pre>
 	 * The function called when this actor makes an attack on another actor
-	 * Example of using the attack() function:
+	 * Example of using the attack function:
 	 * <code>	</code>
 	 * 	<code></code>
 	 * 	<code></code>
 	 * </pre> */
 	public int attack(actor target)
-	{
-		int damage = (Stats.attack - target.block());
-		if(damage > 0)
-		{//	did damage
-			if(target.health > damage)
-			{//	didn't kill target
-				target.health = target.health - damage;
-			}
-			else
-			{
-				damage = target.health;
-				target.health = 0;
-			}
-			return damage;
+	{	// add up damage
+		int damage = attack() - target.block(this);	//	subtract target block
+		if(target.health > damage)
+		{//	didn't kill target
+			target.health = target.health - damage;
 		}
 		else
 		{
-			return 0;
+			damage = target.health;
+			target.health = 0;
 		}
+		return damage;
 	}
 	/** <pre>
-	 * The function called when this actor blocks another actors attack
-	 * Example of using the block() function:
+	 * The function that returns the actors block damage
+	 * Example of using the block function:
 	 * <code>	</code>
 	 * 	<code></code>
 	 * 	<code></code>
 	 * </pre> */
 	public int block()
 	{
-		return Stats.defense;
+		int damage = Stats.defense;
+		if(primary != null && primary.canCounter)
+		{
+			damage = damage + primary.qualities.defense;
+		}
+		if(secondary != null)
+		{
+			damage = damage + secondary.qualities.defense;
+		}
+		if(Armor != null)
+		{
+			damage = damage + (Armor.qualities.defense * ((Armor.isEnchanted ? 1 : 0) * 2));
+		}
+		if(ring != null)
+		{
+			damage = damage + ring.qualities.defense;
+		}
+		return damage;
+	}
+	/** <pre>
+	 * The function called when this actor blocks another actors attack
+	 * Example of using the block function:
+	 * <code>	</code>
+	 * 	<code></code>
+	 * 	<code></code>
+	 * </pre> */
+	public int block(actor target)
+	{	// add up block
+		if(primary != null && primary.canCounter)
+		{//	primary can counter (return damage)
+			if(target.health >= primary.qualities.defense)
+			{//	didn't kill target
+				target.health = target.health - primary.qualities.defense;
+			}
+			else
+			{
+				target.health = 0;
+			}
+		}
+		return block();
 	}
 	/** <pre>
 	 * The function called when this actor taunts another actor
