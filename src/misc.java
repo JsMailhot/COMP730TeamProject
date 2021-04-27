@@ -118,11 +118,6 @@ public class misc extends item {
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
-			}
 		}
 	}
 	/** <pre>
@@ -151,11 +146,6 @@ public class misc extends item {
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
 			}
 		}
 	}
@@ -186,11 +176,6 @@ public class misc extends item {
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
-			}
 		}
 	}
 	/** <pre>
@@ -219,11 +204,6 @@ public class misc extends item {
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
 			}
 		}
 	}
@@ -254,11 +234,6 @@ public class misc extends item {
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
-			}
 		}
 	}
 	/** <pre>
@@ -287,11 +262,6 @@ public class misc extends item {
 			{
 				isThrowable = true;
 				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
 			}
 		}
 	}
