@@ -4,45 +4,119 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 
 class tests {
-	player test_player;		// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, ArrayList<quest> questList
-	enemy test_enemy;		// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold
-	npc test_npc;			// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, String greeting
+	stats test_stats;		// int healthPool, int attack, int defense, int expCap, int expCurrent
 	misc test_misc_item;	// String itemName, String itemDesc, stats qualities, String category, int price, char... is
 	weapon test_weapon_item;// String itemName, String itemDesc, stats qualities, String category, int price, char... is
 	armor test_armor_item;	// String itemName, String itemDesc, stats qualities, String category, int price, char... is
-	stats test_stats;		// int healthPool, int attack, int defense, int expCap, int expCurrent
+	player test_player;		// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, ArrayList<quest> questList
+	enemy test_enemy;		// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold
+	npc test_npc;			// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, String greeting
+	room test_room;			// 
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		test_player = new player(100, new ArrayList<item>(), new stats(), "Player", "Test Player", "Test Player Description", null, 50, new ArrayList<quest>());
-		test_enemy = new enemy(100, new ArrayList<item>(), new stats(), "Enemy", "Test Enemy", "Test Enemy Description", null, 50);
-		test_npc = new npc(100, new ArrayList<item>(), new stats(), "NPC", "Test NPC", "Test NPC Descripton", null, 50, "HEY THERE!");
-		test_misc_item = new misc("Test Misc Item", "Test Misc Item Description", new stats(5,5,5,0,0), "Misc", 50, "edible".toCharArray());
-		test_weapon_item = new weapon("Test Weapon Item", "Test Weapon Item Description", new stats(0,5,5,0,0), "Armor", 50, "counters".toCharArray());
-		test_armor_item = new armor("Test Armor Item", "Test Armor Item Description", new stats(0,0,5,0,0), "Armor", 50, "enchanted".toCharArray());
+		System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+		test_misc_item = new misc("Test Misc", "Test Misc Description", new stats(5,5,5,0,0), "Misc", 50, "consumable".toCharArray());
+		test_weapon_item = new weapon("Test Weapon", "Test Weapon Description", new stats(0,20,5,0,0), "Armor", 50, "counters".toCharArray());
+		test_armor_item = new armor("Test Armor", "Test Armor Description", new stats(0,0,5,0,0), "Armor", 50, "enchanted".toCharArray());
+		test_player = new player(100, new ArrayList<item>(), new stats(), "Player", "Test Player", "Test Player Description", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, new ArrayList<quest>());
+		test_enemy = new enemy(100, new ArrayList<item>(), new stats(), "Enemy", "Test Enemy", "Test Enemy Description", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item);
+		test_npc = new npc(100, new ArrayList<item>(), new stats(), "NPC", "Test NPC", "Test NPC Descripton", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, "HEY THERE!");
 	}
 	
 	@Test
+	@DisplayName("Weapon can counter strike")
+	void weapon_counter() {
+		System.out.println("Weapons can be defensive (return damage)\n");
+		assertTrue(test_weapon_item.canCounter, "Weapon should have the canCounter set to true");
+		System.out.print("weapon information:\nname: " + test_weapon_item.itemName 
+				+ "\ndescription: " + test_weapon_item.itemDesc
+				+ "\nqualities: " + test_weapon_item.qualities.toString()
+				+ "\ncategory: " + test_weapon_item.category
+				+ "\nprice: " + test_weapon_item.price
+				+ "\nusable: " + test_weapon_item.isUsable
+				+ "\nquest: " + test_weapon_item.isQuest
+				+ "\nbroken: " + test_weapon_item.isBroken
+				+ "\ncounters: " + test_weapon_item.canCounter
+				+ "\n");
+	}
+	@Test
+	@DisplayName("Armor can be enchanted")
+	void armor_enchant() {
+		System.out.println("Armor can be enchanted (extra block)\n");
+		assertTrue(test_armor_item.isEnchanted, "Weapon should have the canCounter set to true");
+		System.out.print("armor information:\nname: " + test_armor_item.itemName 
+				+ "\ndescription: " + test_armor_item.itemDesc
+				+ "\nqualities: " + test_armor_item.qualities.toString()
+				+ "\ncategory: " + test_armor_item.category
+				+ "\nprice: " + test_armor_item.price
+				+ "\nusable: " + test_armor_item.isUsable
+				+ "\nquest: " + test_armor_item.isQuest
+				+ "\nbroken: " + test_armor_item.isBroken
+				+ "\nenchanted: " + test_armor_item.isEnchanted
+				+ "\n");
+	}
+	@Test
+	@DisplayName("Misc items can be consumable")
+	void misc_consumable() {
+		System.out.println("Misc items can be consumed (heal damage)\n");
+		assertTrue(test_misc_item.isConsumable, "Weapon should have the canCounter set to true");
+		System.out.print("misc information:\nname: " + test_misc_item.itemName 
+				+ "\ndescription: " + test_misc_item.itemDesc
+				+ "\nqualities: " + test_misc_item.qualities.toString()
+				+ "\ncategory: " + test_misc_item.category
+				+ "\nprice: " + test_misc_item.price
+				+ "\nusable: " + test_misc_item.isUsable
+				+ "\nquest: " + test_misc_item.isQuest
+				+ "\nbroken: " + test_misc_item.isBroken
+				+ "\nconsumable: " + test_misc_item.isConsumable
+				+ "\n");
+	}
+	@Test
     @DisplayName("Attacking an enemy alters their current health")
 	void player_attack() {
+		System.out.print("Attacking an enemy alters their current health\n\nenemy information (before attack):\nhealth: " + test_enemy.health
+				+ "\nattack: " + test_enemy.attack() + "\nblock: " + test_enemy.block()
+				+ "\n\nplayer information (before attack):\nhealth:" + test_player.health 
+				+ "\nattack: " + test_player.attack() + "\nblock: " + test_player.block() + "\n\n");
 		assertEquals(test_enemy.health, test_enemy.Stats.healthPool, "Enemy health should be at maximum");
-		assertEquals(test_player.attack(test_enemy), (test_player.Stats.attack - test_enemy.Stats.defense), "Player should deal damage");
-		assertEquals(test_enemy.health, test_enemy.Stats.healthPool - (test_player.Stats.attack - test_enemy.Stats.defense), "Enemy health should have lowered");
-	}	
+		int damage_dealt = test_player.attack(test_enemy);
+		assertEquals(test_enemy.health, test_enemy.Stats.healthPool - (test_player.attack() - test_enemy.block()), "Enemy health should have lowered");
+		System.out.print("damage dealt: " + damage_dealt + "\n\nenemy information (after attack):\nhealth: " + test_enemy.health
+				+ "\nattack: " + test_enemy.attack() + "\nblock: " + test_enemy.block()
+				+ "\n\nplayer information (after attack):\nhealth:" + test_player.health 
+				+ "\nattack: " + test_player.attack() + "\nblock: " + test_player.block() + "\n");
+	}
+//	@Test
+//	@DisplayName("Taunting an enemy ...")
+//	void player_taunt()
+//	{
+//	}
 	@Test
     @DisplayName("Buying an item moves the item between inventories in exchange for gold")
 	void player_buy() {
+		System.out.println("NPCs can buy items from the player (or any actor)\n");
 		test_player.items.add(test_misc_item);
 		test_player.items.add(test_weapon_item);
 		test_player.items.add(test_armor_item);
-		
+		System.out.println("Player(before purchase)\nGold: "+ test_player.gold + "\nItems:");
+		for(item i : test_player.items)
+		{
+			System.out.println(i.toString());
+		}
+		System.out.println("\nNPC(before purchase)\nGold: " + test_npc.gold + "\nItems:");
+		for(item i : test_npc.items)
+		{
+			System.out.println(i.toString());
+		}
 		assertEquals(test_player.items.size(), 3,"Player should have three items in their inventory");
 		assertEquals(test_player.gold, 100, "Player should have 100 gold");
 		assertEquals(test_npc.items.size(), 0,"NPC should have zero items in their inventory");
-		assertEquals(test_npc.gold, 100, "NPC should have 100 gold");;
+		assertEquals(test_npc.gold, 100, "NPC should have 100 gold");
 		
 		test_npc.buy(test_player, test_misc_item);
 		test_npc.buy(test_player, 0);
@@ -50,19 +124,40 @@ class tests {
 		assertEquals(test_player.items.size(), 1,"Player should have one item in their inventory");
 		assertEquals(test_player.gold, 200, "Player should have 200 gold");
 		assertEquals(test_npc.items.size(), 2,"NPC should have two items in their inventory");
-		assertEquals(test_npc.gold, 0, "NPC should have 0 gold");;
+		assertEquals(test_npc.gold, 0, "NPC should have 0 gold");
+		System.out.println("\nPlayer(after purchase)\nGold: " + test_player.gold + "\nItems:");
+		for(item i : test_player.items)
+		{
+			System.out.println(i.toString());
+		}
+		System.out.println("\nNPC(after purchase)\nGold: " + test_npc.gold + "\nItems:");
+		for(item i : test_npc.items)
+		{
+			System.out.println(i.toString());
+		}
 	}	
 	@Test
     @DisplayName("Selling an item moves the item between inventories in exchange for gold")
 	void player_sell() {
+		System.out.println("NPCs can sell items to the player (or any actor)\n");
 		test_npc.items.add(test_misc_item);
 		test_npc.items.add(test_weapon_item);
 		test_npc.items.add(test_armor_item);
+		System.out.println("Player(before sale)\nGold: "+ test_player.gold + "\nItems:");
+		for(item i : test_player.items)
+		{
+			System.out.println(i.toString());
+		}
+		System.out.println("\nNPC(before sale)\nGold: " + test_npc.gold + "\nItems:");
+		for(item i : test_npc.items)
+		{
+			System.out.println(i.toString());
+		}
 		
 		assertEquals(test_npc.items.size(), 3,"NPC should have three items in their inventory");
 		assertEquals(test_npc.gold, 100, "NPC should have 100 gold");
 		assertEquals(test_player.items.size(), 0,"Player should have zero items in their inventory");
-		assertEquals(test_player.gold, 100, "Player should have 100 gold");;
+		assertEquals(test_player.gold, 100, "Player should have 100 gold");
 		
 		test_npc.sell(test_player, test_misc_item);
 		test_npc.sell(test_player, 0);
@@ -71,5 +166,15 @@ class tests {
 		assertEquals(test_npc.gold, 200, "NPC should have 200 gold");
 		assertEquals(test_player.items.size(), 2,"Player should have two items");
 		assertEquals(test_player.gold, 0, "Player should have 0 gold");
+		System.out.println("\nPlayer(after sale)\nGold: "+ test_player.gold + "\nItems:");
+		for(item i : test_player.items)
+		{
+			System.out.println(i.toString());
+		}
+		System.out.println("\nNPC\nGold(after sale): " + test_npc.gold + "\nItems:");
+		for(item i : test_npc.items)
+		{
+			System.out.println(i.toString());
+		}
 	}
 }
