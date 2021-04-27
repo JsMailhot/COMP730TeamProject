@@ -132,5 +132,9 @@ public class stats {
 	public void levelupDefense() {
 		
 	}
-
+	@Override
+	public String toString()
+	{
+		return "(hp: " + healthPool + ", atk: " + attack + ", def: " + defense + ", xpCap: " + expCap + ", xpCur: " + expCurrent + ")";
+	}
 }
