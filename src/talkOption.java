@@ -72,7 +72,7 @@ public class talkOption extends option {
 		optionText = optionType + " " + optionFocus;
 	}
 	/** <pre>
-	 * Boolean for determening if this option involves buying or selling items
+	 * Boolean for determining if this option involves buying or selling items
 	 * Example of an option involving buying items being printed:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>talkOption talk = new talkOption("shop keep", "retail".toCharArray());</code>	// generate a new talkOption variable with the respective parameters
@@ -81,7 +81,7 @@ public class talkOption extends option {
 	 * </pre> */
 	Boolean isRetail = false;
 	/** <pre>
-	 * Boolean for determening of this option involves a quest
+	 * Boolean for determining of this option involves a quest
 	 * Example of an option involving a quest being printed:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>talkOption talk = new talkOption("the quest giver", "quest".toCharArray());</code>	// generate a new talkOption variable with the respective parameters
@@ -90,7 +90,7 @@ public class talkOption extends option {
 	 * </pre> */
 	Boolean isQuest = false;
 	/** <pre>
-	 * Boolean for determening of this option involves only dialogue
+	 * Boolean for determining of this option involves only dialogue
 	 * Example of an option involving only dialogue being printed:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>talkOption talk = new talkOption("adventurer", "dialog".toCharArray());</code>	// generate a new talkOption variable with the respective parameters

@@ -20,7 +20,7 @@ public class misc extends item {
 		super();
 	}
 	/** <pre>
-	 * Complex misc evaluates to key
+	 * Simple misc evaluates to key
 	 * Example of creating a complex misc to print its itemName:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>misc complex_misc = new misc("key");</code>	// create a complex misc

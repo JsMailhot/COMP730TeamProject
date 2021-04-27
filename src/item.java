@@ -24,7 +24,7 @@ public abstract class item {
 		price = 0;
 	}
 	/** <pre>
-	 * Complex item only requires a string variable
+	 * Simple item only requires a string variable
 	 * Example of generating a complex item inside extended class:
 	 * <code>	super("stick");</code>	// call super with the variable
 	 * </pre> */

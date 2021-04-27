@@ -16,7 +16,7 @@ public class npc extends actor {
 		greeting = "Default Greeting";
 	}
 	/** <pre>
-	 * Complex npc that takes one parameter
+	 * Simple npc that takes one parameter
 	 * Example of creating a complex npc that takes one parameter:
 	 * <code>	npc example_npc = new npc(new ArrayList<item>());</code>	// create new npc object
 	 * </pre> */

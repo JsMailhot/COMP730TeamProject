@@ -21,7 +21,7 @@ public abstract class inventory {
 		this.gold = 0;
 	}
 	/** <pre>
-	 * Complex inventory only requires an integer variable
+	 * Simple inventory only requires an integer variable
 	 * Example of generating a complex inventory inside extended class:
 	 * <code>	super(100);</code>	// call super with the variable
 	 * </pre> */

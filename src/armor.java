@@ -20,7 +20,7 @@ public class armor extends item {
 		super();
 	}
 	/** <pre>
-	 * Complex armor evaluates to pants
+	 * Simple armor evaluates to pants
 	 * Example of creating a complex armor to print its itemName:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>armor complex_armor = new armor("pants");</code>	// create a complex armor

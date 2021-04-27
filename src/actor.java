@@ -32,7 +32,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Simple that takes one parameter
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(new ArrayList<item>);</code>	// simply call super!
 	 * </pre>*/
@@ -52,7 +52,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>());</code>	// simply call super!
 	 * </pre>*/
@@ -72,7 +72,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>(), new stats());</code>	// simply call super!
 	 * </pre>*/
@@ -92,7 +92,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type");</code>	// simply call super!
 	 * </pre>*/
@@ -112,7 +112,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name");</code>	// simply call super!
 	 * </pre>*/
@@ -132,7 +132,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc");</code>	// simply call super!
 	 * </pre>*/
@@ -152,7 +152,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null);</code>	// simply call super!
 	 * </pre>*/
@@ -172,7 +172,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0);</code>	// simply call super!
 	 * </pre>*/
@@ -192,7 +192,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon());</code>	// simply call super!
 	 * </pre>*/
@@ -212,7 +212,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null);</code>	// simply call super!
 	 * </pre>*/
@@ -232,7 +232,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null, new armor());</code>	// simply call super!
 	 * </pre>*/
@@ -252,7 +252,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null, new armor(), new misc());</code>	// simply call super!
 	 * </pre>*/

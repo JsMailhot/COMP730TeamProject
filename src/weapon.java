@@ -20,7 +20,7 @@
 		super();
 	}
 	/** <pre>
-	 * Complex weapon evaluates to sword
+	 * Simple weapon evaluates to sword
 	 * Example of creating a complex weapon to print its itemName:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>weapon complex_weapon = new weapon("sword");</code>	// create a complex weapon

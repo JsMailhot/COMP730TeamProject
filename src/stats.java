@@ -18,7 +18,7 @@ public class stats {
 		expCurrent = 0;
 	}
 	/** <pre>
-	 * Complex stats that takes one parameter
+	 * Simple stats that takes one parameter
 	 * Example of creating a complex stats that takes one parameter:
 	 * <code>	stats example_stats = new stats(0);</code>	// create new stats object
 	 * </pre> */

@@ -16,7 +16,7 @@ public class player extends actor {
 		questList = new ArrayList<quest>();
 	}
 	/** <pre>
-	 * Complex player that takes one parameter
+	 * Simple player that takes one parameter
 	 * Example of creating a complex player that takes one parameter:
 	 * <code>	player example_player = new player(new ArrayList<item>());</code>	// create new player object
 	 * </pre> */

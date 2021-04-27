@@ -15,7 +15,7 @@ public class enemy extends actor {
 		super();
 	}
 	/** <pre>
-	 * Complex enemy that takes one parameter
+	 * Simple enemy that takes one parameter
 	 * Example of creating a complex enemy that takes one parameter:
 	 * <code>	enemy example_enemy = new enemy(new ArrayList<item>());</code>	// create new enemy object
 	 * </pre> */
