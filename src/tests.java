@@ -7,26 +7,61 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
 class tests {
-	stats test_stats;		// int healthPool, int attack, int defense, int expCap, int expCurrent
-	misc test_misc_item;	// String itemName, String itemDesc, stats qualities, String category, int price, char... is
-	weapon test_weapon_item;// String itemName, String itemDesc, stats qualities, String category, int price, char... is
-	armor test_armor_item;	// String itemName, String itemDesc, stats qualities, String category, int price, char... is
-	player test_player;		// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, ArrayList<quest> questList
-	enemy test_enemy;		// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold
-	npc test_npc;			// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, String greeting
-	room test_room;			// 
+	stats test_stats;					// int healthPool, int attack, int defense, int expCap, int expCurrent
+	quest test_quest;					// 
+	misc test_misc_item;				// String itemName, String itemDesc, stats qualities, String category, int price, char... is
+	weapon test_weapon_item;			// String itemName, String itemDesc, stats qualities, String category, int price, char... is
+	armor test_armor_item;				// String itemName, String itemDesc, stats qualities, String category, int price, char... is
+	player test_player;					// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, ArrayList<quest> questList
+	enemy test_enemy;					// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold
+	npc test_npc;						// int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, String greeting
+	room test_room;						// String nameRoom, String nameDesc, int roomX, int roomY, ArrayList<option> roomOptions, ArrayList<actor> actorList, ArrayList<item> itemList
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-		test_misc_item = new misc("Test Misc", "Test Misc Description", new stats(5,5,5,0,0), "Misc", 50, "consumable".toCharArray());
+		test_quest = new quest();
+		test_misc_item = new misc("Test Misc", "Test Misc Description", new stats(5,5,5,0,0), "Misc", 50, "consumable, quest".toCharArray());
 		test_weapon_item = new weapon("Test Weapon", "Test Weapon Description", new stats(0,20,5,0,0), "Armor", 50, "counters".toCharArray());
 		test_armor_item = new armor("Test Armor", "Test Armor Description", new stats(0,0,5,0,0), "Armor", 50, "enchanted".toCharArray());
 		test_player = new player(100, new ArrayList<item>(), new stats(), "Player", "Test Player", "Test Player Description", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, new ArrayList<quest>());
 		test_enemy = new enemy(100, new ArrayList<item>(), new stats(), "Enemy", "Test Enemy", "Test Enemy Description", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item);
-		test_npc = new npc(100, new ArrayList<item>(), new stats(), "NPC", "Test NPC", "Test NPC Descripton", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, "HEY THERE!");
+		test_npc = new npc(100, new ArrayList<item>(), new stats(), "NPC", "Test NPC", "Test NPC Descripton", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, "HEY THERE!", test_quest);
+		test_room = new room("Test Room", "Test Room Flavor Text", 0, 0, new ArrayList<option>(), new ArrayList<actor>(), new ArrayList<item>());
 	}
-	
+
+	@Test
+	@DisplayName("Building rooms should be easy")
+	void fill_room()
+	{
+		test_npc.items.add(test_misc_item);
+		System.out.println("Filling a room only takes a few steps\n");
+		room test_room_copy = new room(test_room);
+		test_room.addItem(test_misc_item);
+		test_room.addItem(test_weapon_item);
+		test_room.addItem(test_armor_item);
+		test_room.addActor(test_player);
+		test_room.addActor(test_enemy);
+		test_room.addActor(test_npc);
+		assertTrue(test_room.itemList.size() > test_room_copy.itemList.size(), "Adding items is easy");
+		assertTrue(test_room.actorList.size() > test_room_copy.actorList.size(), "Adding actors is easy");
+		assertTrue(test_room.roomOptions.size() > test_room_copy.roomOptions.size(), "Adding options is super easy");
+		System.out.println("test_room items:");
+		for(item o : test_room.itemList)
+		{
+			System.out.println(o.toString());
+		}
+		System.out.println("\ntest_room actors:");
+		for(actor o : test_room.actorList)
+		{
+			System.out.println(o.toString());
+		}
+		System.out.println("\ntest_room options:");
+		for(option o : test_room.roomOptions)
+		{
+			System.out.println(o.toString());
+		}
+	}
 	@Test
 	@DisplayName("Weapon can counter strike")
 	void weapon_counter() {
