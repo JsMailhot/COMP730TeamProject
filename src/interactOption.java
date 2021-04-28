@@ -46,32 +46,32 @@ public class interactOption extends option {
 			//	what do we do when we are given nothing?
 			optionType = "interact with the";
 		}
-		else if(is.toString().toLowerCase() == "pickupable")
+		else if(new String(is).toLowerCase() == "pickupable")
 		{
 			isPickupable = true;
 			optionType = "pick up the";
 		}
-		else if(is.toString().toLowerCase() == "unlockable")
+		else if(new String(is).toLowerCase() == "unlockable")
 		{
 			isUnlockable = true;
 			optionType = "unlock the";
 		}
-		else if(is.toString().toLowerCase() == "movable")
+		else if(new String(is).toLowerCase() == "movable")
 		{
 			isMoveable = true;
 			optionType = "move the";
 		}
-		else if(is.toString().toLowerCase() == "equipable")
+		else if(new String(is).toLowerCase() == "equipable")
 		{
 			isEquipable = true;
 			optionType = "equip the";
 		}
-		else if(is.toString().toLowerCase() == "consumable")
+		else if(new String(is).toLowerCase() == "consumable")
 		{
 			isConsumable = true;
 			optionType = "consume the";
 		}
-		else if(is.toString().toLowerCase() == "destroyable")
+		else if(new String(is).toLowerCase() == "destroyable")
 		{
 			isDestructable = true;
 			optionType = "destroy the";
