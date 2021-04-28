@@ -21,6 +21,37 @@
 	}
 	/** <pre>
 	 * Simple weapon evaluates to sword
+	 * Example of creating a Simple weapon to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>weapon Simple_weapon = new weapon("sword");</code>	// create a Simple weapon
+	 * 	<code>weapon Simple_weapon2 = new weapon(Simple_weapon);</code>	// create a Simple weapon
+	 * 	<code>out.println(Simple_weapon2.toString());</code>	// print Simple_weapon2
+	 * Returns:	"sword"
+	 * </pre> */
+	public weapon(weapon weapon)
+	{
+		super(weapon);
+		if(weapon.canCounter)
+		{
+			canCounter = true;
+			this.itemName = "defensive "+itemName;
+		}
+	}
+	/** <pre>
+	 * Simple weapon evaluates to sword
+	 * Example of creating a Simple weapon to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>item Simple_item = new item("sword");</code>	// create a Simple item
+	 * 	<code>weapon Simple_weapon = new weapon(Simple_item);</code>	// create a Simple weapon
+	 * 	<code>out.println(Simple_weapon.toString());</code>	// print Simple_weapon
+	 * Returns:	"sword"
+	 * </pre> */
+	public weapon(item item)
+	{
+		super(item);
+	}
+	/** <pre>
+	 * Simple weapon evaluates to sword
 	 * Example of creating a complex weapon to print its itemName:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>weapon complex_weapon = new weapon("sword");</code>	// create a complex weapon

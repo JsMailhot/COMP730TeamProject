@@ -26,6 +26,62 @@ public abstract class item {
 	/** <pre>
 	 * Simple item only requires a string variable
 	 * Example of generating a complex item inside extended class:
+	 * <code>	super(new item());</code>	// call super with the variable
+	 * </pre> */
+	public item(item item)
+	{
+		if(item.itemName == null)
+		{
+			this.itemName = "Nothing";
+		}
+		else
+		{
+			this.itemName = item.itemName;
+		}
+		if(item.itemDesc == null)
+		{
+			this.itemDesc = "Empty";
+		}
+		else
+		{
+			this.itemDesc = item.itemDesc;
+		}
+		if(item.qualities == null)
+		{
+			this.qualities = new stats();
+		}
+		else
+		{
+			this.qualities = item.qualities;
+		}
+		if(item.category == null)
+		{
+			category = "All";
+		}
+		else
+		{
+			this.category = item.category;
+		}
+		this.price = item.price;
+		if(item.isBroken)
+		{
+			isBroken = true;
+			this.itemName = "broken "+itemName;
+		}
+		if(item.isQuest)
+		{
+			isQuest = true;
+			this.itemName = "quest "+itemName;
+		}
+		if(item.isUsable)
+		{
+			isUsable = true;
+			this.itemName = "usable "+itemName;
+		}
+	}
+	/** <pre>
+	 * Simple item only requires a string variable
+	 * Example of generating a complex item inside extended class:
 	 * <code>	super("stick");</code>	// call super with the variable
 	 * </pre> */
 	public item(String itemName)
