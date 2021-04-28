@@ -181,10 +181,10 @@ public class startGame {
 		interactOption interactoption = new interactOption();
 
 
-		testroom.roomOptions.choicePick.add(moveoption);
-		testroom.roomOptions.choicePick.add(attackoption);
-		testroom.roomOptions.choicePick.add(talkoption);
-		testroom.roomOptions.choicePick.add(interactoption);
+//		testroom.roomOptions.choicePick.add(moveoption);
+//		testroom.roomOptions.choicePick.add(attackoption);
+//		testroom.roomOptions.choicePick.add(talkoption);
+//		testroom.roomOptions.choicePick.add(interactoption);
 
 
 		roomList.add(testroom);
