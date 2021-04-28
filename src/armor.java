@@ -142,7 +142,7 @@ public class armor extends item {
 			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -166,7 +166,7 @@ public class armor extends item {
 			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -190,7 +190,7 @@ public class armor extends item {
 			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -214,7 +214,7 @@ public class armor extends item {
 			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -238,7 +238,7 @@ public class armor extends item {
 			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -262,7 +262,7 @@ public class armor extends item {
 			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -275,5 +275,5 @@ public class armor extends item {
 	 * 	<code>out.println(armor_player.items[0].toString());</code>	// print armor (index may vary)
 	 * Returns:	"enchanted shirt"
 	 * </pre> */
-	Boolean isEnchanted;
+	Boolean isEnchanted = false;
 }

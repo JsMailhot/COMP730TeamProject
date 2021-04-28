@@ -142,7 +142,7 @@
 			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
-				this.itemName = "defensive "+itemName;
+				this.itemName = "defensive " + this.itemName;
 			}
 		}
 	}
@@ -166,7 +166,7 @@
 			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
-				this.itemName = "defensive "+itemName;
+				this.itemName = "defensive " + this.itemName;
 			}
 		}
 	}
@@ -190,7 +190,7 @@
 			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
-				this.itemName = "defensive "+itemName;
+				this.itemName = "defensive " + this.itemName;
 			}
 		}
 	}
@@ -214,7 +214,7 @@
 			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
-				this.itemName = "defensive "+itemName;
+				this.itemName = "defensive " + this.itemName;
 			}
 		}
 	}
@@ -238,7 +238,7 @@
 			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
-				this.itemName = "defensive "+itemName;
+				this.itemName = "defensive " + this.itemName;
 			}
 		}
 	}
@@ -262,7 +262,7 @@
 			if(new String(is).toLowerCase().contains("counters"))
 			{
 				canCounter = true;
-				this.itemName = "defensive "+itemName;
+				this.itemName = "defensive " + this.itemName;
 			}
 		}
 	}

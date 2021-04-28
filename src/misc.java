@@ -147,12 +147,12 @@ public class misc extends item {
 			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
 			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -176,12 +176,12 @@ public class misc extends item {
 			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
 			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -205,12 +205,12 @@ public class misc extends item {
 			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
 			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -234,12 +234,12 @@ public class misc extends item {
 			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
 			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -263,12 +263,12 @@ public class misc extends item {
 			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
 			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -292,12 +292,12 @@ public class misc extends item {
 			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
 			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -310,7 +310,7 @@ public class misc extends item {
 	 * 	<code>out.println(misc_player.items[0].toString());</code>	// print misc (index may vary)
 	 * Returns:	"edible rock"
 	 * </pre> */
-	Boolean isConsumable;
+	Boolean isConsumable = false;
 	/** <pre>
 	 * Boolean that determines if the misc can be thrown
 	 * Example of an misc that is enchanted:
@@ -320,6 +320,6 @@ public class misc extends item {
 	 * 	<code>out.println(misc_player.items[0].toString());</code>	// print misc (index may vary)
 	 * Returns:	"projectile rock"
 	 * </pre> */
-	Boolean isThrowable;
+	Boolean isThrowable = false;
 
 }	
