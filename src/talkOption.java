@@ -33,11 +33,12 @@ public class talkOption extends option {
 	 * Complex option evaluates to talking to a focus with specified parameters
 	 * Example of generating a complex talkOption variable to print its optionText:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
-	 * 	<code>talkOption talk = new talkOption("shop keep", "retail".toCharArray());</code>	// generate a new talkOption variable with the respective parameters
+	 * 	<code>npc talk_npc = new npc("shop keep");</code>	// generate a new talkOption variable with the respective parameters
+	 * 	<code>talkOption talk = new talkOption(talk_npc, "retail".toCharArray());</code>	// generate a new talkOption variable with the respective parameters
 	 * 	<code>out.println(talk.toString());</code>	// print talk
 	 * Returns:	"trade with shop keep"
 	 * </pre> */
-	public talkOption(String optionFocus, char... is)
+	public talkOption(actor optionFocus, char... is)
 	{
 		super();
 		if(is == null)
@@ -46,17 +47,31 @@ public class talkOption extends option {
 			isDialog = true;
 			optionType = "talk with";
 		}
-		else if(is.toString().toLowerCase() == "retail")
+		else if(new String(is).toLowerCase().contains("retail") &&
+				new String(is).toLowerCase().contains("quest"))
+		{
+			isRetail = true;
+			isQuest = true;
+			optionType = "buy quest item from";
+		}
+		else if(new String(is).toLowerCase().contains("dialog") &&
+				new String(is).toLowerCase().contains("quest"))
+		{
+			isRetail = true;
+			isQuest = true;
+			optionType = "get quest from";
+		}
+		else if(new String(is).toLowerCase().contains("retail"))
 		{
 			isRetail = true;
 			optionType = "trade with";
 		}
-		else if(is.toString().toLowerCase() == "quest")
+		else if(new String(is).toLowerCase().contains("quest"))
 		{
 			isQuest = true;
-			optionType = "help";
+			optionType = "hand in quest to";
 		}
-		else if(is.toString().toLowerCase() == "dialog")
+		else if(new String(is).toLowerCase().contains("dialog"))
 		{
 			isDialog = true;
 			optionType = "talk with";
@@ -68,7 +83,7 @@ public class talkOption extends option {
 			optionType = "talk with";
 		}
 		
-		this.optionFocus = optionFocus;
+		this.optionFocus = optionFocus.name;
 		optionText = optionType + " " + optionFocus;
 	}
 	/** <pre>
