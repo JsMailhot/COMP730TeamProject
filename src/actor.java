@@ -449,4 +449,9 @@ public abstract class actor extends inventory {
 	{
 		return "taunt";
 	}
+	@Override
+	public String toString()
+	{
+		return name.toLowerCase();
+	}
 }
