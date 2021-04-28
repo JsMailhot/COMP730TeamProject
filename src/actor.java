@@ -32,7 +32,7 @@ public abstract class actor extends inventory {
 		ring = null;
 	}
 	/** <pre>
-	 * Simple that takes one parameter
+	 * Simple actor that takes one parameter
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(new ArrayList<item>);</code>	// simply call super!
 	 * </pre>*/
