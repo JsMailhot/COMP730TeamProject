@@ -19,6 +19,22 @@ public class room {
 		roomOptions = new ArrayList<option>();
 		actorList = new ArrayList<actor>();
 		itemList = new ArrayList<item>();
+		if(!roomOptions.contains(moveNorth))
+		{
+			roomOptions.add(moveNorth);
+		}
+		if(!roomOptions.contains(moveEast))
+		{
+			roomOptions.add(moveEast);
+		}
+		if(!roomOptions.contains(moveSouth))
+		{
+			roomOptions.add(moveSouth);
+		}
+		if(!roomOptions.contains(moveWest))
+		{
+			roomOptions.add(moveEast);
+		}
 	}
 	/** <pre>
 	 * Simple room with the require variable
@@ -34,6 +50,22 @@ public class room {
 		roomOptions = new ArrayList<option>();
 		actorList = new ArrayList<actor>();
 		itemList = new ArrayList<item>();
+		if(!roomOptions.contains(moveNorth))
+		{
+			roomOptions.add(moveNorth);
+		}
+		if(!roomOptions.contains(moveEast))
+		{
+			roomOptions.add(moveEast);
+		}
+		if(!roomOptions.contains(moveSouth))
+		{
+			roomOptions.add(moveSouth);
+		}
+		if(!roomOptions.contains(moveWest))
+		{
+			roomOptions.add(moveEast);
+		}
 	}
 	/** <pre>
 	 * Complex room with the require variables
@@ -50,6 +82,22 @@ public class room {
 		roomOptions = new ArrayList<option>();
 		actorList = new ArrayList<actor>();
 		itemList = new ArrayList<item>();
+		if(!roomOptions.contains(moveNorth))
+		{
+			roomOptions.add(moveNorth);
+		}
+		if(!roomOptions.contains(moveEast))
+		{
+			roomOptions.add(moveEast);
+		}
+		if(!roomOptions.contains(moveSouth))
+		{
+			roomOptions.add(moveSouth);
+		}
+		if(!roomOptions.contains(moveWest))
+		{
+			roomOptions.add(moveEast);
+		}
 	}
 	/** <pre>
 	 * Complex room with the require variables
@@ -65,6 +113,22 @@ public class room {
 		roomOptions = new ArrayList<option>();
 		actorList = new ArrayList<actor>();
 		itemList = new ArrayList<item>();
+		if(!roomOptions.contains(moveNorth))
+		{
+			roomOptions.add(moveNorth);
+		}
+		if(!roomOptions.contains(moveEast))
+		{
+			roomOptions.add(moveEast);
+		}
+		if(!roomOptions.contains(moveSouth))
+		{
+			roomOptions.add(moveSouth);
+		}
+		if(!roomOptions.contains(moveWest))
+		{
+			roomOptions.add(moveEast);
+		}
 	}
 	/** <pre>
 	 * Complex room with the require variables
@@ -80,6 +144,22 @@ public class room {
 		roomOptions = new ArrayList<option>();
 		actorList = new ArrayList<actor>();
 		itemList = new ArrayList<item>();
+		if(!roomOptions.contains(moveNorth))
+		{
+			roomOptions.add(moveNorth);
+		}
+		if(!roomOptions.contains(moveEast))
+		{
+			roomOptions.add(moveEast);
+		}
+		if(!roomOptions.contains(moveSouth))
+		{
+			roomOptions.add(moveSouth);
+		}
+		if(!roomOptions.contains(moveWest))
+		{
+			roomOptions.add(moveEast);
+		}
 	}
 	/** <pre>
 	 * Complex room with the require variables
@@ -95,6 +175,22 @@ public class room {
 		this.roomOptions = roomOptions;
 		actorList = new ArrayList<actor>();
 		itemList = new ArrayList<item>();
+		if(!roomOptions.contains(moveNorth))
+		{
+			roomOptions.add(moveNorth);
+		}
+		if(!roomOptions.contains(moveEast))
+		{
+			roomOptions.add(moveEast);
+		}
+		if(!roomOptions.contains(moveSouth))
+		{
+			roomOptions.add(moveSouth);
+		}
+		if(!roomOptions.contains(moveWest))
+		{
+			roomOptions.add(moveEast);
+		}
 	}
 	/** <pre>
 	 * Complex room with the require variables
@@ -110,6 +206,22 @@ public class room {
 		this.roomOptions = roomOptions;
 		this.actorList = actorList;
 		itemList = new ArrayList<item>();
+		if(!roomOptions.contains(moveNorth))
+		{
+			roomOptions.add(moveNorth);
+		}
+		if(!roomOptions.contains(moveEast))
+		{
+			roomOptions.add(moveEast);
+		}
+		if(!roomOptions.contains(moveSouth))
+		{
+			roomOptions.add(moveSouth);
+		}
+		if(!roomOptions.contains(moveWest))
+		{
+			roomOptions.add(moveEast);
+		}
 	}
 	/** <pre>
 	 * Complex room with the require variables
@@ -125,6 +237,22 @@ public class room {
 		this.roomOptions = roomOptions;
 		this.actorList = actorList;
 		this.itemList = itemList;
+		if(!roomOptions.contains(moveNorth))
+		{
+			roomOptions.add(moveNorth);
+		}
+		if(!roomOptions.contains(moveEast))
+		{
+			roomOptions.add(moveEast);
+		}
+		if(!roomOptions.contains(moveSouth))
+		{
+			roomOptions.add(moveSouth);
+		}
+		if(!roomOptions.contains(moveWest))
+		{
+			roomOptions.add(moveEast);
+		}
 	}
 	/** <pre>
 	 * The name of the room (ID)
@@ -177,6 +305,10 @@ public class room {
 	 * 	<code>room_itemList.itemList = new ArrayList<item>();</code>	// set the itemList to a new ArrayList<item> value
 	 * </pre> */
 	ArrayList<item> itemList;
+	private moveOption moveNorth = new moveOption("north", false);
+	private moveOption moveEast = new moveOption("east", false);
+	private moveOption moveSouth = new moveOption("south", false);
+	private moveOption moveWest = new moveOption("west", false);
 	/** <pre>
 	 * The function for adding an actor (and all that entails) to the actorList
 	 * Example of using addActor:
@@ -332,6 +464,130 @@ public class room {
 		{
 			interactOption interact_target = new interactOption(target, "equipable".toCharArray());
 			roomOptions.add(interact_target);
+		}
+	}
+	/** <pre>
+	 * The function for selecting an option
+	 * Example of using selectOption:
+	 * <code>	npc example_npc = new npc("shop keep");</code>	// generate a npc
+	 * 	<code>room example_room = new room();</code>	// generate an room
+	 * 	<code>example_room.addItem(example_npc);</code>	// add the npc to the room
+	 * 	<code>example_room.selectOption(example_room.roomOptions.get(0));</code>	// select the option
+	 * </pre> */
+	public void selectOption(talkOption target)
+	{
+		if(roomOptions.contains(target))
+		{
+			//	put conversation code here
+			if(target.isQuest && target.isRetail)
+			{
+				
+			}
+			else if(target.isQuest && target.isDialog)
+			{
+				quest npc_quest = null;
+				for(int i = 0; i < actorList.size(); i++)
+				{
+					if(npc_quest == null && target.optionText.contains(actorList.get(i).name.toLowerCase()))
+					{
+						npc_quest = ((npc) actorList.get(i)).Quest;
+						i = 0;
+					}
+					if(npc_quest != null && actorList.get(i).type.toLowerCase().contains("player") && !((player) actorList.get(i)).questList.contains(npc_quest))
+					{
+						((player) actorList.get(i)).questList.add(npc_quest);
+					}
+				}
+				roomOptions.remove(target);
+			}
+			if(target.isQuest)
+			{
+				
+			}
+		}
+	}
+	/** <pre>
+	 * The function for selecting an option
+	 * Example of using selectOption:
+	 * <code>	misc example_misc = new misc("chest");</code>	// generate a misc
+	 * 	<code>room example_room = new room();</code>	// generate an room
+	 * 	<code>example_room.addItem(example_misc);</code>	// add the misc to the room
+	 * 	<code>example_room.selectOption(example_room.roomOptions.get(0));</code>	// select the option
+	 * </pre> */
+	public room selectOption(moveOption target)
+	{
+		if(roomOptions.contains(target))
+		{
+			room new_room;
+			if(target.optionText.contains("north"))
+			{
+				new_room = new room("", "",this.roomX, this.roomY+1);
+			}
+			else if(target.optionText.contains("east"))
+			{
+				new_room = new room("", "",this.roomX+1, this.roomY);
+			}
+			else if(target.optionText.contains("south"))
+			{
+				new_room = new room("", "",this.roomX, this.roomY-1);
+			}
+			else
+			{
+				new_room = new room("", "",this.roomX-1, this.roomY+1);
+			}
+			return selectOption(new_room);
+		}
+		return null;
+	}
+	/** <pre>
+	 * The function for selecting an option
+	 * Example of using selectOption:
+	 * <code>	room example_room = new room();</code>	// generate an room
+	 * 	<code>room example_room2 = new room();</code>	// generate an room
+	 * 	<code>example_room.selectOption(example_room2);</code>	// select the option
+	 * </pre> */
+	public room selectOption(room target)
+	{
+		int player_index = 0;
+		for(int i = 0; i < this.actorList.size(); i++)
+		{
+			if(this.actorList.get(i).type.contains("player"))
+			{
+				player_index = i;
+			}
+		}
+		target.actorList.add(this.actorList.get(player_index));
+		this.actorList.remove(player_index);
+		return target;
+	}
+	/** <pre>
+	 * The function for selecting an option
+	 * Example of using selectOption:
+	 * <code>	npc example_npc = new npc("shop keep");</code>	// generate a npc
+	 * 	<code>room example_room = new room();</code>	// generate an room
+	 * 	<code>example_room.addItem(example_npc);</code>	// add the npc to the room
+	 * 	<code>example_room.selectOption(example_room.roomOptions.get(0));</code>	// select the option
+	 * </pre> */
+	public void selectOption(attackOption target)
+	{
+		if(roomOptions.contains(target))
+		{
+			//	put battle code here
+		}
+	}
+	/** <pre>
+	 * The function for selecting an option
+	 * Example of using selectOption:
+	 * <code>	misc example_misc = new misc("chest");</code>	// generate a misc
+	 * 	<code>room example_room = new room();</code>	// generate an room
+	 * 	<code>example_room.addItem(example_misc);</code>	// add the misc to the room
+	 * 	<code>example_room.selectOption(example_room.roomOptions.get(0));</code>	// select the option
+	 * </pre> */
+	public void selectOption(interactOption target)
+	{
+		if(roomOptions.contains(target))
+		{
+			//	put interaction code here
 		}
 	}
 }
