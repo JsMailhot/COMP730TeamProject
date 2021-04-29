@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 
 class tests {
 	stats test_stats;					// int healthPool, int attack, int defense, int expCap, int expCurrent
-	quest test_quest;					// 
+	quest test_quest;					// String questName, String questDesc, String questLocation, int questRewardGold
 	misc test_misc_item;				// String itemName, String itemDesc, stats qualities, String category, int price, char... is
 	weapon test_weapon_item;			// String itemName, String itemDesc, stats qualities, String category, int price, char... is
 	armor test_armor_item;				// String itemName, String itemDesc, stats qualities, String category, int price, char... is
@@ -20,7 +20,7 @@ class tests {
 	@BeforeEach
 	void setUp() throws Exception {
 		System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-		test_quest = new quest();
+		test_quest = new quest("Test Quest", "Test Quest Description", "Test Quest Location", 100);
 		test_misc_item = new misc("Test Misc", "Test Misc Description", new stats(5,5,5,0,0), "Misc", 50, "consumable, quest".toCharArray());
 		test_weapon_item = new weapon("Test Weapon", "Test Weapon Description", new stats(0,20,5,0,0), "Armor", 50, "counters".toCharArray());
 		test_armor_item = new armor("Test Armor", "Test Armor Description", new stats(0,0,5,0,0), "Armor", 50, "enchanted".toCharArray());
@@ -60,6 +60,46 @@ class tests {
 		for(option o : test_room.roomOptions)
 		{
 			System.out.println(o.toString());
+		}
+	}
+	@Test
+	@DisplayName("Player should be able to complete quests")
+	void quest_complete() {
+		System.out.println("Player can acquire quests from npcs\n");
+		test_room.addItem(test_misc_item);
+		test_room.addItem(test_weapon_item);
+		test_room.addItem(test_armor_item);
+		test_room.addActor(test_player);
+		test_room.addActor(test_enemy);
+		test_room.addActor(test_npc);
+		System.out.print("player quests(before):");
+		for(quest q : ((player) test_room.actorList.get(0)).questList)
+		{
+			System.out.println(q.questName);
+		}
+		System.out.println("\n\nroom options(before):");
+		for(option o : test_room.roomOptions)
+		{
+			System.out.println(o.optionText);
+		}
+		assertTrue(((player) test_room.actorList.get(0)).questList.size() == 0, "Player should have no quests");
+		for(int i = 0; i < test_room.roomOptions.size(); i++)
+		{
+			if(test_room.roomOptions.get(i).optionText.contains("get quest from"))
+			{
+				test_room.selectOption(((talkOption) test_room.roomOptions.get(i)));
+			}
+		}
+		assertTrue(((player) test_room.actorList.get(0)).questList.size() > 0, "Player should have no quests");
+		System.out.println("\n\nplayer quests(after):");
+		for(quest q : ((player) test_room.actorList.get(0)).questList)
+		{
+			System.out.println(q.questName);
+		}
+		System.out.println("\n\nroom options(after):");
+		for(option o : test_room.roomOptions)
+		{
+			System.out.println(o.optionText);
 		}
 	}
 	@Test
