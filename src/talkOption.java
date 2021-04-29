@@ -57,7 +57,7 @@ public class talkOption extends option {
 		else if(new String(is).toLowerCase().contains("dialog") &&
 				new String(is).toLowerCase().contains("quest"))
 		{
-			isRetail = true;
+			isDialog = true;
 			isQuest = true;
 			optionType = "get quest from";
 		}
