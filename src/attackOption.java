@@ -25,8 +25,8 @@ public class attackOption extends option {
 	public attackOption()
 	{
 		super();
-		optionType = "attack";
-		optionFocus = "nothing";
+		optionType = "attack".toLowerCase();
+		optionFocus = "nothing".toLowerCase();
 		optionText = optionType + " " + optionFocus;
 	}
 	/** <pre>
@@ -44,13 +44,13 @@ public class attackOption extends option {
 		if(attackFocus == null)
 		{
 			//	what do we do when we are given nothing?
-			optionFocus = "nothing";
+			optionFocus = "nothing".toLowerCase();
 		}
 		else
 		{
-			optionFocus = attackFocus.name;
+			optionFocus = attackFocus.name.toLowerCase();
 		}
-		optionType = "attack";
+		optionType = "attack".toLowerCase();
 		optionText = optionType + " " + optionFocus;
 	}
 	/** <pre>

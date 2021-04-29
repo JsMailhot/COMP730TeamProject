@@ -17,10 +17,10 @@ public abstract class item {
 	 * </pre> */
 	public item()
 	{
-		itemName = "Nothing";
-		itemDesc = "Empty";
+		itemName = "Nothing".toLowerCase();
+		itemDesc = "Empty".toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		price = 0;
 	}
 	/** <pre>
@@ -32,19 +32,19 @@ public abstract class item {
 	{
 		if(item.itemName == null)
 		{
-			this.itemName = "Nothing";
+			this.itemName = "Nothing".toLowerCase();
 		}
 		else
 		{
-			this.itemName = item.itemName;
+			this.itemName = item.itemName.toLowerCase();
 		}
 		if(item.itemDesc == null)
 		{
-			this.itemDesc = "Empty";
+			this.itemDesc = "Empty".toLowerCase();
 		}
 		else
 		{
-			this.itemDesc = item.itemDesc;
+			this.itemDesc = item.itemDesc.toLowerCase();
 		}
 		if(item.qualities == null)
 		{
@@ -56,11 +56,11 @@ public abstract class item {
 		}
 		if(item.category == null)
 		{
-			category = "All";
+			category = "All".toLowerCase();
 		}
 		else
 		{
-			this.category = item.category;
+			this.category = item.category.toLowerCase();
 		}
 		this.price = item.price;
 		if(item.isBroken)
@@ -86,17 +86,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		itemDesc = "Empty";
+		this.itemName = itemName.toLowerCase();
+		itemDesc = "Empty".toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -106,24 +99,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -133,31 +112,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		category = "All";
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		category = "All".toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -167,31 +125,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, String category)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
 		this.qualities = new stats();
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.category = category.toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -201,38 +138,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, String category)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		this.category = category.toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -242,38 +151,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, String category, int price)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		this.category = category.toLowerCase();
 		this.price = price;
 	}
 	/** <pre>
@@ -283,17 +164,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		itemDesc = "Empty";
+		this.itemName = itemName.toLowerCase();
+		itemDesc = "Empty".toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -325,24 +199,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -374,31 +234,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		category = "All";
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		category = "All".toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -430,31 +269,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, String category, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
 		this.qualities = new stats();
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.category = category.toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -486,38 +304,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, String category, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		this.category = category.toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -549,38 +339,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, String category, int price, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		this.category = category.toLowerCase();
 		this.price = price;
 		if(is == null)
 		{

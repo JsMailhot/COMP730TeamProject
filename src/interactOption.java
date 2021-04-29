@@ -81,8 +81,8 @@ public class interactOption extends option {
 			//	what do we do when we are given garbage?
 			optionType = "interact with the";
 		}
-		optionFocus = interactItem.itemName;
-		optionText = optionType + " " + optionFocus;
+		optionFocus = interactItem.itemName.toLowerCase();
+		optionText = (optionType + " " + optionFocus).toLowerCase();
 	}
 	/** <pre>
 	 * Boolean that determines if what is being interacted with can be put into the players inventory

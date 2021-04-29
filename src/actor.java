@@ -20,9 +20,9 @@ public abstract class actor extends inventory {
 	{
 		super();
 		Stats = new stats();
-		type = "Defualt Type";
-		name = "Default Name";
-		desc = "Default Desc";
+		type = "Defualt Type".toLowerCase();
+		name = "Default Name".toLowerCase();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
@@ -40,9 +40,9 @@ public abstract class actor extends inventory {
 	{
 		super(items);
 		Stats = new stats();
-		type = "Defualt Type";
-		name = "Default Name";
-		desc = "Default Desc";
+		type = "Defualt Type".toLowerCase();
+		name = "Default Name".toLowerCase();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
@@ -60,9 +60,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		Stats = new stats();
-		type = "Defualt Type";
-		name = "Default Name";
-		desc = "Default Desc";
+		type = "Defualt Type".toLowerCase();
+		name = "Default Name".toLowerCase();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
@@ -80,9 +80,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		type = "Defualt Type";
-		name = "Default Name";
-		desc = "Default Desc";
+		type = "Defualt Type".toLowerCase();
+		name = "Default Name".toLowerCase();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
@@ -100,9 +100,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		name = "Default Name";
-		desc = "Default Desc";
+		this.type = type.toLowerCase();
+		name = "Default Name".toLowerCase();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
@@ -120,9 +120,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		this.name = name;
-		desc = "Default Desc";
+		this.type = type.toLowerCase();
+		this.name = name.toLowerCase();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
@@ -140,9 +140,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		this.name = name;
-		this.desc = desc;
+		this.type = type.toLowerCase();
+		this.name = name.toLowerCase();
+		this.desc = desc.toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
 		health = Stats.healthPool;
@@ -160,9 +160,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		this.name = name;
-		this.desc = desc;
+		this.type = type.toLowerCase();
+		this.name = name.toLowerCase();
+		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		droppedGold = 0;
 		health = Stats.healthPool;
@@ -180,9 +180,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		this.name = name;
-		this.desc = desc;
+		this.type = type.toLowerCase();
+		this.name = name.toLowerCase();
+		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
 		health = Stats.healthPool;
@@ -200,9 +200,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		this.name = name;
-		this.desc = desc;
+		this.type = type.toLowerCase();
+		this.name = name.toLowerCase();
+		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
 		health = Stats.healthPool;
@@ -220,9 +220,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		this.name = name;
-		this.desc = desc;
+		this.type = type.toLowerCase();
+		this.name = name.toLowerCase();
+		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
 		health = Stats.healthPool;
@@ -240,9 +240,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		this.name = name;
-		this.desc = desc;
+		this.type = type.toLowerCase();
+		this.name = name.toLowerCase();
+		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
 		health = Stats.healthPool;
@@ -260,9 +260,9 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		this.name = name;
-		this.desc = desc;
+		this.type = type.toLowerCase();
+		this.name = name.toLowerCase();
+		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
 		health = Stats.healthPool;
