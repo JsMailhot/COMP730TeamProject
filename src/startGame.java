@@ -28,7 +28,7 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
 	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5, questButton, questButton1, questButton2, questButton3, questButton4, questButton5;
 	JTextArea mainTextArea;
-	int silverRing, gold, key;
+	int silverRing, gold, key, pelt;
 	int playerHPCap = 25;
 	String weapon, position, text, inventoryStatus, questStatus;
 	String clickSound, gameMusic, musicOnOff, cantuse;
@@ -52,6 +52,7 @@ public class startGame {
 	armor complex_armor = new armor("pants", "required to shop", new stats(), "enchanted".toCharArray()); // create a complex armor
 	quest NoQuest = new quest("Empty");
 	quest frosttrollquest = new quest("Kill Frost Troll", "The local guard wants me to kill a \n frost troll that took his ring.");
+	quest wolfquest = new quest("Hunt wolf", "The local inkeep wants me to hunt a wolf and bring him a pelt");
 	
 	int monsterHealth = 0;
 	int monsterAttack = 0;
@@ -67,6 +68,7 @@ public class startGame {
 	stats frostTrollStats = new stats(10, 3, 2, 0, 0);
 	stats wolfStats = new stats(15, 6, 2, 0, 0);
 	stats banditStats = new stats(20, 6, 2, 0, 0);
+	
 	
 	
 	enemy frostTroll = new enemy(0, new ArrayList<item>(), frostTrollStats, "Frost Troll", "Troll", "Frost Troll which is located in the coldest areas of the world",null, 2, new weapon());
@@ -681,6 +683,7 @@ public class startGame {
 		}
 		if(playerItem[slotNumber]==empty) {
 			playerItem[slotNumber] = wolfpelt;
+			pelt = 1;
 		}
 		else if (playerItem[slotNumber] != empty) {
 			mainTextArea.setText("You have too much stuff!");
@@ -869,10 +872,21 @@ public class startGame {
 		
 	}
 	public void InnQuest() {
+		
 		image = new ImageIcon(".//img//wolf.jpeg");
 		imageLabel.setIcon(image);
 		position ="InnQuest";
-		mainTextArea.setText("Inn Keeper: Aye Traveler,\nI'm in need of a wolf pelt. If you come\nacross one be sure to bring it to me\nas I will give you 15 gold for it.\n");
+		if (pelt == 1)
+		{
+			mainTextArea.setText("Thank you for getting the wolf's pelt! Here is 15 gold.");
+			player.gold = player.gold + 15;
+			playergoldlabelNumber.setText("" + player.gold);
+			quests[1] = NoQuest;
+		}
+		else {
+			mainTextArea.setText("Inn Keeper: Aye Traveler,\nI'm in need of a wolf pelt. If you come\nacross one be sure to bring it to me\nas I will give you 15 gold for it.\n");
+			quests[1] = wolfquest;
+		}
 		optionButtons.get(0).setText("Leave");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -1355,7 +1369,18 @@ public class startGame {
 				break;
 			case "InnQuest":
 				switch(yourChoice) {
-				case "c1": EverWinterInn(); break;
+				case "c1":
+					for (int i = 0 ; i < playerItem.length; i++) {
+						if (playerItem[i] == wolfpelt) {
+							itemUsed(i);
+							EverWinterInn(); 
+							break;
+							}
+						else {
+							EverWinterInn();
+						}
+					}
+					break; 
 				}
 				break;
 			case "drink":
