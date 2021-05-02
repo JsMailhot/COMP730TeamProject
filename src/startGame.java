@@ -434,6 +434,7 @@ public class startGame {
 	
 	public void north() {
 		image = new ImageIcon(".//img//overlook.jpeg");
+		imageLabel.setIcon(image);
 		position = "north";
 		if (playerHP == playerHPCap) {
 			playerHP = playerHP + 0;
