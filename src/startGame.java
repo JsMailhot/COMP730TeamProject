@@ -28,14 +28,9 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
 	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5, questButton, questButton1, questButton2, questButton3, questButton4, questButton5;
 	JTextArea mainTextArea;
-<<<<<<< HEAD
 	int silverRing, gold, key;
 	int playerHPCap = 25;
-	String weapon, position, text, inventoryStatus;
-=======
-	int playerHP, playerHPCap, silverRing, gold, key;
 	String weapon, position, text, inventoryStatus, questStatus;
->>>>>>> 1874c73b350d1a78104179caa0621440f344abdb
 	String clickSound, gameMusic, musicOnOff, cantuse;
 	ImageIcon image;
 	Font titleFont = new Font("Times New Roman", Font.BOLD, 82);
