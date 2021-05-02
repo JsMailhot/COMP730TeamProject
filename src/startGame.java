@@ -28,7 +28,7 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
 	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
 	JTextArea mainTextArea;
-	int playerHP, frostTrollHP, playerHPCap, silverRing, gold, key;
+	int playerHP, playerHPCap, silverRing, gold, key;
 	String weapon, position, text, inventoryStatus;
 	String clickSound, gameMusic, musicOnOff;
 	ImageIcon image;
@@ -53,7 +53,23 @@ public class startGame {
 	Item_Potion potion = new Item_Potion();
 	Item_Berry berry = new Item_Berry();
 	Item_Empty empty = new Item_Empty();
+	
+	stats frostTrollStats = new stats(10, 3, 2, 0, 0);
+	stats wolfStats = new stats(15, 6, 2, 0, 0);
+	
+	enemy frostTroll = new enemy(0, new ArrayList<item>(), frostTrollStats, "Frost Troll", "Troll", "Frost Troll which is located in the coldest areas of the world",null, 2, new weapon());
+	enemy wolf = new enemy(0, new ArrayList<item>(), wolfStats, "Frost Wolf", "Wolf", "Frost Wolves roam the dense forests",null, 2, new weapon());
+	
+	stats playerStats = new stats(25, 5, 5, 0, 0);
+	player Player = new player(10, new ArrayList<item>(), playerStats, "player", "playerName", "A young elf looking for adventure", null, 0, new weapon(), null, new armor());
+	
+	stats rustySwordStats = new stats(0, 5, 0, 0, 0);
+	weapon rustySword = new weapon("Rusty Sword", "An old rusty sword", rustySwordStats, "weapon", 5);
+	
+	stats stickStats = new stats(0, 3, 0, 0, 0);
+	weapon stickWeapon = new weapon("Stick", "A stick from the ground", stickStats, "weapon" , 2);
 
+	
 	
 	int i, soundCue;
 	
@@ -154,7 +170,7 @@ public class startGame {
 		con.add(mainTextPanel);
 
 		mainTextArea = new JTextArea();
-		mainTextArea.setBounds(50, 500, 550, 250);
+		mainTextArea.setBounds(0, 500, 550, 300);
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
 		mainTextArea.setFont(normalFont);
@@ -249,7 +265,7 @@ public class startGame {
 		weaponlabelName.setForeground(Color.white);
 		healthBarPanel.add(weaponlabelName);
 		
-		playergoldLabel = new JLabel("  Gold:");
+		playergoldLabel = new JLabel(" Gold:");
 		playergoldLabel.setFont(normalFont);
 		playergoldLabel.setForeground(Color.white);
 		healthBarPanel.add(playergoldLabel);
@@ -309,7 +325,6 @@ public class startGame {
 		inventoryPanel.add(itemButton3);
 		inventoryPanel.add(itemButton4);
 		inventoryPanel.add(itemButton5);
-		
 		inventoryPanel.setVisible(false);
 	
 		imagePanel = new JPanel();
@@ -330,14 +345,13 @@ public class startGame {
 
 	}
 	public void playerSetup() {
-		playerHP = 15;
+		playerStats.healthPool = 15;
+		player.gold = 10;
 		playerHPCap = 25;
-		frostTrollHP = 20;
-		weapon = "Stick";
-		gold = 10;
-		weaponlabelName.setText(weapon);
-		playerhplabelNumber.setText("" + playerHP);
-		playergoldlabelNumber.setText("" + gold);
+		weaponlabelName.setText(stickWeapon.toString());
+		playerhplabelNumber.setText("" + playerStats.healthPool);
+		playergoldlabelNumber.setText("" + player.gold);
+		player.primary = stickWeapon;
 		inventoryStatus = "close";
 		
 		playerItem[0] = potion;
@@ -346,7 +360,7 @@ public class startGame {
 		playerItem[3] = empty;
 		playerItem[4] = empty;
 
-		healthBar.setValue(playerHP);
+		healthBar.setValue(playerStats.healthPool);
 		
 		castleGate();
 
@@ -382,10 +396,10 @@ public class startGame {
 	public void attackGuard() {
 		position = "attackGuard";
 		mainTextArea.setText("Guard: Your being dumb thinking\n you can win.\nGuard hits you hard. \n(Take 2 DMG)");
-		playerHP = playerHP - 2;
-		healthBar.setValue(playerHP);
-		playerhplabelNumber.setText(""+playerHP);
-		if(playerHP < 0)
+		playerStats.healthPool = playerStats.healthPool - 2;
+		healthBar.setValue(playerStats.healthPool);
+		playerhplabelNumber.setText(""+playerStats.healthPool);
+		if(playerStats.healthPool < 0)
 		{
 			lose();
 		}
@@ -434,19 +448,20 @@ public class startGame {
 	
 	public void north() {
 		image = new ImageIcon(".//img//overlook.jpeg");
+		imageLabel.setIcon(image);
 		position = "north";
-		if (playerHP == playerHPCap) {
-			playerHP = playerHP + 0;
+		if (playerStats.healthPool == playerHPCap) {
+			playerStats.healthPool = playerStats.healthPool + 0;
 			mainTextArea.setText("You find yourself at a overlook.\nYou take a moment to enjoy the view.\n(You have full health)\n "
 					+ "You see a hidden path to the right which \nheads into the forest..");
 		}
-		else if (playerHP != playerHPCap) {
-		playerHP = playerHP + 1;
-		healthBar.setValue(playerHP);
+		else if (playerStats.healthPool != playerHPCap) {
+		playerStats.healthPool = playerStats.healthPool + 1;
+		healthBar.setValue(playerStats.healthPool);
 		mainTextArea.setText("You find yourself at an overlook.\nYou take a moment to enjoy the view.\n(HP healed by 1)\n"
 		+ "You see a hidden path to the right which \nheads into the forest..");
 		}
-		playerhplabelNumber.setText(""+playerHP);
+		playerhplabelNumber.setText(""+playerStats.healthPool);
 		optionButtons.get(0).setText("Go Back South");
 		optionButtons.get(1).setText("Go On The Path");
 		optionButtons.get(2).setText("");
@@ -455,14 +470,15 @@ public class startGame {
 	}
 	public void east() {
 		position = "east";
-		if (weapon == "Long Sword")
+		if (player.primary.itemName == "rusty sword")
 		{
-			mainTextArea.setText("You find yourself at a large oak tree.");
+			mainTextArea.setText("You find yourself at a large oak tree." + stickWeapon.itemName);
 		}
 		else {
-			mainTextArea.setText("You find yourself at a large oak tree.\n You find a Long Sword under the tree!\n(You obtain a Long Sword)\n");
-			weapon = "Long Sword";
-			weaponlabelName.setText(weapon);
+			mainTextArea.setText("You find yourself at a large oak tree.\n You find a Rusty Sword under the tree!\n(You obtain a Rusty Sword)\n");
+			
+			player.primary = rustySword; 
+			weaponlabelName.setText(player.primary.itemName);
 		}
 
 		optionButtons.get(0).setText("Go South");
@@ -473,6 +489,8 @@ public class startGame {
 
 	}
 	public void sky() {
+		image = new ImageIcon(".//img//sky.jpeg");
+		imageLabel.setIcon(image);
 		position = "sky";
 		mainTextArea.setText("As you look up at the sky you can see smoke in the air to the North up in the trees...");
 		optionButtons.get(0).setText("Back");
@@ -498,7 +516,7 @@ public class startGame {
 	}
 	public void fight() {
 		position = "fight";
-		mainTextArea.setText("Monster HP: " + frostTrollHP + "\n\nWhat do you do?");
+		mainTextArea.setText("Monster HP: " + frostTrollStats.healthPool + "\n\nWhat do you do?");
 		optionButtons.get(0).setText("Attack");
 		optionButtons.get(1).setText("Run");
 		optionButtons.get(2).setText("");
@@ -508,17 +526,8 @@ public class startGame {
 	}
 	public void attack() {
 		position = "attack";
-		int playerDamage = 0;
-		if(weapon.equals("Stick"))
-		{
-		playerDamage = new java.util.Random().nextInt(5);
-		}
-		else if(weapon.equals("Long Sword"))
-		{
-		playerDamage = new java.util.Random().nextInt(10);
-		}
-		mainTextArea.setText("You attacked the monster and gave\n" + playerDamage + " damage!");
-		frostTrollHP = frostTrollHP - playerDamage;
+		mainTextArea.setText("You attacked the monster and gave\n" + player.primary.qualities.attack + " damage!");
+		frostTrollStats.healthPool = frostTrollStats.healthPool - player.primary.qualities.attack;
 		optionButtons.get(0).setText(">");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -528,12 +537,10 @@ public class startGame {
 	}
 	public void monsterAttack() {
 		position = "monsterAttack";
-		int monsterDamage = 0;
-		monsterDamage = new java.util.Random().nextInt(3);
-		mainTextArea.setText("The monster attacked you and gave\n" + monsterDamage + " damage!");
-		playerHP = playerHP - monsterDamage;
-		playerhplabelNumber.setText(""+playerHP);
-		healthBar.setValue(playerHP);
+		mainTextArea.setText("The monster attacked you and gave\n" + frostTrollStats.attack + " damage!");
+		playerStats.healthPool = playerStats.healthPool - frostTrollStats.attack;
+		playerhplabelNumber.setText(""+playerStats.healthPool);
+		healthBar.setValue(playerStats.healthPool);
 		optionButtons.get(0).setText(">");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -548,8 +555,8 @@ public class startGame {
 			int droppedGold = 0;
 			droppedGold = new java.util.Random().nextInt(5) + 1;
 			mainTextArea.setText("You defeated the monster!\n The troll dropped " + droppedGold + " gold!\n\n");
-			gold = gold + droppedGold;
-			playergoldlabelNumber.setText(""+gold);
+			player.gold = player.gold + droppedGold;
+			playergoldlabelNumber.setText(""+player.gold);
 			
 		}
 		else 
@@ -557,9 +564,19 @@ public class startGame {
 			mainTextArea.setText("You defeated the monster!\n The troll dropped a ring\n\n(You obtained a Silver Ring)");
 			silverRing =1;
 		}
-		frostTrollHP = 20;
+		frostTrollStats.healthPool = 10;
 		optionButtons.get(0).setText("Go east");
 		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+
+	}
+	public void wolfWin() {
+		position ="wolfWin";
+		mainTextArea.setText("You defeated the wolf. ");
+		optionButtons.get(0).setText("Continue Straight");
+		optionButtons.get(1).setText("Go South");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
@@ -605,6 +622,8 @@ public class startGame {
 		
 	}
 	public void path() {
+		image = new ImageIcon(".//img//denseForest.jpeg");
+		imageLabel.setIcon(image);
 		position ="path";
 		mainTextArea.setText("You find yourself on a beaten down path.\n Looks like its heading into the dense forest.");
 		optionButtons.get(0).setText("Go South");
@@ -619,18 +638,105 @@ public class startGame {
 		imageLabel.setIcon(image);
 		position ="townEntrance";
 		mainTextArea.setText("You use the key you obtained from the guard to open the castle gate. As soon as you enter"
-				+ "\nyou see to the left a Shop Keep, to the right\n you see a crowd of villagers gathered around a stage...");
+				+ "\nyou see to the left a Shop Keep, to the right\n you see a crowd gathered around a stage...");
 		optionButtons.get(0).setText("Go Left");
 		optionButtons.get(1).setText("Go Right");
 		optionButtons.get(2).setText("Continue Straight");
 		optionButtons.get(3).setText("Back to Castle Gate");
 		optionButtons.get(4).setText("");
 	}
+	public void Stage() {
+		image = new ImageIcon(".//img//town.jpeg");
+		imageLabel.setIcon(image);
+		position ="Stage";
+		mainTextArea.setText("You see people gathered around a stage with what looks to be the king on stage.");
+		optionButtons.get(0).setText("Listen in");
+		optionButtons.get(1).setText("Go Back to Center");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+	}
+	
+	public void CloseUpStage() {
+		image = new ImageIcon(".//img//town.jpeg");
+		imageLabel.setIcon(image);
+		position ="CloseUpStage";
+		mainTextArea.setText("You hear the King speak loudly to the people\\n King: People of EverWinter, there is a dragon\\nroaming amongst us, reeking havoc across\\nour lands. We ask for the bravest heros to\\nhelp us kill The Great Kong. If you are up\\nfor the challenge head North into the forest\\nto find Kong. Whoever brings the head to me will receive a great reward..");
+		optionButtons.get(0).setText("Go Back to Center");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+	}
+	public void WolfStage() {
+		image = new ImageIcon(".//img//wolf.jpeg");
+		imageLabel.setIcon(image);
+		position ="WolfStage";
+		mainTextArea.setText("As you continue straight you hear a howl as a\nbig ice wolf jumps in front of you ready to\nattack.");
+		optionButtons.get(0).setText("Attack");
+		optionButtons.get(1).setText("Run");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	
+	
+	public void NorthForestSplit() {
+		image = new ImageIcon(".//img//mountain.jpeg");
+		imageLabel.setIcon(image);
+		position ="NorthForestSplit";
+		mainTextArea.setText("As you continue to walk the path you see it\nleading straight up a mountain. You also\nnotice to your right a path leading to a small\nstream and to your left a path leading to an\nold house...");
+		optionButtons.get(0).setText("Straight");
+		optionButtons.get(1).setText("Right");
+		optionButtons.get(2).setText("Left");
+		optionButtons.get(3).setText("South");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void toMountain() {
+		image = new ImageIcon(".//img//wolf.jpeg");
+		imageLabel.setIcon(image);
+		position ="WolfStage";
+		mainTextArea.setText("As you begin the hike up the mountain you\ncome across a ...");
+		optionButtons.get(0).setText("Attack");
+		optionButtons.get(1).setText("Run");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void right() {
+		image = new ImageIcon(".//img//wolf.jpeg");
+		imageLabel.setIcon(image);
+		position ="WolfStage";
+		mainTextArea.setText("As you continue straight you hear a howl as a\nbig ice wolf jumps in front of you ready to\nattack.");
+		optionButtons.get(0).setText("Attack");
+		optionButtons.get(1).setText("Run");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void left() {
+		image = new ImageIcon(".//img//wolf.jpeg");
+		imageLabel.setIcon(image);
+		position ="WolfStage";
+		mainTextArea.setText("As you continue straight you hear a howl as a\nbig ice wolf jumps in front of you ready to\nattack.");
+		optionButtons.get(0).setText("Attack");
+		optionButtons.get(1).setText("Run");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	
+
 	
 	public void itemUsed(int slotNumber) {
 		
-		if (playerHP >= playerHPCap) {
-			playerHP = playerHP + 0;
+		if (playerStats.healthPool >= playerHPCap) {
+			playerStats.healthPool = playerStats.healthPool + 0;
 			playerItem[slotNumber] = empty;
 			itemButton1.setText(playerItem[0].name);
 			itemButton2.setText(playerItem[1].name);
@@ -640,9 +746,9 @@ public class startGame {
 		}
 		else {
 		
-		playerHP = playerHP + playerItem[slotNumber].healingValue;
-		playerhplabelNumber.setText(""+playerHP);
-		healthBar.setValue(playerHP);
+		playerStats.healthPool = playerStats.healthPool + playerItem[slotNumber].healingValue;
+		playerhplabelNumber.setText(""+playerStats.healthPool);
+		healthBar.setValue(playerStats.healthPool);
 		playerItem[slotNumber] = empty;
 		itemButton1.setText(playerItem[0].name);
 		itemButton2.setText(playerItem[1].name);
@@ -824,6 +930,7 @@ public class startGame {
 			case "path":
 				switch(yourChoice) {
 				case "c1": north(); break;
+				case "c2": WolfStage(); break;
 				}
 				break;
 			case "fight":
@@ -835,8 +942,12 @@ public class startGame {
 			case "attack":
 				switch(yourChoice) {
 				case "c1":
-					if(frostTrollHP<1) {
+					if(frostTrollStats.healthPool<1) {
 						win();
+					}
+					else if (wolfStats.healthPool <1)
+					{
+						wolfWin();
 					}
 					else {
 						monsterAttack();
@@ -847,7 +958,7 @@ public class startGame {
 			case "monsterAttack":
 				switch(yourChoice) {
 				case "c1":
-					if(playerHP<1) {
+					if(playerStats.healthPool<1) {
 						lose();
 					}
 					else {
@@ -869,9 +980,40 @@ public class startGame {
 			case "townEntrance":
 				switch(yourChoice) {
 				case "c1": TownEntrance(); break;
-				case "c2": TownEntrance(); break;
+				case "c2": Stage(); break;
 				case "c3": TownEntrance(); break;
 				case "c4": castleGate(); break;
+				}
+				break;
+			case "Stage":
+				switch(yourChoice) {
+				case "c1": CloseUpStage(); break;
+				case "c2": TownEntrance(); break;
+				}
+				break;
+			case "CloseUpStage":
+				switch(yourChoice) {
+				case "c1": TownEntrance(); break;
+				}
+				break;
+			case "WolfStage":
+				switch(yourChoice) {
+				case "c1": wolfWin(); break;
+				case "c2": path(); break;
+				}
+				break;
+			case "wolfWin":
+				switch(yourChoice) {
+				case "c1": NorthForestSplit(); break;
+				case "c2": path(); break;
+				}
+				break;
+			case "NorthForestSplit":
+				switch(yourChoice) {
+				case "c1": toMountain(); break;
+				case "c2": right(); break;
+				case "c3": left(); break;
+				case "c4": path(); break;
 				}
 				break;
 
