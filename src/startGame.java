@@ -24,13 +24,18 @@ import static java.lang.System.out;
 public class startGame {
 	Boolean enterGame;
 	Container con;
-	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel, inventoryPanel;
+	JPanel titleScreenPanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerinfoPanel, imagePanel, namePanel, inputPanel, healthBarPanel, inventoryPanel, questPanel;
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
-	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
+	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5, questButton, questButton1, questButton2, questButton3, questButton4, questButton5;
 	JTextArea mainTextArea;
+<<<<<<< HEAD
 	int silverRing, gold, key;
 	int playerHPCap = 25;
 	String weapon, position, text, inventoryStatus;
+=======
+	int playerHP, playerHPCap, silverRing, gold, key;
+	String weapon, position, text, inventoryStatus, questStatus;
+>>>>>>> 1874c73b350d1a78104179caa0621440f344abdb
 	String clickSound, gameMusic, musicOnOff, cantuse;
 	ImageIcon image;
 	Font titleFont = new Font("Times New Roman", Font.BOLD, 82);
@@ -48,11 +53,15 @@ public class startGame {
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 	InventoryHandler invHandler = new InventoryHandler();
-	armor complex_armor = new armor("pants", "required to shop", new stats(), "enchanted".toCharArray());	// create a complex armor
+	QuestHandler qsHandler = new QuestHandler();
+	armor complex_armor = new armor("pants", "required to shop", new stats(), "enchanted".toCharArray()); // create a complex armor
+	quest NoQuest = new quest("Empty");
+	quest frosttrollquest = new quest("Kill Frost Troll", "The local guard wants me to kill a \n frost troll that took his ring.");
 	
 	int monsterHealth = 0;
 	int monsterAttack = 0;
 	
+	quest[] quests = new quest[5];
 	SuperItem[] playerItem = new SuperItem[5];
 	Item_Potion potion = new Item_Potion();
 	Item_Berry berry = new Item_Berry();
@@ -243,6 +252,15 @@ public class startGame {
 		inventoryButton.setActionCommand("inventoryButton");
 		choiceButtonPanel.add(inventoryButton);
 		
+		questButton = new JButton("[ Quests ]");
+		questButton.setBackground(Color.white);
+		questButton.setForeground(Color.black);
+		questButton.setFont(normalFont);
+		questButton.setFocusPainted(false);
+		questButton.addActionListener(qsHandler);
+		questButton.setActionCommand("quests");
+		choiceButtonPanel.add(questButton);
+		
 		
 
 		healthBarPanel = new JPanel();
@@ -290,6 +308,12 @@ public class startGame {
 		inventoryPanel.setLayout(new GridLayout(5,1));
 		con.add(inventoryPanel);
 		
+		questPanel = new JPanel();
+		questPanel.setBounds(600, 600, 200, 200);
+		questPanel.setBackground(Color.black);
+		questPanel.setLayout(new GridLayout(5,1));
+		con.add(questPanel);
+		
 		itemButton1 = new JButton();
 		itemButton1.setBackground(Color.black);
 		itemButton1.setForeground(Color.white);
@@ -330,12 +354,59 @@ public class startGame {
 		itemButton5.addActionListener(invHandler);
 		itemButton5.setActionCommand("item5");
 		
+		questButton1 = new JButton();
+		questButton1.setBackground(Color.black);
+		questButton1.setForeground(Color.white);
+		questButton1.setFont(normalFont);
+		questButton1.setFocusPainted(false);
+		questButton1.addActionListener(qsHandler);
+		questButton1.setActionCommand("quest1");
+		
+		questButton2 = new JButton();
+		questButton2.setBackground(Color.black);
+		questButton2.setForeground(Color.white);
+		questButton2.setFont(normalFont);
+		questButton2.setFocusPainted(false);
+		questButton2.addActionListener(qsHandler);
+		questButton2.setActionCommand("quest2");
+		
+		questButton3 = new JButton();
+		questButton3.setBackground(Color.black);
+		questButton3.setForeground(Color.white);
+		questButton3.setFont(normalFont);
+		questButton3.setFocusPainted(false);
+		questButton3.addActionListener(qsHandler);
+		questButton3.setActionCommand("quest3");
+		
+		questButton4 = new JButton();
+		questButton4.setBackground(Color.black);
+		questButton4.setForeground(Color.white);
+		questButton4.setFont(normalFont);
+		questButton4.setFocusPainted(false);
+		questButton4.addActionListener(qsHandler);
+		questButton4.setActionCommand("quest4");
+		
+		questButton5 = new JButton();
+		questButton5.setBackground(Color.black);
+		questButton5.setForeground(Color.white);
+		questButton5.setFont(normalFont);
+		questButton5.setFocusPainted(false);
+		questButton5.addActionListener(qsHandler);
+		questButton5.setActionCommand("quest5");
+		
 		inventoryPanel.add(itemButton1);
 		inventoryPanel.add(itemButton2);
 		inventoryPanel.add(itemButton3);
 		inventoryPanel.add(itemButton4);
 		inventoryPanel.add(itemButton5);
 		inventoryPanel.setVisible(false);
+		
+		questPanel.add(questButton1);
+		questPanel.add(questButton2);
+		questPanel.add(questButton3);
+		questPanel.add(questButton4);
+		questPanel.add(questButton5);
+		questPanel.setVisible(false);
 	
 		imagePanel = new JPanel();
 		imagePanel.setBounds(50, 50, 600, 250);
@@ -363,12 +434,19 @@ public class startGame {
 		playergoldlabelNumber.setText("" + player.gold);
 		player.primary = stickWeapon;
 		inventoryStatus = "close";
+		questStatus = "close";
 		
 		playerItem[0] = potion;
 		playerItem[1] = berry;
 		playerItem[2] = empty;
 		playerItem[3] = empty;
 		playerItem[4] = empty;
+		
+		quests[0] = NoQuest;
+		quests[1] = NoQuest;
+		quests[2] = NoQuest;
+		quests[3] = NoQuest;
+		quests[4] = NoQuest;
 
 		healthBar.setValue(playerStats.healthPool);
 		
@@ -396,6 +474,7 @@ public class startGame {
 		}
 		else {
 			mainTextArea.setText("Guard: Hail Traveler,\nA Frost Troll has taken our city's priceless\nSilver Ring.\nIf you happen to see the troll\ntry to get the ring back for us would ya?\n(QUEST: Find Silver Ring!)");
+			quests[0] = frosttrollquest;
 		}
 		optionButtons.get(0).setText("Back");
 		optionButtons.get(1).setText("");
@@ -650,7 +729,8 @@ public class startGame {
 		position = "enterCity";
 		mainTextArea.setText("Guard: Oh you killed that frost troll!\n Thank you so much! You are a hero!\n Welcome to the town of EverWinter\n\n Take this key to enter the city gates.");
 		key = 1; 
-		silverRing = 0; 
+		silverRing = 0;
+		quests[0] = NoQuest;
 		optionButtons.get(0).setText("Enter Town");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -873,6 +953,9 @@ public class startGame {
 		}
 		
 	}
+	public void questDesc(int slotNumber) {
+		mainTextArea.setText(quests[slotNumber].questName + " : " + quests[slotNumber].questDesc);
+	}
 
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
@@ -906,6 +989,7 @@ public class startGame {
 					optionButtons.get(3).setVisible(false);
 					optionButtons.get(4).setVisible(false);
 					musicButton.setVisible(false);
+					questButton.setVisible(false);
 					inventoryPanel.setVisible(true);
 					itemButton1.setText(playerItem[0].name);
 					itemButton2.setText(playerItem[1].name);
@@ -921,6 +1005,7 @@ public class startGame {
 					optionButtons.get(3).setVisible(true);
 					optionButtons.get(4).setVisible(true);
 					musicButton.setVisible(true);
+					questButton.setVisible(true);
 					inventoryPanel.setVisible(false);
 					inventoryStatus = "close";
 				}
@@ -984,6 +1069,61 @@ public class startGame {
 				itemUsed(4);
 				mainTextArea.setText("Restored Health");
 				}
+				break;
+			}
+
+		}
+
+	}
+	public class QuestHandler implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			
+			String yourChoice = event.getActionCommand();
+			
+			switch(yourChoice) {
+			case "quests":
+				if(questStatus.equals("close")) {
+					optionButtons.get(0).setVisible(false);
+					optionButtons.get(1).setVisible(false);
+					optionButtons.get(2).setVisible(false);
+					optionButtons.get(3).setVisible(false);
+					optionButtons.get(4).setVisible(false);
+					musicButton.setVisible(false);
+					inventoryButton.setVisible(false);
+					questPanel.setVisible(true);
+					questButton1.setText(quests[0].questName);
+					questButton2.setText(quests[1].questName);
+					questButton3.setText(quests[2].questName);
+					questButton4.setText(quests[3].questName);
+					questButton5.setText(quests[4].questName);
+					questStatus = "open";
+				}
+				else if (questStatus.equals("open")) {
+					optionButtons.get(0).setVisible(true);
+					optionButtons.get(1).setVisible(true);
+					optionButtons.get(2).setVisible(true);
+					optionButtons.get(3).setVisible(true);
+					optionButtons.get(4).setVisible(true);
+					musicButton.setVisible(true);
+					inventoryButton.setVisible(true);
+					questPanel.setVisible(false);
+					questStatus = "close";
+				}
+				break;
+			case "quest1":
+				questDesc(0);
+				break;
+			case "quest2":
+				questDesc(1);
+				break;
+			case "quest3":
+				questDesc(2);
+				break;
+			case "quest4":
+				questDesc(3);
+				break;
+			case "quest5":
+				questDesc(4);
 				break;
 			}
 
