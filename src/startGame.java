@@ -576,7 +576,7 @@ public class startGame {
 				slotNumber++;
 			}
 			if(playerItem[slotNumber]==empty) {
-				mainTextArea.setText("You defeated the monster!\\n The troll dropped a ring\\n\\n(You obtained a Silver Ring");
+				mainTextArea.setText("You defeated the monster!\n The troll dropped a ring\n\n(You obtained a Silver Ring");
 				playerItem[slotNumber] = silverring;
 			}
 			else if (playerItem[slotNumber] != empty) {
@@ -685,7 +685,7 @@ public class startGame {
 		image = new ImageIcon(".//img//town.jpeg");
 		imageLabel.setIcon(image);
 		position ="CloseUpStage";
-		mainTextArea.setText("You hear the King speak loudly to the people\\n King: People of EverWinter, there is a dragon\\nroaming amongst us, reeking havoc across\\nour lands. We ask for the bravest heros to\\nhelp us kill The Great Kong. If you are up\\nfor the challenge head North into the forest\\nto find Kong. Whoever brings the head to me will receive a great reward..");
+		mainTextArea.setText("You hear the King speak loudly to the people\n King: People of EverWinter, there is a dragon\nroaming amongst us, reeking havoc across\nour lands. We ask for the bravest heros to\nhelp us kill The Great Kong. If you are up\nfor the challenge head North into the forest\nto find Kong. Whoever brings the head to me will receive a great reward..");
 		optionButtons.get(0).setText("Go Back to Center");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
