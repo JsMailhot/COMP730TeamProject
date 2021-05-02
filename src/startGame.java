@@ -30,7 +30,7 @@ public class startGame {
 	JTextArea mainTextArea;
 	int playerHP, playerHPCap, silverRing, gold, key;
 	String weapon, position, text, inventoryStatus;
-	String clickSound, gameMusic, musicOnOff;
+	String clickSound, gameMusic, musicOnOff, cantuse;
 	ImageIcon image;
 	Font titleFont = new Font("Times New Roman", Font.BOLD, 82);
 	Font normalFont = new Font("Times New Roman", Font.ITALIC, 24);
@@ -49,10 +49,12 @@ public class startGame {
 	InventoryHandler invHandler = new InventoryHandler();
 	armor complex_armor = new armor("pants", "required to shop", new stats(), "enchanted".toCharArray());	// create a complex armor
 	
+	
 	SuperItem[] playerItem = new SuperItem[5];
 	Item_Potion potion = new Item_Potion();
 	Item_Berry berry = new Item_Berry();
 	Item_Empty empty = new Item_Empty();
+	silverRing silverring = new silverRing();
 	
 	stats frostTrollStats = new stats(10, 3, 2, 0, 0);
 	stats wolfStats = new stats(15, 6, 2, 0, 0);
@@ -470,9 +472,9 @@ public class startGame {
 	}
 	public void east() {
 		position = "east";
-		if (player.primary.itemName == "rusty sword")
+		if (player.primary == rustySword)
 		{
-			mainTextArea.setText("You find yourself at a large oak tree." + stickWeapon.itemName);
+			mainTextArea.setText("You find yourself at a large oak tree.");
 		}
 		else {
 			mainTextArea.setText("You find yourself at a large oak tree.\n You find a Rusty Sword under the tree!\n(You obtain a Rusty Sword)\n");
@@ -561,7 +563,17 @@ public class startGame {
 		}
 		else 
 		{
-			mainTextArea.setText("You defeated the monster!\n The troll dropped a ring\n\n(You obtained a Silver Ring)");
+			int slotNumber = 0;
+			while (playerItem[slotNumber] != empty && slotNumber <4) {
+				slotNumber++;
+			}
+			if(playerItem[slotNumber]==empty) {
+				mainTextArea.setText("You defeated the monster!\\n The troll dropped a ring\\n\\n(You obtained a Silver Ring");
+				playerItem[slotNumber] = silverring;
+			}
+			else if (playerItem[slotNumber] != empty) {
+				mainTextArea.setText("You have too much stuff!");
+			}
 			silverRing =1;
 		}
 		frostTrollStats.healthPool = 10;
@@ -811,19 +823,49 @@ public class startGame {
 				}
 				break;
 			case "item1":
+				if (playerItem[0] == silverring) {
+					mainTextArea.setText("Can't use a ring");
+				}
+				else {
 				itemUsed(0);
+				mainTextArea.setText("Restored Health");
+				}
 				break;
 			case "item2":
+				if (playerItem[1] == silverring) {
+					mainTextArea.setText("Can't use a ring");
+				}
+				else {
 				itemUsed(1);
+				mainTextArea.setText("Restored Health");
+				}
 				break;
 			case "item3":
+				if (playerItem[2] == silverring) {
+					mainTextArea.setText("Can't use a ring");
+				}
+				else {
 				itemUsed(2);
+				mainTextArea.setText("Restored Health");
+				}
 				break;
 			case "item4":
+				if (playerItem[3] == silverring) {
+					mainTextArea.setText("Can't use a ring");
+				}
+				else {
 				itemUsed(3);
+				mainTextArea.setText("Restored Health");
+				}
 				break;
 			case "item5":
+				if (playerItem[4] == silverring) {
+					mainTextArea.setText("Can't use a ring");
+				}
+				else {
 				itemUsed(4);
+				mainTextArea.setText("Restored Health");
+				}
 				break;
 			}
 
@@ -858,14 +900,19 @@ public class startGame {
 			case "castleGate":
 				switch(yourChoice) {
 				case "c3":
-					if(silverRing ==1)
-					{
-						enterCity();
+					for (int i = 0 ; i < playerItem.length; i++) {
+						if (playerItem[i] == silverring) {
+							itemUsed(i);
+							enterCity(); 
+							break;
+							}
+						else {
+							talkGuard();
+						}
 					}
-					else {
-						talkGuard();
-					}
-					break;
+					break; 
+					
+					
 				case "c1": 
 					if (key == 1)
 						{
