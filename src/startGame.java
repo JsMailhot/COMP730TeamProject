@@ -49,6 +49,8 @@ public class startGame {
 	InventoryHandler invHandler = new InventoryHandler();
 	armor complex_armor = new armor("pants", "required to shop", new stats(), "enchanted".toCharArray());	// create a complex armor
 	
+	int monsterHealth = 0;
+	int monsterAttack = 0;
 	
 	SuperItem[] playerItem = new SuperItem[5];
 	Item_Potion potion = new Item_Potion();
@@ -516,31 +518,33 @@ public class startGame {
 		optionButtons.get(4).setText("");
 
 	}
-	public void fight() {
+	public int fight(int healthPool) {
 		position = "fight";
-		mainTextArea.setText("Monster HP: " + frostTrollStats.healthPool + "\n\nWhat do you do?");
+		mainTextArea.setText("Monster HP: " + healthPool + "\n\nWhat do you do?");
 		optionButtons.get(0).setText("Attack");
 		optionButtons.get(1).setText("Run");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
+		return healthPool;
 
 	}
-	public void attack() {
+	public int attack(int monsterHealth) {
 		position = "attack";
 		mainTextArea.setText("You attacked the monster and gave\n" + player.primary.qualities.attack + " damage!");
-		frostTrollStats.healthPool = frostTrollStats.healthPool - player.primary.qualities.attack;
+		monsterHealth = monsterHealth - player.primary.qualities.attack;
 		optionButtons.get(0).setText(">");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
+		return monsterHealth;
 
 	}
-	public void monsterAttack() {
+	public void monsterAttack(int monsterAttack) {
 		position = "monsterAttack";
-		mainTextArea.setText("The monster attacked you and gave\n" + frostTrollStats.attack + " damage!");
-		playerStats.healthPool = playerStats.healthPool - frostTrollStats.attack;
+		mainTextArea.setText("The monster attacked you and gave\n" + monsterAttack + " damage!");
+		playerStats.healthPool = playerStats.healthPool - monsterAttack;
 		playerhplabelNumber.setText(""+playerStats.healthPool);
 		healthBar.setValue(playerStats.healthPool);
 		optionButtons.get(0).setText(">");
@@ -965,7 +969,8 @@ public class startGame {
 				break;
 			case "west":
 				switch(yourChoice) {
-				case "c1": fight(); break;
+				case "c1": monsterHealth = fight(frostTrollStats.healthPool); 
+							monsterAttack = frostTrollStats.attack; break;
 				case "c2": crossRoad(); break;
 				}
 				break;
@@ -982,22 +987,23 @@ public class startGame {
 				break;
 			case "fight":
 				switch(yourChoice) {
-				case "c1": attack(); break;
+				case "c1": monsterHealth = attack(monsterHealth); break;
 				case "c2": crossRoad(); break;
 				}
 				break;
 			case "attack":
 				switch(yourChoice) {
 				case "c1":
-					if(frostTrollStats.healthPool<1) {
-						win();
-					}
-					else if (wolfStats.healthPool <1)
-					{
-						wolfWin();
+					if(monsterHealth<1) {
+						if (monsterAttack == 3) {
+						   win();
+						}
+						else if (monsterAttack == 6) {
+							   wolfWin();
+							}
 					}
 					else {
-						monsterAttack();
+						monsterAttack(monsterAttack);
 					}
 					 break;
 				}
@@ -1009,7 +1015,7 @@ public class startGame {
 						lose();
 					}
 					else {
-						fight();
+						fight(monsterHealth);
 					}
 					 break;
 				}
@@ -1045,7 +1051,8 @@ public class startGame {
 				break;
 			case "WolfStage":
 				switch(yourChoice) {
-				case "c1": wolfWin(); break;
+				case "c1": monsterHealth = fight(wolfStats.healthPool); 
+				monsterAttack = wolfStats.attack; break;
 				case "c2": path(); break;
 				}
 				break;
