@@ -28,7 +28,8 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
 	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5;
 	JTextArea mainTextArea;
-	int playerHP, playerHPCap, silverRing, gold, key;
+	int silverRing, gold, key;
+	int playerHPCap = 25;
 	String weapon, position, text, inventoryStatus;
 	String clickSound, gameMusic, musicOnOff, cantuse;
 	ImageIcon image;
@@ -57,6 +58,7 @@ public class startGame {
 	Item_Berry berry = new Item_Berry();
 	Item_Empty empty = new Item_Empty();
 	silverRing silverring = new silverRing();
+	wolfPelt wolfpelt = new wolfPelt();
 	
 	stats frostTrollStats = new stats(10, 3, 2, 0, 0);
 	stats wolfStats = new stats(15, 6, 2, 0, 0);
@@ -69,7 +71,7 @@ public class startGame {
 	
 	
 	stats playerStats = new stats(25, 5, 5, 0, 0);
-	player Player = new player(10, new ArrayList<item>(), playerStats, "player", "playerName", "A young elf looking for adventure", null, 0, new weapon(), null, new armor());
+	player Player = new player(25, new ArrayList<item>(), playerStats, "player", "playerName", "A young elf looking for adventure", null, 0, new weapon(), null, new armor());
 	
 	stats rustySwordStats = new stats(0, 5, 0, 0, 0);
 	weapon rustySword = new weapon("Rusty Sword", "An old rusty sword", rustySwordStats, "weapon", 5);
@@ -259,8 +261,8 @@ public class startGame {
 		playerhplabelNumber.setFont(normalFont);
 		playerhplabelNumber.setForeground(Color.white);
 		healthBarPanel.add(playerhplabelNumber);
-		healthBar = new JProgressBar(0, 15);
-		healthBar.setPreferredSize(new Dimension(200, 30));
+		healthBar = new JProgressBar(0, 25);
+		healthBar.setPreferredSize(new Dimension(200, 25));
 		healthBar.setBackground(Color.red);
 		healthBar.setForeground(Color.green);
 		healthBarPanel.add(healthBar);
@@ -353,7 +355,7 @@ public class startGame {
 
 	}
 	public void playerSetup() {
-		playerStats.healthPool = 15;
+		playerStats.healthPool = 25;
 		player.gold = 10;
 		playerHPCap = 25;
 		weaponlabelName.setText(stickWeapon.toString());
@@ -560,7 +562,7 @@ public class startGame {
 	}
 	public void win() {
 		position ="win";
-		if (silverRing == 1) 
+		if (silverRing == 1 || key == 1) 
 		{
 			int droppedGold = 0;
 			droppedGold = new java.util.Random().nextInt(5) + 1;
@@ -596,8 +598,20 @@ public class startGame {
 		position ="wolfWin";
 		int droppedGold = 0;
 		droppedGold = new java.util.Random().nextInt(10) + 1;
-		mainTextArea.setText("You defeated the wolf!\n The wolf dropped " + droppedGold + " gold!\n\n");
+		mainTextArea.setText("You defeated the wolf!\nThe wolf dropped " + droppedGold + " gold and a fur pelt!\n\n");
 		player.gold = player.gold + droppedGold;
+		
+		int slotNumber = 0;
+		while (playerItem[slotNumber] != empty && slotNumber <4) {
+			slotNumber++;
+		}
+		if(playerItem[slotNumber]==empty) {
+			playerItem[slotNumber] = wolfpelt;
+		}
+		else if (playerItem[slotNumber] != empty) {
+			mainTextArea.setText("You have too much stuff!");
+		}
+		
 		playergoldlabelNumber.setText(""+player.gold);
 		optionButtons.get(0).setText("Continue Straight");
 		optionButtons.get(1).setText("Go South");
@@ -661,7 +675,7 @@ public class startGame {
 		image = new ImageIcon(".//img//town.jpeg");
 		imageLabel.setIcon(image);
 		position ="townEntrance";
-		mainTextArea.setText("You use the key you obtained from the guard to open the castle gate. As soon as you enter"
+		mainTextArea.setText("You use the key you obtained from the guard to open the castle gate. As soon as you enter\nstraight ahead you see the EverWinter Inn,"
 				+ "\nyou see to the left a Shop Keep, to the right\n you see a crowd gathered around a stage...");
 		optionButtons.get(0).setText("Go Left");
 		optionButtons.get(1).setText("Go Right");
@@ -755,6 +769,83 @@ public class startGame {
 		
 	}
 	
+	public void EverWinterInn() {
+		image = new ImageIcon(".//img//wolf.jpeg");
+		imageLabel.setIcon(image);
+		position ="EverWinterInn";
+		mainTextArea.setText("Inn Keeper: Hello Traveler!\nWhat might I do for you?\n");
+		optionButtons.get(0).setText("Mead: 2 Gold");
+		optionButtons.get(1).setText("Wine: 2 Gold");
+		optionButtons.get(2).setText("Mystical Ale: 10 Gold");
+		optionButtons.get(3).setText("Talk to Inn Keeper");
+		optionButtons.get(4).setText("Leave");
+		
+	}
+	public void drink() {
+		image = new ImageIcon(".//img//wolf.jpeg");
+		imageLabel.setIcon(image);
+		position ="drink";
+		mainTextArea.setText("Inn Keeper: Hello Traveler!\nWhat might I do for you?\n");
+		optionButtons.get(0).setText("Mead: 2 Gold");
+		optionButtons.get(1).setText("Wine: 2 Gold");
+		optionButtons.get(2).setText("Mystical Ale: 10 Gold");
+		optionButtons.get(3).setText("Talk to Inn Keeper");
+		optionButtons.get(4).setText("Leave");
+		
+	}
+	public void InnQuest() {
+		image = new ImageIcon(".//img//wolf.jpeg");
+		imageLabel.setIcon(image);
+		position ="InnQuest";
+		mainTextArea.setText("Inn Keeper: Aye Traveler,\nI'm in need of a wolf pelt. If you come\nacross one be sure to bring it to me\nas I will give you 15 gold for it.\n");
+		optionButtons.get(0).setText("Leave");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+	}
+	public void drink(int drinkcost) {
+		image = new ImageIcon(".//img//wolf.jpeg");
+		imageLabel.setIcon(image);
+		position ="drink";
+		if (drinkcost == 2)
+		{
+			player.gold = player.gold - 2;
+			playergoldlabelNumber.setText("" + player.gold);
+			mainTextArea.setText("You drink the Mead and feel refreshed\n You are back to full health.");
+			playerStats.healthPool = playerHPCap;
+			healthBar.setValue(playerStats.healthPool);
+			playerhplabelNumber.setText("" + playerStats.healthPool);
+		}
+		else if (drinkcost == 3)
+		{
+			player.gold = player.gold - 3;
+			playergoldlabelNumber.setText("" + player.gold);
+			mainTextArea.setText("You drink the Wine and feel refreshed\n You are back to full health.");
+			playerStats.healthPool = playerHPCap;
+			playerhplabelNumber.setText("" + playerStats.healthPool);
+			healthBar.setValue(playerStats.healthPool);
+		}
+		else if (drinkcost == 10)
+		{
+			player.gold = player.gold - 10;
+			playergoldlabelNumber.setText("" + player.gold);
+			mainTextArea.setText("\n");
+			mainTextArea.setText("You drink the Mystical Ale and feel refreshed but different..\nYou are back to full health and you've gained 5 HP to your total HP.");
+			playerHPCap = playerHPCap + 5;
+			playerStats.healthPool = playerHPCap;
+			playerStats.healthPool = playerHPCap;
+			playerhplabelNumber.setText("" + playerStats.healthPool);
+			healthBar.setPreferredSize(new Dimension(200, playerStats.healthPool));
+			healthBar.setValue(playerStats.healthPool);
+		}
+		optionButtons.get(0).setText("Leave");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+	}
+	
 
 	
 	public void itemUsed(int slotNumber) {
@@ -838,6 +929,9 @@ public class startGame {
 				if (playerItem[0] == silverring) {
 					mainTextArea.setText("Can't use a ring");
 				}
+				else if (playerItem[0] == wolfpelt) {
+					mainTextArea.setText("Can't use a wolf pelt");
+				}
 				else {
 				itemUsed(0);
 				mainTextArea.setText("Restored Health");
@@ -846,6 +940,9 @@ public class startGame {
 			case "item2":
 				if (playerItem[1] == silverring) {
 					mainTextArea.setText("Can't use a ring");
+				}
+				else if (playerItem[1] == wolfpelt) {
+					mainTextArea.setText("Can't use a wolf pelt");
 				}
 				else {
 				itemUsed(1);
@@ -856,6 +953,9 @@ public class startGame {
 				if (playerItem[2] == silverring) {
 					mainTextArea.setText("Can't use a ring");
 				}
+				else if (playerItem[2] == wolfpelt) {
+					mainTextArea.setText("Can't use a wolf pelt");
+				}
 				else {
 				itemUsed(2);
 				mainTextArea.setText("Restored Health");
@@ -865,6 +965,9 @@ public class startGame {
 				if (playerItem[3] == silverring) {
 					mainTextArea.setText("Can't use a ring");
 				}
+				else if (playerItem[3] == wolfpelt) {
+					mainTextArea.setText("Can't use a wolf pelt");
+				}
 				else {
 				itemUsed(3);
 				mainTextArea.setText("Restored Health");
@@ -873,6 +976,9 @@ public class startGame {
 			case "item5":
 				if (playerItem[4] == silverring) {
 					mainTextArea.setText("Can't use a ring");
+				}
+				else if (playerItem[4] == wolfpelt) {
+					mainTextArea.setText("Can't use a wolf pelt");
 				}
 				else {
 				itemUsed(4);
@@ -1042,7 +1148,7 @@ public class startGame {
 				switch(yourChoice) {
 				case "c1": TownEntrance(); break;
 				case "c2": Stage(); break;
-				case "c3": TownEntrance(); break;
+				case "c3": EverWinterInn(); break;
 				case "c4": castleGate(); break;
 				}
 				break;
@@ -1076,6 +1182,50 @@ public class startGame {
 				case "c2": right(); break;
 				case "c3": left(); break;
 				case "c4": path(); break;
+				}
+				break;
+			case "EverWinterInn":
+				switch(yourChoice) {
+				
+				case "c1": 
+					if (player.gold >= 2) {
+						drink(2); break;
+					}
+					else 
+					{
+						mainTextArea.setText("Sorry you can't afford that right now.");
+						break;
+					}
+				case "c2": 
+					if (player.gold >= 3) {
+						drink(3); break;
+					}
+					else 
+					{
+						mainTextArea.setText("Sorry you can't afford that right now.");
+						break;
+					}
+				case "c3":	
+					if (player.gold >= 10) {
+						drink(10); break;
+				}
+					else 
+					{
+						mainTextArea.setText("Sorry you can't afford that right now.");
+						break;
+					}
+				case "c4": InnQuest(); break;
+				case "c5": TownEntrance(); break;
+				}
+				break;
+			case "InnQuest":
+				switch(yourChoice) {
+				case "c1": EverWinterInn(); break;
+				}
+				break;
+			case "drink":
+				switch(yourChoice) {
+				case "c1": EverWinterInn(); break;
 				}
 				break;
 
