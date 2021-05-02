@@ -60,9 +60,13 @@ public class startGame {
 	
 	stats frostTrollStats = new stats(10, 3, 2, 0, 0);
 	stats wolfStats = new stats(15, 6, 2, 0, 0);
+	stats banditStats = new stats(20, 6, 2, 0, 0);
+	
 	
 	enemy frostTroll = new enemy(0, new ArrayList<item>(), frostTrollStats, "Frost Troll", "Troll", "Frost Troll which is located in the coldest areas of the world",null, 2, new weapon());
 	enemy wolf = new enemy(0, new ArrayList<item>(), wolfStats, "Frost Wolf", "Wolf", "Frost Wolves roam the dense forests",null, 2, new weapon());
+	enemy bandit = new enemy(0, new ArrayList<item>(), wolfStats, "Frost Wolf", "Wolf", "Frost Wolves roam the dense forests",null, 2, new weapon());
+	
 	
 	stats playerStats = new stats(25, 5, 5, 0, 0);
 	player Player = new player(10, new ArrayList<item>(), playerStats, "player", "playerName", "A young elf looking for adventure", null, 0, new weapon(), null, new armor());
@@ -590,7 +594,11 @@ public class startGame {
 	}
 	public void wolfWin() {
 		position ="wolfWin";
-		mainTextArea.setText("You defeated the wolf. ");
+		int droppedGold = 0;
+		droppedGold = new java.util.Random().nextInt(10) + 1;
+		mainTextArea.setText("You defeated the wolf!\n The wolf dropped " + droppedGold + " gold!\n\n");
+		player.gold = player.gold + droppedGold;
+		playergoldlabelNumber.setText(""+player.gold);
 		optionButtons.get(0).setText("Continue Straight");
 		optionButtons.get(1).setText("Go South");
 		optionButtons.get(2).setText("");
