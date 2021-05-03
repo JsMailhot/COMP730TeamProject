@@ -53,6 +53,7 @@ public class startGame {
 	quest NoQuest = new quest("Empty");
 	quest frosttrollquest = new quest("Kill Frost Troll", "The local guard wants me to kill a \n frost troll that took his ring.");
 	quest wolfquest = new quest("Hunt wolf", "The local inkeep wants me to hunt a wolf and bring him a pelt");
+	quest mainquest = new quest("Kill Dragon", "The local king wants me to kill the dragon in the north and bring him its head");
 	
 	int monsterHealth = 0;
 	int monsterAttack = 0;
@@ -778,6 +779,7 @@ public class startGame {
 		imageLabel.setIcon(image);
 		position ="CloseUpStage";
 		mainTextArea.setText("You hear the King speak loudly to the people\n King: People of EverWinter, there is a dragon\nroaming amongst us, reeking havoc across\nour lands. We ask for the bravest heros to\nhelp us kill The Great Kong. If you are up\nfor the challenge head North into the forest\nto find Kong. Whoever brings the head to me will receive a great reward..");
+		quests[2] = mainquest;
 		optionButtons.get(0).setText("Go Back to Center");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
