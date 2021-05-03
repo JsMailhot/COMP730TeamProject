@@ -982,21 +982,28 @@ public class startGame {
 		optionButtons.get(4).setText("Leave");
 		
 	}
+	
+	public void InnQuestComplete() {
+		image = new ImageIcon(".//img//innkeeper.jpeg");
+		imageLabel.setIcon(image);
+		position ="InnQuestComplete";
+		mainTextArea.setText("Thank you for getting the wolf's pelt! Here is 15 gold.");
+		player.gold = player.gold + 15;
+		playergoldlabelNumber.setText("" + player.gold);
+		quests[1] = NoQuest;
+		optionButtons.get(0).setText("Leave");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
 	public void InnQuest() {
 		image = new ImageIcon(".//img//innkeeper.jpeg");
 		imageLabel.setIcon(image);
 		position ="InnQuest";
-		if (pelt == 1)
-		{
-			mainTextArea.setText("Thank you for getting the wolf's pelt! Here is 15 gold.");
-			player.gold = player.gold + 15;
-			playergoldlabelNumber.setText("" + player.gold);
-			quests[1] = NoQuest;
-		}
-		else {
-			mainTextArea.setText("Inn Keeper: Aye Traveler,\nI'm in need of a wolf pelt. If you come\nacross one be sure to bring it to me\nas I will give you 15 gold for it.\n");
-			quests[1] = wolfquest;
-		}
+		mainTextArea.setText("Inn Keeper: Aye Traveler,\nI'm in need of a wolf pelt. If you come\nacross one be sure to bring it to me\nas I will give you 15 gold for it.\n");
+		quests[1] = wolfquest;
 		optionButtons.get(0).setText("Leave");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -1538,11 +1545,11 @@ public class startGame {
 					for (int i = 0 ; i < playerItem.length; i++) {
 						if (playerItem[i] == wolfpelt) {
 							itemUsed(i);
-							EverWinterInn(); 
+							InnQuestComplete(); 
 							break;
 							}
 						else {
-							EverWinterInn();
+							EverWinterInn(); 
 						}
 					}
 					break; 
@@ -1635,6 +1642,13 @@ public class startGame {
 				switch(yourChoice) {
 				case "c1":
 					NorthForestSplit();
+					break;
+				}
+				break;
+			case "InnQuestComplete":
+				switch(yourChoice) {
+				case "c1":
+					EverWinterInn();
 					break;
 				}
 				break;
