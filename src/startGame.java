@@ -617,7 +617,7 @@ public class startGame {
 		position = "fight";
 		mainTextArea.setText("Monster HP: " + healthPool + "\n\nWhat do you do?");
 		optionButtons.get(0).setText("Attack");
-		optionButtons.get(1).setText("");
+		optionButtons.get(1).setText("Run");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
@@ -898,7 +898,7 @@ public class startGame {
 		image = new ImageIcon(".//img//goblin.jpg");
 		imageLabel.setIcon(image);
 		position ="GoblinStage";
-		mainTextArea.setText("As you continue along the stream\na golbin jumps out to\nattack.");
+		mainTextArea.setText("As you continue along the stream\na goblin jumps out to attack.");
 		optionButtons.get(0).setText("Attack");
 		optionButtons.get(1).setText("Run");
 		optionButtons.get(2).setText("");
@@ -1146,6 +1146,9 @@ public class startGame {
 				else if (playerItem[0] == wolfpelt) {
 					mainTextArea.setText("Can't use a wolf pelt");
 				}
+				else if (playerItem[0] == dragonhead) {
+					mainTextArea.setText("Can't use a dragon head");
+				}
 				else {
 				itemUsed(0);
 				mainTextArea.setText("Restored Health");
@@ -1157,6 +1160,9 @@ public class startGame {
 				}
 				else if (playerItem[1] == wolfpelt) {
 					mainTextArea.setText("Can't use a wolf pelt");
+				}
+				else if (playerItem[1] == dragonhead) {
+					mainTextArea.setText("Can't use a dragon head");
 				}
 				else {
 				itemUsed(1);
@@ -1170,6 +1176,9 @@ public class startGame {
 				else if (playerItem[2] == wolfpelt) {
 					mainTextArea.setText("Can't use a wolf pelt");
 				}
+				else if (playerItem[2] == dragonhead) {
+					mainTextArea.setText("Can't use a dragon head");
+				}
 				else {
 				itemUsed(2);
 				mainTextArea.setText("Restored Health");
@@ -1182,6 +1191,9 @@ public class startGame {
 				else if (playerItem[3] == wolfpelt) {
 					mainTextArea.setText("Can't use a wolf pelt");
 				}
+				else if (playerItem[3] == dragonhead) {
+					mainTextArea.setText("Can't use a dragon head");
+				}
 				else {
 				itemUsed(3);
 				mainTextArea.setText("Restored Health");
@@ -1193,6 +1205,9 @@ public class startGame {
 				}
 				else if (playerItem[4] == wolfpelt) {
 					mainTextArea.setText("Can't use a wolf pelt");
+				}
+				else if (playerItem[4] == dragonhead) {
+					mainTextArea.setText("Can't use a dragon head");
 				}
 				else {
 				itemUsed(4);
@@ -1371,6 +1386,24 @@ public class startGame {
 			case "fight":
 				switch(yourChoice) {
 				case "c1": monsterHealth = attack(monsterHealth); break;
+				case "c2": 
+						if (monsterAttack == 3) {
+						   crossRoad();
+						}
+						else if (monsterAttack == 6) {
+							   path();
+							}
+						else if (monsterAttack == 12)
+						{
+							NorthForestSplit();
+						}
+						else if (monsterAttack == 9) {
+							   NorthForestSplit();
+							}
+						else if (monsterAttack == 14) {
+							NorthForestSplit();
+
+						}
 				}
 				break;
 			case "attack":
