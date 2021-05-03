@@ -46,32 +46,32 @@ public class interactOption extends option {
 			//	what do we do when we are given nothing?
 			optionType = "interact with the";
 		}
-		else if(is.toString().toLowerCase() == "pickupable")
+		else if(new String(is).toLowerCase().contains("pickupable"))
 		{
 			isPickupable = true;
 			optionType = "pick up the";
 		}
-		else if(is.toString().toLowerCase() == "unlockable")
+		else if(new String(is).toLowerCase().contains("unlockable"))
 		{
 			isUnlockable = true;
 			optionType = "unlock the";
 		}
-		else if(is.toString().toLowerCase() == "movable")
+		else if(new String(is).toLowerCase().contains("movable"))
 		{
 			isMoveable = true;
 			optionType = "move the";
 		}
-		else if(is.toString().toLowerCase() == "equipable")
+		else if(new String(is).toLowerCase().contains("equipable"))
 		{
 			isEquipable = true;
 			optionType = "equip the";
 		}
-		else if(is.toString().toLowerCase() == "consumable")
+		else if(new String(is).toLowerCase().contains("consumable"))
 		{
 			isConsumable = true;
 			optionType = "consume the";
 		}
-		else if(is.toString().toLowerCase() == "destroyable")
+		else if(new String(is).toLowerCase().contains("destroyable"))
 		{
 			isDestructable = true;
 			optionType = "destroy the";
@@ -81,8 +81,8 @@ public class interactOption extends option {
 			//	what do we do when we are given garbage?
 			optionType = "interact with the";
 		}
-		optionFocus = interactItem.itemName;
-		optionText = optionType + " " + optionFocus;
+		optionFocus = interactItem.itemName.toLowerCase();
+		optionText = (optionType + " " + optionFocus).toLowerCase();
 	}
 	/** <pre>
 	 * Boolean that determines if what is being interacted with can be put into the players inventory

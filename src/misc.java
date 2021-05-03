@@ -20,11 +20,47 @@ public class misc extends item {
 		super();
 	}
 	/** <pre>
-	 * Complex misc evaluates to key
-	 * Example of creating a complex misc to print its itemName:
+	 * Simple misc evaluates to key
+	 * Example of creating a Simple misc to print its itemName:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
-	 * 	<code>misc complex_misc = new misc("key");</code>	// create a complex misc
-	 * 	<code>out.println(complex_misc.toString());</code>	// print complex_misc
+	 * 	<code>misc Simple_misc = new misc("key");</code>	// create a Simple misc
+	 * 	<code>misc Simple_misc2 = new misc(Simple_misc);</code>	// create a Simple misc
+	 * 	<code>out.println(Simple_misc2.toString());</code>	// print complex_misc
+	 * Returns:	"key"
+	 * </pre> */
+	public misc(misc misc)
+	{
+		super(misc);
+		if(misc.isConsumable)
+		{
+			isConsumable = true;
+			this.itemName = "edible "+itemName;
+		}
+		if(misc.isThrowable)
+		{
+			isThrowable = true;
+			this.itemName = "projectile "+itemName;
+		}
+	}
+	/** <pre>
+	 * Simple misc evaluates to key
+	 * Example of creating a Simple misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>item Simple_item = new item("key");</code>	// create a Simple item
+	 * 	<code>misc Simple_misc = new misc(Simple_item);</code>	// create a Simple misc
+	 * 	<code>out.println(Simple_misc.toString());</code>	// print Simple_misc
+	 * Returns:	"key"
+	 * </pre> */
+	public misc(item item)
+	{
+		super(item);
+	}
+	/** <pre>
+	 * Simple misc evaluates to key
+	 * Example of creating a Simple misc to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>misc Simple_misc = new misc("key");</code>	// create a Simple misc
+	 * 	<code>out.println(Simple_misc.toString());</code>	// print Simple_misc
 	 * Returns:	"key"
 	 * </pre> */
 	public misc(String itemName)
@@ -108,20 +144,15 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -142,20 +173,15 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -176,20 +202,15 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -210,20 +231,15 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -244,20 +260,15 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -278,20 +289,15 @@ public class misc extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("consumable"))
+			if(new String(is).toLowerCase().contains("consumable"))
 			{
 				isConsumable = true;
-				this.itemName = "edible "+itemName;
+				this.itemName = "edible " + this.itemName;
 			}
-			if(is.toString().toLowerCase().contains("throwable"))
+			if(new String(is).toLowerCase().contains("throwable"))
 			{
 				isThrowable = true;
-				this.itemName = "projectile "+itemName;
-			}
-			if(is.toString().toLowerCase().contains("broken"))
-			{
-				isBroken = true;
-				this.itemName = "broken "+itemName;
+				this.itemName = "projectile " + this.itemName;
 			}
 		}
 	}
@@ -304,7 +310,7 @@ public class misc extends item {
 	 * 	<code>out.println(misc_player.items[0].toString());</code>	// print misc (index may vary)
 	 * Returns:	"edible rock"
 	 * </pre> */
-	Boolean isConsumable;
+	Boolean isConsumable = false;
 	/** <pre>
 	 * Boolean that determines if the misc can be thrown
 	 * Example of an misc that is enchanted:
@@ -314,6 +320,6 @@ public class misc extends item {
 	 * 	<code>out.println(misc_player.items[0].toString());</code>	// print misc (index may vary)
 	 * Returns:	"projectile rock"
 	 * </pre> */
-	Boolean isThrowable;
+	Boolean isThrowable = false;
 
 }	

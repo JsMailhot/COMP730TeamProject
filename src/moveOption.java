@@ -48,7 +48,7 @@ public class moveOption extends option {
 		}
 		else
 		{
-			optionText = optionType + " " + optionFocus;
+			optionText = (optionType + " " + optionFocus).toLowerCase();
 		}
 	}
 	/** <pre>

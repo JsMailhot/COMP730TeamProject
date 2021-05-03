@@ -17,30 +17,79 @@ public abstract class item {
 	 * </pre> */
 	public item()
 	{
-		itemName = "Nothing";
-		itemDesc = "Empty";
+		itemName = "Nothing".toLowerCase();
+		itemDesc = "Empty".toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		price = 0;
 	}
 	/** <pre>
-	 * Complex item only requires a string variable
+	 * Simple item only requires a string variable
+	 * Example of generating a complex item inside extended class:
+	 * <code>	super(new item());</code>	// call super with the variable
+	 * </pre> */
+	public item(item item)
+	{
+		if(item.itemName == null)
+		{
+			this.itemName = "Nothing".toLowerCase();
+		}
+		else
+		{
+			this.itemName = item.itemName.toLowerCase();
+		}
+		if(item.itemDesc == null)
+		{
+			this.itemDesc = "Empty".toLowerCase();
+		}
+		else
+		{
+			this.itemDesc = item.itemDesc.toLowerCase();
+		}
+		if(item.qualities == null)
+		{
+			this.qualities = new stats();
+		}
+		else
+		{
+			this.qualities = item.qualities;
+		}
+		if(item.category == null)
+		{
+			category = "All".toLowerCase();
+		}
+		else
+		{
+			this.category = item.category.toLowerCase();
+		}
+		this.price = item.price;
+		if(item.isBroken)
+		{
+			isBroken = true;
+			this.itemName = "broken "+itemName;
+		}
+		if(item.isQuest)
+		{
+			isQuest = true;
+			this.itemName = "quest "+itemName;
+		}
+		if(item.isUsable)
+		{
+			isUsable = true;
+			this.itemName = "usable "+itemName;
+		}
+	}
+	/** <pre>
+	 * Simple item only requires a string variable
 	 * Example of generating a complex item inside extended class:
 	 * <code>	super("stick");</code>	// call super with the variable
 	 * </pre> */
 	public item(String itemName)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		itemDesc = "Empty";
+		this.itemName = itemName.toLowerCase();
+		itemDesc = "Empty".toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -50,24 +99,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -77,31 +112,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		category = "All";
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		category = "All".toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -111,31 +125,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, String category)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
 		this.qualities = new stats();
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.category = category.toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -145,38 +138,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, String category)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		this.category = category.toLowerCase();
 		this.price = 0;
 	}
 	/** <pre>
@@ -186,38 +151,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, String category, int price)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		this.category = category.toLowerCase();
 		this.price = price;
 	}
 	/** <pre>
@@ -227,17 +164,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		itemDesc = "Empty";
+		this.itemName = itemName.toLowerCase();
+		itemDesc = "Empty".toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -245,17 +175,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -269,24 +199,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
 		qualities = new stats();
-		category = "All";
+		category = "All".toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -294,17 +210,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -318,31 +234,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		category = "All";
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		category = "All".toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -350,17 +245,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -374,31 +269,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, String category, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
 		this.qualities = new stats();
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.category = category.toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -406,17 +280,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -430,38 +304,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, String category, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		this.category = category.toLowerCase();
 		this.price = 0;
 		if(is == null)
 		{
@@ -469,17 +315,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;
@@ -493,38 +339,10 @@ public abstract class item {
 	 * </pre> */
 	public item(String itemName, String itemDesc, stats qualities, String category, int price, char... is)
 	{
-		if(itemName == null)
-		{
-			this.itemName = "Nothing";
-		}
-		else
-		{
-			this.itemName = itemName;
-		}
-		if(itemDesc == null)
-		{
-			this.itemDesc = "Empty";
-		}
-		else
-		{
-			this.itemDesc = itemDesc;
-		}
-		if(qualities == null)
-		{
-			this.qualities = new stats();
-		}
-		else
-		{
-			this.qualities = qualities;
-		}
-		if(category == null)
-		{
-			category = "All";
-		}
-		else
-		{
-			this.category = category;
-		}
+		this.itemName = itemName.toLowerCase();
+		this.itemDesc = itemDesc.toLowerCase();
+		this.qualities = qualities;
+		this.category = category.toLowerCase();
 		this.price = price;
 		if(is == null)
 		{
@@ -532,17 +350,17 @@ public abstract class item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("broken"))
+			if(new String(is).toLowerCase().contains("broken"))
 			{
 				isBroken = true;
 				this.itemName = "broken "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("quest"))
+			if(new String(is).toLowerCase().contains("quest"))
 			{
 				isQuest = true;
 				this.itemName = "quest "+itemName;
 			}
-			if(is.toString().toLowerCase().contains("usable"))
+			if(new String(is).toLowerCase().contains("usable"))
 			{
 				isUsable = true;
 				this.itemName = "usable "+itemName;

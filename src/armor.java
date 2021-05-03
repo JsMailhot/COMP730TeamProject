@@ -20,7 +20,38 @@ public class armor extends item {
 		super();
 	}
 	/** <pre>
-	 * Complex armor evaluates to pants
+	 * Simple armor evaluates to shirt
+	 * Example of creating a Simple armor to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>armor Simple_armor = new armor("shirt");</code>	// create a Simple armor
+	 * 	<code>armor Simple_armor2 = new armor(Simple_armor);</code>	// create a Simple armor
+	 * 	<code>out.println(Simple_armor2.toString());</code>	// print complex_armor
+	 * Returns:	"shirt"
+	 * </pre> */
+	public armor(armor armor)
+	{
+		super(armor);
+		if(armor.isEnchanted)
+		{
+			isEnchanted = true;
+			this.itemName = "enchanted "+itemName;
+		}
+	}
+	/** <pre>
+	 * Simple armor evaluates to shirt
+	 * Example of creating a Simple armor to print its itemName:
+	 * <code>	import static java.lang.System.out;</code>	// import print method
+	 * 	<code>item Simple_item = new item("shirt");</code>	// create a Simple item
+	 * 	<code>armor Simple_armor = new armor(Simple_item);</code>	// create a Simple armor
+	 * 	<code>out.println(Simple_armor.toString());</code>	// print Simple_armor
+	 * Returns:	"shirt"
+	 * </pre> */
+	public armor(item item)
+	{
+		super(item);
+	}
+	/** <pre>
+	 * Simple armor evaluates to pants
 	 * Example of creating a complex armor to print its itemName:
 	 * <code>	import static java.lang.System.out;</code>	// import print method
 	 * 	<code>armor complex_armor = new armor("pants");</code>	// create a complex armor
@@ -108,10 +139,10 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -132,10 +163,10 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -156,10 +187,10 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -180,10 +211,10 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -204,10 +235,10 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -228,10 +259,10 @@ public class armor extends item {
 		}
 		else
 		{
-			if(is.toString().toLowerCase().contains("enchanted"))
+			if(new String(is).toLowerCase().contains("enchanted"))
 			{
 				isEnchanted = true;
-				this.itemName = "enchanted "+itemName;
+				this.itemName = "enchanted " + this.itemName;
 			}
 		}
 	}
@@ -244,5 +275,5 @@ public class armor extends item {
 	 * 	<code>out.println(armor_player.items[0].toString());</code>	// print armor (index may vary)
 	 * Returns:	"enchanted shirt"
 	 * </pre> */
-	Boolean isEnchanted;
+	Boolean isEnchanted = false;
 }

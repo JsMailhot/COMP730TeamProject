@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 /** <pre>
  * Generic actor abstract class that holds the basic requirements for an actor.
  * Example of extending using this abstract class:
@@ -20,15 +24,19 @@ public abstract class actor extends inventory {
 	{
 		super();
 		Stats = new stats();
-		health = Stats.healthPool;
-		type = "Defualt Type";
-		name = "Default Name";
-		desc = "Default Desc";
+		type = "Defualt Type".toLowerCase();
+		name = new JPanel();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Simple actor that takes one parameter
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(new ArrayList<item>);</code>	// simply call super!
 	 * </pre>*/
@@ -36,15 +44,19 @@ public abstract class actor extends inventory {
 	{
 		super(items);
 		Stats = new stats();
-		type = "Defualt Type";
-		name = "Default Name";
-		desc = "Default Desc";
+		type = "Defualt Type".toLowerCase();
+		name = new JPanel();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>());</code>	// simply call super!
 	 * </pre>*/
@@ -52,15 +64,19 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		Stats = new stats();
-		type = "Defualt Type";
-		name = "Default Name";
-		desc = "Default Desc";
+		type = "Defualt Type".toLowerCase();
+		name = new JPanel();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>(), new stats());</code>	// simply call super!
 	 * </pre>*/
@@ -68,15 +84,19 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		type = "Defualt Type";
-		name = "Default Name";
-		desc = "Default Desc";
+		type = "Defualt Type".toLowerCase();
+		name = new JPanel();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type");</code>	// simply call super!
 	 * </pre>*/
@@ -84,76 +104,176 @@ public abstract class actor extends inventory {
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
-		name = "Default Name";
-		desc = "Default Desc";
+		this.type = type.toLowerCase();
+		name = new JPanel();
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name");</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name)
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.name = name;
-		desc = "Default Desc";
+		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc");</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc)
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.name = name;
-		this.desc = desc;
+		this.desc = desc.toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null);</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem)
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.name = name;
-		this.desc = desc;
+		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
 	}
 	/** <pre>
-	 * Complex actor does not require any specified variables
+	 * Complex actor that takes several parameters
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0);</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold)
 	{
 		super(gold, items);
 		this.Stats = Stats;
-		this.type = type;
+		this.type = type.toLowerCase();
 		this.name = name;
-		this.desc = desc;
+		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
+		primary = null;
+		secondary = null;
+		Armor = null;
+		ring = null;
+	}
+	/** <pre>
+	 * Complex actor that takes several parameters
+	 * Example of generating a complex actor inside extended class:
+	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon());</code>	// simply call super!
+	 * </pre>*/
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary)
+	{
+		super(gold, items);
+		this.Stats = Stats;
+		this.type = type.toLowerCase();
+		this.name = name;
+		this.desc = desc.toLowerCase();
+		this.droppedItem = droppedItem;
+		this.droppedGold = droppedGold;
+		health = new JProgressBar(0, Stats.healthPool);
+		this.primary = primary;
+		secondary = null;
+		Armor = null;
+		ring = null;
+	}
+	/** <pre>
+	 * Complex actor that takes several parameters
+	 * Example of generating a complex actor inside extended class:
+	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null);</code>	// simply call super!
+	 * </pre>*/
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
+	{
+		super(gold, items);
+		this.Stats = Stats;
+		this.type = type.toLowerCase();
+		this.name = name;
+		this.desc = desc.toLowerCase();
+		this.droppedItem = droppedItem;
+		this.droppedGold = droppedGold;
+		health = new JProgressBar(0, Stats.healthPool);
+		this.primary = primary;
+		this.secondary = secondary;
+		Armor = null;
+		ring = null;
+	}
+	/** <pre>
+	 * Complex actor that takes several parameters
+	 * Example of generating a complex actor inside extended class:
+	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null, new armor());</code>	// simply call super!
+	 * </pre>*/
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
+	{
+		super(gold, items);
+		this.Stats = Stats;
+		this.type = type.toLowerCase();
+		this.name = name;
+		this.desc = desc.toLowerCase();
+		this.droppedItem = droppedItem;
+		this.droppedGold = droppedGold;
+		health = new JProgressBar(0, Stats.healthPool);
+		this.primary = primary;
+		this.secondary = secondary;
+		this.Armor = Armor;
+		ring = null;
+	}
+	/** <pre>
+	 * Complex actor that takes several parameters
+	 * Example of generating a complex actor inside extended class:
+	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null, new armor(), new misc());</code>	// simply call super!
+	 * </pre>*/
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
+	{
+		super(gold, items);
+		this.Stats = Stats;
+		this.type = type.toLowerCase();
+		this.name = name;
+		this.desc = desc.toLowerCase();
+		this.droppedItem = droppedItem;
+		this.droppedGold = droppedGold;
+		health = new JProgressBar(0, Stats.healthPool);
+		this.primary = primary;
+		this.secondary = secondary;
+		this.Armor = Armor;
+		this.ring = ring;
 	}
 	/** <pre>
 	 * The base statistics of the actor that will be used in determining rolls
@@ -174,13 +294,13 @@ public abstract class actor extends inventory {
 	/** <pre>
 	 * The name of actor for this object
 	 * Example of defining name:
-	 * <code>	type = "example name"</code>
+	 * <code>	type = new JPanel()</code>
 	 * </pre> */
-	String name;
+	public JPanel name;
 	/** <pre>
 	 * The description of actor for this object
 	 * Example of defining desc:
-	 * <code>	type = "example description"</code>
+	 * <code>	type = ""</code>
 	 * </pre> */
 	String desc;
 	/** <pre>
@@ -198,32 +318,129 @@ public abstract class actor extends inventory {
 	/** <pre>
 	 * The current health of this actor
 	 * Example of defining health:
-	 * <code>	health = Stats.healthPool;</code>	// set to full health
+	 * <code>	health = new JProgressBar(0, Stats.healthPool);</code>	// set to full health
 	 * 	<code>health = 1;</code>	// set to static health
 	 * 	<code>health = 0;</code>	// set to dead
 	 * </pre> */
-	int health;
+	JProgressBar health;
 	/** <pre>
-	 * The function called when this actor makes an attack on another actor
-	 * Example of using the attack() function:
+	 * The primary weapon the actor is wielding
+	 * Example of defining primary:
+	 * <code>	primary = 0;</code>
+	 * </pre> */
+	weapon primary;
+	/** <pre>
+	 * The secondary weapon / armor / misc the actor is wielding
+	 * Example of defining secondary:
+	 * <code>	secondary = 0;</code>
+	 * </pre> */
+	item secondary;
+	/** <pre>
+	 * The armor the actor is wearing
+	 * Example of defining Armor:
+	 * <code>	Armor = 0;</code>
+	 * </pre> */
+	armor Armor;
+	/** <pre>
+	 * The ring the actor is wearing
+	 * Example of defining ring:
+	 * <code>	ring = 0;</code>
+	 * </pre> */
+	misc ring;
+	/** <pre>
+	 * The function that returns the actors attack damage
+	 * Example of using the attack function:
 	 * <code>	</code>
 	 * 	<code></code>
 	 * 	<code></code>
 	 * </pre> */
 	public int attack()
 	{
-		return Stats.attack;
+		int damage = Stats.attack;
+		if(primary != null)
+		{
+			damage = damage + primary.qualities.attack;
+		}
+		if(secondary != null)
+		{
+			damage = damage + secondary.qualities.attack;
+		}
+		if(ring != null)
+		{
+			damage = damage + ring.qualities.attack;
+		}
+		return damage;
 	}
 	/** <pre>
-	 * The function called when this actor blocks another actors attack
-	 * Example of using the block() function:
+	 * The function called when this actor makes an attack on another actor
+	 * Example of using the attack function:
+	 * <code>	</code>
+	 * 	<code></code>
+	 * 	<code></code>
+	 * </pre> */
+	public int attack(actor target)
+	{	// add up damage
+		int damage = attack() - target.block(this);	//	subtract target block
+		if(target.health.getValue() > damage)
+		{//	didn't kill target
+			target.health.setValue(target.health.getValue() - damage);
+		}
+		else
+		{
+			damage = target.health.getValue();
+			target.health.setValue(0);
+		}
+		return damage;
+	}
+	/** <pre>
+	 * The function that returns the actors block damage
+	 * Example of using the block function:
 	 * <code>	</code>
 	 * 	<code></code>
 	 * 	<code></code>
 	 * </pre> */
 	public int block()
 	{
-		return Stats.defense;
+		int damage = Stats.defense;
+		if(primary != null && primary.canCounter)
+		{
+			damage = damage + primary.qualities.defense;
+		}
+		if(secondary != null)
+		{
+			damage = damage + secondary.qualities.defense;
+		}
+		if(Armor != null)
+		{
+			damage = damage + (Armor.qualities.defense * ((Armor.isEnchanted ? 1 : 0) * 2));
+		}
+		if(ring != null)
+		{
+			damage = damage + ring.qualities.defense;
+		}
+		return damage;
+	}
+	/** <pre>
+	 * The function called when this actor blocks another actors attack
+	 * Example of using the block function:
+	 * <code>	</code>
+	 * 	<code></code>
+	 * 	<code></code>
+	 * </pre> */
+	public int block(actor target)
+	{	// add up block
+		if(primary != null && primary.canCounter)
+		{//	primary can counter (return damage)
+			if(target.health.getValue() >= primary.qualities.defense)
+			{//	didn't kill target
+				target.health.setValue(target.health.getValue() - primary.qualities.defense);
+			}
+			else
+			{
+				target.health.setValue(0);
+			}
+		}
+		return block();
 	}
 	/** <pre>
 	 * The function called when this actor taunts another actor
@@ -235,5 +452,10 @@ public abstract class actor extends inventory {
 	public String taunt()
 	{
 		return "taunt";
+	}
+	@Override
+	public String toString()
+	{
+		return name.toString().toLowerCase();
 	}
 }
