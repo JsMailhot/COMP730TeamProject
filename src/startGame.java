@@ -88,7 +88,7 @@ public class startGame {
 	stats playerStats = new stats(25, 5, 5, 0, 0);
 	player Player = new player(25, new ArrayList<item>(), playerStats, "player", "playerName", "A young elf looking for adventure", null, 0, new weapon(), null, new armor());
 	
-	stats rustySwordStats = new stats(0, 10, 0, 0, 0);
+	stats rustySwordStats = new stats(0, 7, 0, 0, 0);
 	weapon rustySword = new weapon("Rusty Sword", "An old rusty sword", rustySwordStats, "weapon", 5);
 	
 	stats stickStats = new stats(0, 3, 0, 0, 0);
@@ -845,7 +845,7 @@ public class startGame {
 			quests[2] = mainquest;
 		}
 		optionButtons.get(0).setText("Go Back to Center");
-		optionButtons.get(1).setText("");
+		optionButtons.get(1).setText("Credits");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
@@ -1036,6 +1036,18 @@ public class startGame {
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
+	}
+	public void Credits() {
+		image = new ImageIcon(".//img//donkeyKong.jpeg");
+		imageLabel.setIcon(image);
+		position ="Credits";
+		mainTextArea.setText(" Thank you for playing!\n Developed by:\n Cat Bennett\n Justin Mailhot\n James Gautreau");
+		optionButtons.get(0).setText("Back to game");
+		optionButtons.get(1).setText("Donate 2 gold to devs");
+		optionButtons.get(2).setText("Send love to Kong");
+		optionButtons.get(3).setText("Quit");
+		optionButtons.get(4).setText("");
+		
 	}
 	
 	public void itemUsed(int slotNumber) {
@@ -1421,6 +1433,7 @@ public class startGame {
 			case "CloseUpStage":
 				switch(yourChoice) {
 				case "c1": TownEntrance(); break;
+				case "c2": Credits(); break;
 				}
 				break;
 			case "WolfStage":
@@ -1582,6 +1595,29 @@ public class startGame {
 				switch(yourChoice) {
 				case "c1":
 					NorthForestSplit();
+					break;
+				}
+				break;
+			case "Credits":
+				switch(yourChoice) {
+				case "c1":
+					CloseUpStage();
+					break;
+				case "c2":
+					player.gold = player.gold - 2;
+					playergoldlabelNumber.setText("" + player.gold);
+					if (player.gold < 0)
+					{
+						mainTextArea.setText("You are broke.");
+					}
+					else
+					mainTextArea.setText("Thanks for the gold :)");
+					break;
+				case "c3":
+					mainTextArea.setText("Thanks for the love :)");
+					break;
+				case "c4":
+					System.exit(0);
 					break;
 				}
 				break;
