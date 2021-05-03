@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,10 +26,14 @@ class tests {
 		test_misc_item = new misc("Test Misc", "Test Misc Description", new stats(5,5,5,0,0), "Misc", 50, "consumable, quest".toCharArray());
 		test_weapon_item = new weapon("Test Weapon", "Test Weapon Description", new stats(0,20,5,0,0), "Armor", 50, "counters".toCharArray());
 		test_armor_item = new armor("Test Armor", "Test Armor Description", new stats(0,0,5,0,0), "Armor", 50, "enchanted".toCharArray());
-		test_player = new player(100, new ArrayList<item>(), new stats(), "Player", "Test Player", "Test Player Description", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, new ArrayList<quest>());
-		test_enemy = new enemy(100, new ArrayList<item>(), new stats(), "Enemy", "Test Enemy", "Test Enemy Description", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item);
-		test_npc = new npc(100, new ArrayList<item>(), new stats(), "NPC", "Test NPC", "Test NPC Descripton", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, "HEY THERE!", test_quest);
+		test_player = new player(100, new ArrayList<item>(), new stats(), "Player", new JPanel(), "Test Player Description", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, new ArrayList<quest>());
+		test_player.name.setName("Test Player");
+		test_enemy = new enemy(100, new ArrayList<item>(), new stats(), "Enemy", new JPanel(), "Test Enemy Description", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item);
+		test_enemy.name.setName("Test Enemy");
+		test_npc = new npc(100, new ArrayList<item>(), new stats(), "NPC", new JPanel(), "Test NPC Descripton", null, 50, test_weapon_item, test_misc_item, test_armor_item, test_misc_item, "HEY THERE!", test_quest);
+		test_npc.name.setName("Test NPC");
 		test_room = new room("Test Room", "Test Room Flavor Text", 0, 0, new ArrayList<option>(), new ArrayList<actor>(), new ArrayList<item>());
+		
 	}
 
 	@Test

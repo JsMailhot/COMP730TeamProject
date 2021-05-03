@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+
+import javax.swing.JPanel;
 /** <pre>
  * A npc has many characteristics.
  * Example of creating a default npc:
@@ -65,7 +67,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name");</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name)
 	{
 		super(gold, items, Stats, type, name);
 		greeting = "Default Greeting";
@@ -76,7 +78,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc");</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc)
 	{
 		super(gold, items, Stats, type, name, desc);
 		greeting = "Default Greeting";
@@ -87,7 +89,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null);</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem)
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem);
 		greeting = "Default Greeting";
@@ -98,7 +100,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0);</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold)
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold);
 		greeting = "Default Greeting";
@@ -109,7 +111,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon());</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary)
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary);
 		greeting = "Default Greeting";
@@ -120,7 +122,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null);</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary);
 		greeting = "Default Greeting";
@@ -131,7 +133,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null, new armor());</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor);
 		greeting = "Default Greeting";
@@ -142,7 +144,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null, new armor(), new misc());</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor, ring);
 		greeting = "Default Greeting";
@@ -153,7 +155,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null, new armor(), new misc(), "HEY THERE!");</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring, String greeting)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring, String greeting)
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor, ring);
 		this.greeting = greeting;
@@ -164,7 +166,7 @@ public class npc extends actor {
 	 * Example of creating a complex npc that takes several parameters:
 	 * <code>	npc example_npc = new npc(0, new ArrayList<item>(), new stats(), "npc", "npc name", "npc desc", null, 0, new weapon(), null, new armor(), new misc(), "HEY THERE!", new Quest());</code>	// create new npc object
 	 * </pre> */
-	public npc(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring, String greeting, quest Quest)
+	public npc(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring, String greeting, quest Quest)
 	{
 		super(gold, items, Stats, type, name, desc, droppedItem, droppedGold, primary, secondary, Armor, ring);
 		this.greeting = greeting;

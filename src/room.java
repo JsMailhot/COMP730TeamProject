@@ -330,14 +330,14 @@ public class room {
 	public void addActor(npc target)
 	{
 		actorList.add(target);
-		if(target.health > 0)
+		if(target.health.getValue() > 0)
 		{
 			attackOption attack_target = new attackOption(target);
 			roomOptions.add(attack_target);
 			talkOption talk_target = new talkOption(target, "dialog".toCharArray());
 			roomOptions.add(talk_target);
 		}
-		if(target.health > 0 && (target.items.size() > 0 || target.gold > 0))
+		if(target.health.getValue() > 0 && (target.items.size() > 0 || target.gold > 0))
 		{
 			talkOption talk_target = new talkOption(target, "retail".toCharArray());
 			roomOptions.add(talk_target);
@@ -367,7 +367,7 @@ public class room {
 	public void addActor(enemy target)
 	{
 		actorList.add(target);
-		if(target.health > 0)
+		if(target.health.getValue() > 0)
 		{
 			attackOption attack_target = new attackOption(target);
 			roomOptions.add(attack_target);
@@ -488,7 +488,7 @@ public class room {
 				quest npc_quest = null;
 				for(int i = 0; i < actorList.size(); i++)
 				{
-					if(npc_quest == null && target.optionText.contains(actorList.get(i).name.toLowerCase()))
+					if(npc_quest == null && target.optionText.contains(actorList.get(i).name.toString().toLowerCase()))
 					{
 						npc_quest = ((npc) actorList.get(i)).Quest;
 						i = 0;

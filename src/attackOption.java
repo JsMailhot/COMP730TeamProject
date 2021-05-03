@@ -48,7 +48,7 @@ public class attackOption extends option {
 		}
 		else
 		{
-			optionFocus = attackFocus.name.toLowerCase();
+			optionFocus = attackFocus.name.toString().toLowerCase();
 		}
 		optionType = "attack".toLowerCase();
 		optionText = optionType + " " + optionFocus;

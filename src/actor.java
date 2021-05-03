@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 /** <pre>
  * Generic actor abstract class that holds the basic requirements for an actor.
  * Example of extending using this abstract class:
@@ -21,11 +25,11 @@ public abstract class actor extends inventory {
 		super();
 		Stats = new stats();
 		type = "Defualt Type".toLowerCase();
-		name = "Default Name".toLowerCase();
+		name = new JPanel();
 		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -41,11 +45,11 @@ public abstract class actor extends inventory {
 		super(items);
 		Stats = new stats();
 		type = "Defualt Type".toLowerCase();
-		name = "Default Name".toLowerCase();
+		name = new JPanel();
 		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -61,11 +65,11 @@ public abstract class actor extends inventory {
 		super(gold, items);
 		Stats = new stats();
 		type = "Defualt Type".toLowerCase();
-		name = "Default Name".toLowerCase();
+		name = new JPanel();
 		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -81,11 +85,11 @@ public abstract class actor extends inventory {
 		super(gold, items);
 		this.Stats = Stats;
 		type = "Defualt Type".toLowerCase();
-		name = "Default Name".toLowerCase();
+		name = new JPanel();
 		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -101,11 +105,11 @@ public abstract class actor extends inventory {
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		name = "Default Name".toLowerCase();
+		name = new JPanel();
 		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -116,16 +120,16 @@ public abstract class actor extends inventory {
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name");</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name)
 	{
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		this.name = name.toLowerCase();
+		this.name = name;
 		desc = "Default Desc".toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -136,16 +140,16 @@ public abstract class actor extends inventory {
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc");</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc)
 	{
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		this.name = name.toLowerCase();
+		this.name = name;
 		this.desc = desc.toLowerCase();
 		droppedItem = null;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -156,16 +160,16 @@ public abstract class actor extends inventory {
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null);</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem)
 	{
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		this.name = name.toLowerCase();
+		this.name = name;
 		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		droppedGold = 0;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -176,16 +180,16 @@ public abstract class actor extends inventory {
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0);</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold)
 	{
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		this.name = name.toLowerCase();
+		this.name = name;
 		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		primary = null;
 		secondary = null;
 		Armor = null;
@@ -196,16 +200,16 @@ public abstract class actor extends inventory {
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon());</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary)
 	{
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		this.name = name.toLowerCase();
+		this.name = name;
 		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		this.primary = primary;
 		secondary = null;
 		Armor = null;
@@ -216,16 +220,16 @@ public abstract class actor extends inventory {
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null);</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary)
 	{
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		this.name = name.toLowerCase();
+		this.name = name;
 		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		this.primary = primary;
 		this.secondary = secondary;
 		Armor = null;
@@ -236,16 +240,16 @@ public abstract class actor extends inventory {
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null, new armor());</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor)
 	{
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		this.name = name.toLowerCase();
+		this.name = name;
 		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		this.primary = primary;
 		this.secondary = secondary;
 		this.Armor = Armor;
@@ -256,16 +260,16 @@ public abstract class actor extends inventory {
 	 * Example of generating a complex actor inside extended class:
 	 * <code>	super(0, new ArrayList<item>, new stats(), "actor type", "actor name", "actor desc", null, 0, new weapon(), null, new armor(), new misc());</code>	// simply call super!
 	 * </pre>*/
-	public actor(int gold, ArrayList<item> items, stats Stats, String type, String name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
+	public actor(int gold, ArrayList<item> items, stats Stats, String type, JPanel name, String desc, item droppedItem, int droppedGold, weapon primary, item secondary, armor Armor, misc ring)
 	{
 		super(gold, items);
 		this.Stats = Stats;
 		this.type = type.toLowerCase();
-		this.name = name.toLowerCase();
+		this.name = name;
 		this.desc = desc.toLowerCase();
 		this.droppedItem = droppedItem;
 		this.droppedGold = droppedGold;
-		health = Stats.healthPool;
+		health = new JProgressBar(0, Stats.healthPool);
 		this.primary = primary;
 		this.secondary = secondary;
 		this.Armor = Armor;
@@ -290,13 +294,13 @@ public abstract class actor extends inventory {
 	/** <pre>
 	 * The name of actor for this object
 	 * Example of defining name:
-	 * <code>	type = "example name"</code>
+	 * <code>	type = new JPanel()</code>
 	 * </pre> */
-	String name;
+	public JPanel name;
 	/** <pre>
 	 * The description of actor for this object
 	 * Example of defining desc:
-	 * <code>	type = "example description"</code>
+	 * <code>	type = ""</code>
 	 * </pre> */
 	String desc;
 	/** <pre>
@@ -314,11 +318,11 @@ public abstract class actor extends inventory {
 	/** <pre>
 	 * The current health of this actor
 	 * Example of defining health:
-	 * <code>	health = Stats.healthPool;</code>	// set to full health
+	 * <code>	health = new JProgressBar(0, Stats.healthPool);</code>	// set to full health
 	 * 	<code>health = 1;</code>	// set to static health
 	 * 	<code>health = 0;</code>	// set to dead
 	 * </pre> */
-	int health;
+	JProgressBar health;
 	/** <pre>
 	 * The primary weapon the actor is wielding
 	 * Example of defining primary:
@@ -377,14 +381,14 @@ public abstract class actor extends inventory {
 	public int attack(actor target)
 	{	// add up damage
 		int damage = attack() - target.block(this);	//	subtract target block
-		if(target.health > damage)
+		if(target.health.getValue() > damage)
 		{//	didn't kill target
-			target.health = target.health - damage;
+			target.health.setValue(target.health.getValue() - damage);
 		}
 		else
 		{
-			damage = target.health;
-			target.health = 0;
+			damage = target.health.getValue();
+			target.health.setValue(0);
 		}
 		return damage;
 	}
@@ -427,13 +431,13 @@ public abstract class actor extends inventory {
 	{	// add up block
 		if(primary != null && primary.canCounter)
 		{//	primary can counter (return damage)
-			if(target.health >= primary.qualities.defense)
+			if(target.health.getValue() >= primary.qualities.defense)
 			{//	didn't kill target
-				target.health = target.health - primary.qualities.defense;
+				target.health.setValue(target.health.getValue() - primary.qualities.defense);
 			}
 			else
 			{
-				target.health = 0;
+				target.health.setValue(0);
 			}
 		}
 		return block();
@@ -452,6 +456,6 @@ public abstract class actor extends inventory {
 	@Override
 	public String toString()
 	{
-		return name.toLowerCase();
+		return name.toString().toLowerCase();
 	}
 }

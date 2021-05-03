@@ -83,7 +83,7 @@ public class talkOption extends option {
 			optionType = "talk with";
 		}
 		
-		this.optionFocus = optionFocus.name;
+		this.optionFocus = optionFocus.name.getName();
 		optionText = optionType + " " + optionFocus;
 	}
 	/** <pre>
