@@ -28,9 +28,11 @@ public class startGame {
 	JLabel titleScreenLabel, playerhpLabel, playernameLabel, playerhplabelNumber, weaponLabel, weaponlabelName, imageLabel, nameLabel, playergoldLabel, playergoldlabelNumber;
 	JButton startButton, musicButton, enterButton, inventoryButton, choice, choice2, choice3, choice4, choice5, choice6, choice7, choice8, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5, questButton, questButton1, questButton2, questButton3, questButton4, questButton5;
 	JTextArea mainTextArea;
-	int silverRing, gold, key;
+  
+	int silverRing, gold, key, pelt, head;
 	int playerHPCap = 25;
 	int mimickey;
+
 	String weapon, position, text, inventoryStatus, questStatus;
 	String clickSound, gameMusic, musicOnOff, cantuse;
 	ImageIcon image;
@@ -53,6 +55,8 @@ public class startGame {
 	armor complex_armor = new armor("pants", "required to shop", new stats(), "enchanted".toCharArray()); // create a complex armor
 	quest NoQuest = new quest("Empty");
 	quest frosttrollquest = new quest("Kill Frost Troll", "The local guard wants me to kill a \n frost troll that took his ring.");
+	quest wolfquest = new quest("Hunt wolf", "The local inkeep wants me to hunt a wolf and bring him a pelt");
+	quest mainquest = new quest("Kill Dragon", "The local king wants me to kill the dragon in the north and bring him its head");
 	
 	int monsterHealth = 0;
 	int monsterAttack = 0;
@@ -64,17 +68,22 @@ public class startGame {
 	Item_Empty empty = new Item_Empty();
 	silverRing silverring = new silverRing();
 	wolfPelt wolfpelt = new wolfPelt();
+	dragonHead dragonhead = new dragonHead();
 	
 	stats frostTrollStats = new stats(10, 3, 2, 0, 0);
 	stats wolfStats = new stats(15, 6, 2, 0, 0);
-	stats goblinStats = new stats(20, 6, 2, 0, 0);
 	stats mimicStats = new stats(20, 12, 2, 0, 0);
+	stats goblinStats = new stats(20, 9, 2, 0, 0);
+	stats kingkongStats = new stats(30, 14, 3, 0, 0);
+
 	
 	
 	enemy frostTroll = new enemy(0, new ArrayList<item>(), frostTrollStats, "Frost Troll", "Troll", "Frost Troll which is located in the coldest areas of the world",null, 2, new weapon());
 	enemy wolf = new enemy(0, new ArrayList<item>(), wolfStats, "Frost Wolf", "Wolf", "Frost Wolves roam the dense forests",null, 2, new weapon());
-	enemy goblin = new enemy(0, new ArrayList<item>(), goblinStats, "Goblin", "Goblin", "Goblin by the river",null, 2, new weapon());
 	enemy mimic = new enemy(0, new ArrayList<item>(), mimicStats, "Mimic Chest", "Mimic", "Treasure Chest",null, 2, new weapon());
+	enemy goblin = new enemy(0, new ArrayList<item>(), goblinStats, "Small Goblin", "Goblin", "Here to take your loot.",null, 2, new weapon());
+	enemy kingkong = new enemy(0, new ArrayList<item>(), kingkongStats, "King Kong", "Dragon", "Not what you were expecting.",null, 2, new weapon());
+	
 	
 	stats playerStats = new stats(25, 5, 5, 0, 0);
 	player Player = new player(25, new ArrayList<item>(), playerStats, "player", "playerName", "A young elf looking for adventure", null, 0, new weapon(), null, new armor());
@@ -680,6 +689,7 @@ public class startGame {
 		}
 		if(playerItem[slotNumber]==empty) {
 			playerItem[slotNumber] = wolfpelt;
+			pelt = 1;
 		}
 		else if (playerItem[slotNumber] != empty) {
 			mainTextArea.setText("You have too much stuff!");
@@ -692,6 +702,58 @@ public class startGame {
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
 
+	}
+	public void goblinWin() {
+		position ="goblinWin";
+		int droppedGold = 0;
+		droppedGold = new java.util.Random().nextInt(15) + 1;
+		mainTextArea.setText("You defeated the goblin!\nThe goblin dropped " + droppedGold + " gold and a potion!\n\n");
+		player.gold = player.gold + droppedGold;
+		
+		int slotNumber = 0;
+		while (playerItem[slotNumber] != empty && slotNumber <4) {
+			slotNumber++;
+		}
+		if(playerItem[slotNumber]==empty) {
+			playerItem[slotNumber] = potion;
+		}
+		else if (playerItem[slotNumber] != empty) {
+			mainTextArea.setText("You have too much stuff!");
+		}
+		
+		playergoldlabelNumber.setText(""+player.gold);
+		optionButtons.get(0).setText(">");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+
+	}
+	public void dragonWin() {
+		position ="dragonWin";
+		int droppedGold = 0;
+		droppedGold = new java.util.Random().nextInt(100) + 1;
+		mainTextArea.setText("You defeated the dragon!\nThe dragon dropped " + droppedGold + " gold and a ITS HEAD!\n\n");
+		player.gold = player.gold + droppedGold;
+		
+		int slotNumber = 0;
+		while (playerItem[slotNumber] != empty && slotNumber <4) {
+			slotNumber++;
+		}
+		if(playerItem[slotNumber]==empty) {
+			playerItem[slotNumber] = dragonhead;
+			head = 1;
+		}
+		else if (playerItem[slotNumber] != empty) {
+			mainTextArea.setText("You have too much stuff!");
+		}
+		
+		playergoldlabelNumber.setText(""+player.gold);
+		optionButtons.get(0).setText(">");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
 	}
 	public void lose() {
 		position ="lose";
@@ -773,7 +835,15 @@ public class startGame {
 		image = new ImageIcon(".//img//town.jpeg");
 		imageLabel.setIcon(image);
 		position ="CloseUpStage";
-		mainTextArea.setText("You hear the King speak loudly to the people\n King: People of EverWinter, there is a dragon\nroaming amongst us, reeking havoc across\nour lands. We ask for the bravest heros to\nhelp us kill The Great Kong. If you are up\nfor the challenge head North into the forest\nto find Kong. Whoever brings the head to me will receive a great reward..");
+		if (head == 1)
+		{
+			mainTextArea.setText("HAIL " + text + " SAVIOR OF EVERWINTER (MAIN QUEST COMPLETE)");
+			quests[2] = NoQuest;
+		}
+		else {
+			mainTextArea.setText("You hear the King speak loudly to the people\n King: People of EverWinter, there is a dragon\nroaming amongst us, reeking havoc across\nour lands. We ask for the bravest heros to\nhelp us kill The Great Kong. If you are up\nfor the challenge head North into the forest\nto find Kong. Whoever brings the head to me will receive a great reward..");
+			quests[2] = mainquest;
+		}
 		optionButtons.get(0).setText("Go Back to Center");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -806,22 +876,22 @@ public class startGame {
 		
 	}
 	public void toMountain() {
-		image = new ImageIcon(".//img//wolf.jpeg");
+		image = new ImageIcon(".//img//dragon.jpg");
 		imageLabel.setIcon(image);
-		position ="WolfStage";
-		mainTextArea.setText("As you begin the hike up the mountain you\ncome across a ...");
+		position ="DragonStage";
+		mainTextArea.setText("As you begin the hike up the mountain you\nsee a red dragon swoop down\nand perch right in front of you.\nReady or not its time to fight.");
 		optionButtons.get(0).setText("Attack");
-		optionButtons.get(1).setText("Run");
+		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
 		
 	}
 	public void right() {
-		image = new ImageIcon(".//img//wolf.jpeg");
+		image = new ImageIcon(".//img//goblin.jpg");
 		imageLabel.setIcon(image);
-		position ="WolfStage";
-		mainTextArea.setText("As you continue straight you hear a howl as a\nbig ice wolf jumps in front of you ready to\nattack.");
+		position ="GoblinStage";
+		mainTextArea.setText("As you continue along the stream\na golbin jumps out to\nattack.");
 		optionButtons.get(0).setText("Attack");
 		optionButtons.get(1).setText("Run");
 		optionButtons.get(2).setText("");
@@ -909,7 +979,17 @@ public class startGame {
 		image = new ImageIcon(".//img//innkeeper.jpeg");
 		imageLabel.setIcon(image);
 		position ="InnQuest";
-		mainTextArea.setText("Inn Keeper: Aye Traveler,\nI'm in need of a wolf pelt. If you come\nacross one be sure to bring it to me\nas I will give you 15 gold for it.\n");
+		if (pelt == 1)
+		{
+			mainTextArea.setText("Thank you for getting the wolf's pelt! Here is 15 gold.");
+			player.gold = player.gold + 15;
+			playergoldlabelNumber.setText("" + player.gold);
+			quests[1] = NoQuest;
+		}
+		else {
+			mainTextArea.setText("Inn Keeper: Aye Traveler,\nI'm in need of a wolf pelt. If you come\nacross one be sure to bring it to me\nas I will give you 15 gold for it.\n");
+			quests[1] = wolfquest;
+		}
 		optionButtons.get(0).setText("Leave");
 		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
@@ -1287,6 +1367,13 @@ public class startGame {
 						else if (monsterAttack == 12)
 						{
 							chestWin();
+
+						else if (monsterAttack == 9) {
+							   goblinWin();
+							}
+						else if (monsterAttack == 14) {
+							dragonWin();
+
 						}
 					}
 					else {
@@ -1394,7 +1481,18 @@ public class startGame {
 				
 			case "InnQuest":
 				switch(yourChoice) {
-				case "c1": EverWinterInn(); break;
+				case "c1":
+					for (int i = 0 ; i < playerItem.length; i++) {
+						if (playerItem[i] == wolfpelt) {
+							itemUsed(i);
+							EverWinterInn(); 
+							break;
+							}
+						else {
+							EverWinterInn();
+						}
+					}
+					break; 
 				}
 				break;
 			case "drink":
@@ -1402,6 +1500,7 @@ public class startGame {
 				case "c1": EverWinterInn(); break;
 				}
 				break;
+
 			case "left":
 				switch(yourChoice) {
 				case "c1": if(mimickey == 0)
@@ -1452,6 +1551,38 @@ public class startGame {
 			case "chestWin":
 				switch(yourChoice) {
 				case "c1":  NorthForestSplit();break;		
+				}
+				break;
+
+			case "GoblinStage":
+				switch(yourChoice) {
+				case "c1": 
+					monsterHealth = fight(goblinStats.healthPool); 
+					monsterAttack = goblinStats.attack; break;
+				case "c2":
+					NorthForestSplit();
+					break;
+				}
+				break;
+			case "goblinWin":
+				switch(yourChoice) {
+				case "c1":
+					NorthForestSplit();
+					break;
+				}
+				break;
+			case "DragonStage":
+				switch(yourChoice) {
+				case "c1": 
+					monsterHealth = fight(kingkongStats.healthPool); 
+					monsterAttack = kingkongStats.attack; break;
+				}
+				break;
+			case "dragonWin":
+				switch(yourChoice) {
+				case "c1":
+					NorthForestSplit();
+					break;
 				}
 				break;
 			}
