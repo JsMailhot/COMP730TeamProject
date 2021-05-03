@@ -1240,7 +1240,7 @@ public class startGame {
 		}
 
 	}
-	public class ChoiceHandler implements ActionListener {
+	public class ChoiceHandler implements ActionListener{
 
 		public void actionPerformed(ActionEvent event) {
 
@@ -1367,7 +1367,7 @@ public class startGame {
 						else if (monsterAttack == 12)
 						{
 							chestWin();
-
+						}
 						else if (monsterAttack == 9) {
 							   goblinWin();
 							}
@@ -1586,7 +1586,8 @@ public class startGame {
 				}
 				break;
 			}
-				}
-
-		}
+			}
 	}
+}
+	
+			
