@@ -95,8 +95,15 @@ public class startGame {
 	
 	stats stickStats = new stats(0, 3, 0, 0, 0);
 	weapon stickWeapon = new weapon("Stick", "A stick from the ground", stickStats, "weapon" , 2);
-
 	
+	stats sharpSwordStats = new stats(0, 10, 0, 0, 0);
+	weapon sharpSword = new weapon("Sharp Sword", "A sharp sword", sharpSwordStats, "weapon", 20);
+	
+	stats woodenSwordStats = new stats(0, 8, 0, 0, 0);
+	weapon woodenSword = new weapon("Wood Sword", "A smooth wooden sword", woodenSwordStats, "weapon", 15);
+
+	stats longSwordStats = new stats (0, 12, 0, 0, 0);
+	weapon longSword = new weapon("Long Sword", "A long sword", longSwordStats, "weapon", 30);
 	
 	int i, soundCue;
 	
@@ -819,11 +826,68 @@ public class startGame {
 		imageLabel.setIcon(image);
 		position ="townEntrance";
 		mainTextArea.setText("You use the key you obtained from the guard to open the castle gate. As soon as you enter\nstraight ahead you see the EverWinter Inn,"
-				+ "\nyou see to the left a Shop Keep, to the right\n you see a crowd gathered around a stage...");
+				+ "\nyou see to the left a Shop, to the right\n you see a crowd gathered around a stage...");
 		optionButtons.get(0).setText("Go Left");
 		optionButtons.get(1).setText("Go Right");
 		optionButtons.get(2).setText("Continue Straight");
 		optionButtons.get(3).setText("Back to Castle Gate");
+		optionButtons.get(4).setText("");
+	}
+	public void Shop() {
+		image = new ImageIcon(".//img//shopkeep.jpeg");
+		imageLabel.setIcon(image);
+		position ="Shop";
+		mainTextArea.setText("Shop Keeper: Hello there!\nTake a look at our fine selections..");
+		optionButtons.get(0).setText("Sharp Sword: 20 Gold");
+		optionButtons.get(1).setText("Wood Sword: 15 Gold");
+		optionButtons.get(2).setText("Long Sword: 30 Gold");
+		optionButtons.get(3).setText("Talk");
+		optionButtons.get(4).setText("Leave");
+	}
+	public void ShopTalk() {
+		image = new ImageIcon(".//img//shopkeep.jpeg");
+		imageLabel.setIcon(image);
+		position ="ShopTalk";
+		mainTextArea.setText("Shop Keeper: Welcome to the town!\nMake sure to check out the EverWinter Inn.");
+		optionButtons.get(0).setText("Leave");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+	}
+	public void Buy(int price) {
+		image = new ImageIcon(".//img//shopkeep.jpeg");
+		imageLabel.setIcon(image);
+		position ="Buy";
+		if (price == sharpSword.price)
+		{
+			player.gold = player.gold - sharpSword.price;
+			playergoldlabelNumber.setText("" + player.gold);
+			player.primary = sharpSword; 
+			weaponlabelName.setText(player.primary.itemName);
+			mainTextArea.setText("You bought yourself a sharp sword!");
+
+		}
+		else if (price == woodenSword.price)
+		{
+			player.gold = player.gold - woodenSword.price;
+			playergoldlabelNumber.setText("" + player.gold);
+			player.primary = woodenSword; 
+			weaponlabelName.setText(player.primary.itemName);
+			mainTextArea.setText("You bought yourself a wood sword!");
+		}
+		else if (price == longSword.price)
+		{
+			player.gold = player.gold - longSword.price;
+			playergoldlabelNumber.setText("" + player.gold);
+			player.primary = longSword; 
+			weaponlabelName.setText(player.primary.itemName);
+			mainTextArea.setText("You bought yourself a long sword!");
+		}
+		optionButtons.get(0).setText("Leave");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
 	}
 	public void Stage() {
@@ -1458,6 +1522,11 @@ public class startGame {
 				case "c1": crossRoad(); break;
 				}
 				break;
+			case "Buy":
+				switch(yourChoice) {
+				case "c1": Shop(); break;
+				}
+				break;
 			case "enterCity":
 				switch(yourChoice) {
 				case "c1": TownEntrance(); break;
@@ -1465,10 +1534,48 @@ public class startGame {
 				break;
 			case "townEntrance":
 				switch(yourChoice) {
-				case "c1": TownEntrance(); break;
+				case "c1": Shop(); break;
 				case "c2": Stage(); break;
 				case "c3": EverWinterInn(); break;
 				case "c4": castleGate(); break;
+				}
+				break;
+			case "ShopTalk":
+				switch(yourChoice) {
+				case "c1": Shop(); break;
+				}
+				break;
+			case "Shop":
+				switch(yourChoice) {
+				case "c1": 
+					if (player.gold >= sharpSword.price) {
+						Buy(sharpSword.price); break;
+					}
+					else 
+					{
+						mainTextArea.setText("Sorry you can't afford that right now.");
+						break;
+					}
+				case "c2": 
+					if (player.gold >= woodenSword.price) {
+						Buy(woodenSword.price); break;
+					}
+					else 
+					{
+						mainTextArea.setText("Sorry you can't afford that right now.");
+						break;
+					}
+				case "c3":	
+					if (player.gold >= longSword.price) {
+						Buy(longSword.price); break;
+				}
+					else 
+					{
+						mainTextArea.setText("Sorry you can't afford that right now.");
+						break;
+					}
+				case "c4": ShopTalk(); break;
+				case "c5": TownEntrance(); break;
 				}
 				break;
 			case "Stage":
