@@ -30,6 +30,7 @@ public class startGame {
 	JTextArea mainTextArea;
 	int silverRing, gold, key;
 	int playerHPCap = 25;
+	int mimickey;
 	String weapon, position, text, inventoryStatus, questStatus;
 	String clickSound, gameMusic, musicOnOff, cantuse;
 	ImageIcon image;
@@ -66,18 +67,19 @@ public class startGame {
 	
 	stats frostTrollStats = new stats(10, 3, 2, 0, 0);
 	stats wolfStats = new stats(15, 6, 2, 0, 0);
-	stats banditStats = new stats(20, 6, 2, 0, 0);
+	stats goblinStats = new stats(20, 6, 2, 0, 0);
+	stats mimicStats = new stats(20, 12, 2, 0, 0);
 	
 	
 	enemy frostTroll = new enemy(0, new ArrayList<item>(), frostTrollStats, "Frost Troll", "Troll", "Frost Troll which is located in the coldest areas of the world",null, 2, new weapon());
 	enemy wolf = new enemy(0, new ArrayList<item>(), wolfStats, "Frost Wolf", "Wolf", "Frost Wolves roam the dense forests",null, 2, new weapon());
-	enemy bandit = new enemy(0, new ArrayList<item>(), wolfStats, "Frost Wolf", "Wolf", "Frost Wolves roam the dense forests",null, 2, new weapon());
-	
+	enemy goblin = new enemy(0, new ArrayList<item>(), goblinStats, "Goblin", "Goblin", "Goblin by the river",null, 2, new weapon());
+	enemy mimic = new enemy(0, new ArrayList<item>(), mimicStats, "Mimic Chest", "Mimic", "Treasure Chest",null, 2, new weapon());
 	
 	stats playerStats = new stats(25, 5, 5, 0, 0);
 	player Player = new player(25, new ArrayList<item>(), playerStats, "player", "playerName", "A young elf looking for adventure", null, 0, new weapon(), null, new armor());
 	
-	stats rustySwordStats = new stats(0, 5, 0, 0, 0);
+	stats rustySwordStats = new stats(0, 10, 0, 0, 0);
 	weapon rustySword = new weapon("Rusty Sword", "An old rusty sword", rustySwordStats, "weapon", 5);
 	
 	stats stickStats = new stats(0, 3, 0, 0, 0);
@@ -442,11 +444,8 @@ public class startGame {
 		quests[2] = NoQuest;
 		quests[3] = NoQuest;
 		quests[4] = NoQuest;
-
 		healthBar.setValue(playerStats.healthPool);
-		
 		castleGate();
-
 	}
 	
 
@@ -602,7 +601,7 @@ public class startGame {
 		position = "fight";
 		mainTextArea.setText("Monster HP: " + healthPool + "\n\nWhat do you do?");
 		optionButtons.get(0).setText("Attack");
-		optionButtons.get(1).setText("Run");
+		optionButtons.get(1).setText("");
 		optionButtons.get(2).setText("");
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
@@ -794,7 +793,6 @@ public class startGame {
 		
 	}
 	
-	
 	public void NorthForestSplit() {
 		image = new ImageIcon(".//img//mountain.jpeg");
 		imageLabel.setIcon(image);
@@ -832,10 +830,34 @@ public class startGame {
 		
 	}
 	public void left() {
-		image = new ImageIcon(".//img//wolf.jpeg");
+		image = new ImageIcon(".//img//treasurechest.jpeg");
 		imageLabel.setIcon(image);
-		position ="WolfStage";
-		mainTextArea.setText("As you continue straight you hear a howl as a\nbig ice wolf jumps in front of you ready to\nattack.");
+		position ="left";
+		mainTextArea.setText("As you head into the old burnt down house\nyou notice a locked treasure chest on the\ntable in front of you.");
+		optionButtons.get(0).setText("Look for key");
+		optionButtons.get(1).setText("Go back");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void unlockchest() {
+		image = new ImageIcon(".//img//treasurechest.jpeg");
+		imageLabel.setIcon(image);
+		position ="unlockchest";
+		mainTextArea.setText("As you unlock the chest you notice\nyou notice the chest begins to grow legs,\nand suddenly you feel breathing against your hands...");
+		optionButtons.get(0).setText(">");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+		
+	}
+	public void chestFight() {
+		image = new ImageIcon(".//img//mimicChest.jpeg");
+		imageLabel.setIcon(image);
+		position ="chestFight";
+		mainTextArea.setText("Faster than you can blink;\nthe chest transforms\n");
 		optionButtons.get(0).setText("Attack");
 		optionButtons.get(1).setText("Run");
 		optionButtons.get(2).setText("");
@@ -843,9 +865,36 @@ public class startGame {
 		optionButtons.get(4).setText("");
 		
 	}
+	public void chestWin() {
+		position ="chestWin";
+		int droppedGold = 0;
+		droppedGold = new java.util.Random().nextInt(80) + 10;
+		mainTextArea.setText("You defeated the chest mimic and it dropped " + droppedGold + " gold!\n\n");
+		player.gold = player.gold + droppedGold;
+
+		playergoldlabelNumber.setText(""+player.gold);
+		optionButtons.get(0).setText(">");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+	}
+	
+	public void lookAround() {
+		image = new ImageIcon(".//img//chestroom.jpeg");
+		imageLabel.setIcon(image);
+		position ="lookAround";
+		mainTextArea.setText("You begin looking around the dark room for the key to the chest..");
+		optionButtons.get(0).setText("Look under book");
+		optionButtons.get(1).setText("Look under table");
+		optionButtons.get(2).setText("Look behind door");
+		optionButtons.get(3).setText("Look on the floor");
+		optionButtons.get(4).setText("Go back");
+		
+	}
 	
 	public void EverWinterInn() {
-		image = new ImageIcon(".//img//wolf.jpeg");
+		image = new ImageIcon(".//img//innkeeper.jpeg");
 		imageLabel.setIcon(image);
 		position ="EverWinterInn";
 		mainTextArea.setText("Inn Keeper: Hello Traveler!\nWhat might I do for you?\n");
@@ -856,20 +905,8 @@ public class startGame {
 		optionButtons.get(4).setText("Leave");
 		
 	}
-	public void drink() {
-		image = new ImageIcon(".//img//wolf.jpeg");
-		imageLabel.setIcon(image);
-		position ="drink";
-		mainTextArea.setText("Inn Keeper: Hello Traveler!\nWhat might I do for you?\n");
-		optionButtons.get(0).setText("Mead: 2 Gold");
-		optionButtons.get(1).setText("Wine: 2 Gold");
-		optionButtons.get(2).setText("Mystical Ale: 10 Gold");
-		optionButtons.get(3).setText("Talk to Inn Keeper");
-		optionButtons.get(4).setText("Leave");
-		
-	}
 	public void InnQuest() {
-		image = new ImageIcon(".//img//wolf.jpeg");
+		image = new ImageIcon(".//img//innkeeper.jpeg");
 		imageLabel.setIcon(image);
 		position ="InnQuest";
 		mainTextArea.setText("Inn Keeper: Aye Traveler,\nI'm in need of a wolf pelt. If you come\nacross one be sure to bring it to me\nas I will give you 15 gold for it.\n");
@@ -880,7 +917,7 @@ public class startGame {
 		optionButtons.get(4).setText("");
 	}
 	public void drink(int drinkcost) {
-		image = new ImageIcon(".//img//wolf.jpeg");
+		image = new ImageIcon(".//img//innkeeper.jpeg");
 		imageLabel.setIcon(image);
 		position ="drink";
 		if (drinkcost == 2)
@@ -920,8 +957,6 @@ public class startGame {
 		optionButtons.get(3).setText("");
 		optionButtons.get(4).setText("");
 	}
-	
-
 	
 	public void itemUsed(int slotNumber) {
 		
@@ -1237,7 +1272,6 @@ public class startGame {
 			case "fight":
 				switch(yourChoice) {
 				case "c1": monsterHealth = attack(monsterHealth); break;
-				case "c2": crossRoad(); break;
 				}
 				break;
 			case "attack":
@@ -1250,6 +1284,10 @@ public class startGame {
 						else if (monsterAttack == 6) {
 							   wolfWin();
 							}
+						else if (monsterAttack == 12)
+						{
+							chestWin();
+						}
 					}
 					else {
 						monsterAttack(monsterAttack);
@@ -1353,6 +1391,7 @@ public class startGame {
 				case "c5": TownEntrance(); break;
 				}
 				break;
+				
 			case "InnQuest":
 				switch(yourChoice) {
 				case "c1": EverWinterInn(); break;
@@ -1363,9 +1402,60 @@ public class startGame {
 				case "c1": EverWinterInn(); break;
 				}
 				break;
-
+			case "left":
+				switch(yourChoice) {
+				case "c1": if(mimickey == 0)
+				{
+					lookAround(); break;
+				}
+				else if (mimickey == 1)
+				{
+					mainTextArea.setText("You already found the key.");
+					break;
+				}
+				case "c2": NorthForestSplit(); break;
+				}
+				break;
+				
+			case "lookAround":
+				switch(yourChoice) {
+				case "c1": 
+					mainTextArea.setText("No key under the book..");
+				break;
+				case "c2": 
+					mainTextArea.setText("No key under the table..."); 
+				break;
+				case "c3": 
+					mainTextArea.setText("No key behind the door..."); 
+				break;
+				case "c4": 
+					mainTextArea.setText("Aha! The key was on the floor under the carpet...\n You begin to open the chest..");
+					mimickey = 1;
+					unlockchest();
+				break;
+				}
+				break;
+				
+			case "unlockchest":
+				switch(yourChoice) {
+				case "c1": chestFight(); break;				
+				}
+				break;
+				
+			case "chestFight":
+				switch(yourChoice) {
+				case "c1": monsterHealth = fight(mimicStats.healthPool); 
+				monsterAttack = mimicStats.attack; break;
+				case "c2": left(); break;			
+				}
+				break;
+			case "chestWin":
+				switch(yourChoice) {
+				case "c1":  NorthForestSplit();break;		
+				}
+				break;
 			}
+				}
 
 		}
 	}
-}
