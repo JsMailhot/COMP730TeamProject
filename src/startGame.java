@@ -68,13 +68,13 @@ public class startGame {
 	
 	stats frostTrollStats = new stats(10, 3, 2, 0, 0);
 	stats wolfStats = new stats(15, 6, 2, 0, 0);
-	stats banditStats = new stats(20, 6, 2, 0, 0);
+	stats goblinStats = new stats(20, 9, 2, 0, 0);
 	
 	
 	
 	enemy frostTroll = new enemy(0, new ArrayList<item>(), frostTrollStats, "Frost Troll", "Troll", "Frost Troll which is located in the coldest areas of the world",null, 2, new weapon());
 	enemy wolf = new enemy(0, new ArrayList<item>(), wolfStats, "Frost Wolf", "Wolf", "Frost Wolves roam the dense forests",null, 2, new weapon());
-	enemy bandit = new enemy(0, new ArrayList<item>(), wolfStats, "Frost Wolf", "Wolf", "Frost Wolves roam the dense forests",null, 2, new weapon());
+	enemy goblin = new enemy(0, new ArrayList<item>(), goblinStats, "Small Goblin", "Goblin", "Here to take your loot.",null, 2, new weapon());
 	
 	
 	stats playerStats = new stats(25, 5, 5, 0, 0);
@@ -698,6 +698,32 @@ public class startGame {
 		optionButtons.get(4).setText("");
 
 	}
+	public void goblinWin() {
+		position ="goblinWin";
+		int droppedGold = 0;
+		droppedGold = new java.util.Random().nextInt(15) + 1;
+		mainTextArea.setText("You defeated the goblin!\nThe goblin dropped " + droppedGold + " gold and a potion!\n\n");
+		player.gold = player.gold + droppedGold;
+		
+		int slotNumber = 0;
+		while (playerItem[slotNumber] != empty && slotNumber <4) {
+			slotNumber++;
+		}
+		if(playerItem[slotNumber]==empty) {
+			playerItem[slotNumber] = potion;
+		}
+		else if (playerItem[slotNumber] != empty) {
+			mainTextArea.setText("You have too much stuff!");
+		}
+		
+		playergoldlabelNumber.setText(""+player.gold);
+		optionButtons.get(0).setText(">");
+		optionButtons.get(1).setText("");
+		optionButtons.get(2).setText("");
+		optionButtons.get(3).setText("");
+		optionButtons.get(4).setText("");
+
+	}
 	public void lose() {
 		position ="lose";
 		mainTextArea.setText("You have died.\n\n<GAME OVER>");
@@ -825,10 +851,10 @@ public class startGame {
 		
 	}
 	public void right() {
-		image = new ImageIcon(".//img//wolf.jpeg");
+		image = new ImageIcon(".//img//goblin.jpg");
 		imageLabel.setIcon(image);
-		position ="WolfStage";
-		mainTextArea.setText("As you continue straight you hear a howl as a\nbig ice wolf jumps in front of you ready to\nattack.");
+		position ="GoblinStage";
+		mainTextArea.setText("As you continue along the stream\na golbin jumps out to\nattack.");
 		optionButtons.get(0).setText("Attack");
 		optionButtons.get(1).setText("Run");
 		optionButtons.get(2).setText("");
@@ -1266,6 +1292,9 @@ public class startGame {
 						else if (monsterAttack == 6) {
 							   wolfWin();
 							}
+						else if (monsterAttack == 9) {
+							   goblinWin();
+							}
 					}
 					else {
 						monsterAttack(monsterAttack);
@@ -1388,6 +1417,23 @@ public class startGame {
 			case "drink":
 				switch(yourChoice) {
 				case "c1": EverWinterInn(); break;
+				}
+				break;
+			case "GoblinStage":
+				switch(yourChoice) {
+				case "c1": 
+					monsterHealth = fight(goblinStats.healthPool); 
+					monsterAttack = goblinStats.attack; break;
+				case "c2":
+					NorthForestSplit();
+					break;
+				}
+				break;
+			case "goblinWin":
+				switch(yourChoice) {
+				case "c1":
+					NorthForestSplit();
+					break;
 				}
 				break;
 
