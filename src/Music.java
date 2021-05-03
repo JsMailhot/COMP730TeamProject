@@ -22,11 +22,17 @@ public class Music {
 			clip.loop(clip.LOOP_CONTINUOUSLY);
 		}
 		public void stop() {
-			clip.stop();
-			clip.close();
+			if(clip != null)
+			{
+				clip.stop();
+				clip.close();
+			}
 		}
 	    public void play() {
-	    	clip.setFramePosition(0);
-	    	clip.start();
+			if(clip != null)
+			{
+		    	clip.setFramePosition(0);
+		    	clip.start();
+			}
 	    }
 	}	

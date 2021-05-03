@@ -19,7 +19,10 @@ public class SoundEffect {
 			}
 		}
 	    public void play() {
-	    	clip.setFramePosition(0);
-	    	clip.start();
+	    	if(clip != null)
+	    	{
+		    	clip.setFramePosition(0);
+		    	clip.start();
+	    	}
 	    }
 	}
